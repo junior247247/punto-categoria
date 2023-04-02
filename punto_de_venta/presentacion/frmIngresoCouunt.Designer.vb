@@ -26,9 +26,14 @@ Partial Class frmIngresoCouunt
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btn_cerrar = New CTSkinet.CTSkinetButton()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Existencia = New System.Windows.Forms.Label()
+        Me.txtCount = New System.Windows.Forms.TextBox()
+        Me.btnGuardar = New System.Windows.Forms.Button()
+        Me.lblid = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.txtExits = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtprecio = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -40,7 +45,7 @@ Partial Class frmIngresoCouunt
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(648, 34)
+        Me.Panel1.Size = New System.Drawing.Size(353, 34)
         Me.Panel1.TabIndex = 1
         '
         'btn_cerrar
@@ -51,7 +56,7 @@ Partial Class frmIngresoCouunt
         Me.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_cerrar.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_cerrar.ForeColor = System.Drawing.Color.White
-        Me.btn_cerrar.Location = New System.Drawing.Point(606, 3)
+        Me.btn_cerrar.Location = New System.Drawing.Point(312, 1)
         Me.btn_cerrar.MainColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.btn_cerrar.Name = "btn_cerrar"
         Me.btn_cerrar.Size = New System.Drawing.Size(33, 30)
@@ -64,46 +69,99 @@ Partial Class frmIngresoCouunt
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(203, 3)
+        Me.Label1.Location = New System.Drawing.Point(131, 6)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(101, 20)
+        Me.Label1.Size = New System.Drawing.Size(52, 20)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Anular Ticket"
+        Me.Label1.Text = "Count"
+        '
+        'Existencia
+        '
+        Me.Existencia.AutoSize = True
+        Me.Existencia.Location = New System.Drawing.Point(21, 50)
+        Me.Existencia.Name = "Existencia"
+        Me.Existencia.Size = New System.Drawing.Size(58, 13)
+        Me.Existencia.TabIndex = 2
+        Me.Existencia.Text = "Existencia:"
+        '
+        'txtCount
+        '
+        Me.txtCount.Location = New System.Drawing.Point(85, 109)
+        Me.txtCount.Name = "txtCount"
+        Me.txtCount.Size = New System.Drawing.Size(100, 20)
+        Me.txtCount.TabIndex = 3
+        '
+        'btnGuardar
+        '
+        Me.btnGuardar.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btnGuardar.FlatAppearance.BorderSize = 0
+        Me.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnGuardar.ForeColor = System.Drawing.Color.White
+        Me.btnGuardar.Location = New System.Drawing.Point(264, 104)
+        Me.btnGuardar.Name = "btnGuardar"
+        Me.btnGuardar.Size = New System.Drawing.Size(75, 23)
+        Me.btnGuardar.TabIndex = 4
+        Me.btnGuardar.Text = "Guardar"
+        Me.btnGuardar.UseVisualStyleBackColor = False
+        '
+        'lblid
+        '
+        Me.lblid.AutoSize = True
+        Me.lblid.Location = New System.Drawing.Point(261, 57)
+        Me.lblid.Name = "lblid"
+        Me.lblid.Size = New System.Drawing.Size(39, 13)
+        Me.lblid.TabIndex = 2
+        Me.lblid.Text = "Label2"
+        Me.lblid.Visible = False
         '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(53, 107)
+        Me.Label2.Location = New System.Drawing.Point(41, 112)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 13)
+        Me.Label2.Size = New System.Drawing.Size(38, 13)
         Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Label2"
+        Me.Label2.Text = "Count:"
         '
-        'TextBox1
+        'txtExits
         '
-        Me.TextBox1.Location = New System.Drawing.Point(276, 125)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox1.TabIndex = 3
+        Me.txtExits.Enabled = False
+        Me.txtExits.Location = New System.Drawing.Point(85, 43)
+        Me.txtExits.Name = "txtExits"
+        Me.txtExits.Size = New System.Drawing.Size(100, 20)
+        Me.txtExits.TabIndex = 3
         '
-        'Button1
+        'Label3
         '
-        Me.Button1.Location = New System.Drawing.Point(134, 187)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(23, 79)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(56, 13)
+        Me.Label3.TabIndex = 2
+        Me.Label3.Text = "P.Compra:"
+        '
+        'txtprecio
+        '
+        Me.txtprecio.Enabled = False
+        Me.txtprecio.Location = New System.Drawing.Point(85, 76)
+        Me.txtprecio.Name = "txtprecio"
+        Me.txtprecio.Size = New System.Drawing.Size(100, 20)
+        Me.txtprecio.TabIndex = 3
         '
         'frmIngresoCouunt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(648, 295)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.TextBox1)
+        Me.ClientSize = New System.Drawing.Size(353, 139)
+        Me.Controls.Add(Me.btnGuardar)
+        Me.Controls.Add(Me.txtExits)
+        Me.Controls.Add(Me.txtprecio)
+        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.txtCount)
         Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.lblid)
+        Me.Controls.Add(Me.Existencia)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -120,7 +178,12 @@ Partial Class frmIngresoCouunt
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btn_cerrar As CTSkinet.CTSkinetButton
     Friend WithEvents Label1 As Label
+    Friend WithEvents Existencia As Label
+    Friend WithEvents txtCount As TextBox
+    Friend WithEvents btnGuardar As Button
+    Friend WithEvents lblid As Label
     Friend WithEvents Label2 As Label
-    Friend WithEvents TextBox1 As TextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents txtExits As TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents txtprecio As TextBox
 End Class

@@ -2,9 +2,10 @@
     Protected dt As New DataTable
     Protected class_producto As New class_producto
     Private almacen As New Almacen
+    Private invetarioProd As New class_inventario_prod
     Property obj_producto As New ce_producto
     Private classCombo As New classCombo
-
+    Private flag = False
     Public Sub mostrar_productos_almacen()
         Try
             dt = class_producto.mostrar_productos
@@ -49,6 +50,9 @@
             For i = 2 To datalistado_productos.Columns.Count - 1 Step 1
                 datalistado_productos.Columns(i).Width = 100
             Next
+            If flag Then
+                paintCells()
+            End If
 
 
         Catch ex As Exception
@@ -65,18 +69,24 @@
             datalistado_productos.EnableHeadersVisualStyles = False
 
 
-
-            If datalistado_productos.Rows.Count > 0 Then
-                datalistado_productos.ContextMenuStrip = c_menu_productos
+            If Not flag Then
+                If datalistado_productos.Rows.Count > 0 Then
+                    datalistado_productos.ContextMenuStrip = c_menu_productos
+                Else
+                    datalistado_productos.ContextMenuStrip = Nothing
+                End If
             Else
                 datalistado_productos.ContextMenuStrip = Nothing
             End If
+
 
             datalistado_productos.Columns(1).Width = 270
             For i = 2 To datalistado_productos.Columns.Count - 1 Step 1
                 datalistado_productos.Columns(i).Width = 100
             Next
-
+            If flag Then
+                paintCells()
+            End If
 
 
         Catch ex As Exception
@@ -236,15 +246,50 @@
     End Sub
 
     Private Sub paintCells()
-        For i = 0 To datalistado_productos.Rows.Count - 1 Step 1
-            Dim row As DataGridViewRow = datalistado_productos.Rows(i)
-            Dim cell As DataGridViewCell = datalistado_productos.Rows(i).Cells(0)
-            row.DefaultCellStyle.BackColor = Color.Red
-        Next
+
+        Dim dt = class_producto.mostrar_productos
+        If dt.Rows.Count > 0 Then
+            For i = 0 To dt.Rows.Count - 1 Step 1
+
+                Dim id As Integer = Convert.ToInt32(datalistado_productos.Rows(i).Cells("id_producto").Value)
+
+
+                dt = invetarioProd.getProdByCount(id)
+                If dt.Rows.Count > 0 Then
+                    Dim row As DataGridViewRow = datalistado_productos.Rows(i)
+                    Dim cell As DataGridViewCell = datalistado_productos.Rows(i).Cells(0)
+                    row.DefaultCellStyle.BackColor = Color.Honeydew
+                    row.DefaultCellStyle.ForeColor = Color.Black
+
+                Else
+                    Dim row As DataGridViewRow = datalistado_productos.Rows(i)
+                    Dim cell As DataGridViewCell = datalistado_productos.Rows(i).Cells(0)
+                    row.DefaultCellStyle.BackColor = Color.Red
+                    row.DefaultCellStyle.ForeColor = Color.White
+                End If
+            Next
+
+        End If
+
+
+
+
 
     End Sub
 
     Private Sub btnStarCount_Click(sender As Object, e As EventArgs) Handles btnStarCount.Click
-        paintCells()
+
+        flag = True
+        mostrar_productos()
+    End Sub
+
+    Private Sub datalistado_productos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles datalistado_productos.CellDoubleClick
+        If flag Then
+            frmIngresoCouunt.lblid.Text = datalistado_productos.SelectedCells.Item(0).Value
+            frmIngresoCouunt.txtExits.Text = datalistado_productos.SelectedCells.Item(8).Value
+            frmIngresoCouunt.txtprecio.Text = datalistado_productos.SelectedCells.Item(4).Value
+            frmIngresoCouunt.ShowDialog()
+        End If
+
     End Sub
 End Class

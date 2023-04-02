@@ -9,5 +9,6 @@
     Public Property cantidad As Integer
     Public Property direfencia As String
     Public Property importe As Decimal
+    Public Property total As Decimal
 
 End Class
