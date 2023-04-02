@@ -34,9 +34,10 @@ Partial Class frm_productos
         Me.c_menu_productos = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EliminarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EditarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReabastecerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnNuevoCombo = New System.Windows.Forms.Button()
-        Me.ReabastecerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.btnStarCount = New System.Windows.Forms.Button()
         CType(Me.datalistado_productos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.c_menu_productos.SuspendLayout()
         Me.SuspendLayout()
@@ -108,7 +109,7 @@ Partial Class frm_productos
         Me.btn_nuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_nuevo.Font = New System.Drawing.Font("Segoe UI Semibold", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_nuevo.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
-        Me.btn_nuevo.Location = New System.Drawing.Point(615, 27)
+        Me.btn_nuevo.Location = New System.Drawing.Point(615, 32)
         Me.btn_nuevo.MainColor = System.Drawing.Color.White
         Me.btn_nuevo.Name = "btn_nuevo"
         Me.btn_nuevo.Size = New System.Drawing.Size(97, 23)
@@ -120,19 +121,25 @@ Partial Class frm_productos
         '
         Me.c_menu_productos.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EliminarToolStripMenuItem, Me.EditarToolStripMenuItem, Me.ReabastecerToolStripMenuItem})
         Me.c_menu_productos.Name = "c_menu_productos"
-        Me.c_menu_productos.Size = New System.Drawing.Size(181, 92)
+        Me.c_menu_productos.Size = New System.Drawing.Size(138, 70)
         '
         'EliminarToolStripMenuItem
         '
         Me.EliminarToolStripMenuItem.Name = "EliminarToolStripMenuItem"
-        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.EliminarToolStripMenuItem.Size = New System.Drawing.Size(137, 22)
         Me.EliminarToolStripMenuItem.Text = "Eliminar"
         '
         'EditarToolStripMenuItem
         '
         Me.EditarToolStripMenuItem.Name = "EditarToolStripMenuItem"
-        Me.EditarToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.EditarToolStripMenuItem.Size = New System.Drawing.Size(137, 22)
         Me.EditarToolStripMenuItem.Text = "Editar"
+        '
+        'ReabastecerToolStripMenuItem
+        '
+        Me.ReabastecerToolStripMenuItem.Name = "ReabastecerToolStripMenuItem"
+        Me.ReabastecerToolStripMenuItem.Size = New System.Drawing.Size(137, 22)
+        Me.ReabastecerToolStripMenuItem.Text = "Reabastecer"
         '
         'Panel1
         '
@@ -158,11 +165,14 @@ Partial Class frm_productos
         Me.btnNuevoCombo.Text = "NUEVO COMBO"
         Me.btnNuevoCombo.UseVisualStyleBackColor = True
         '
-        'ReabastecerToolStripMenuItem
+        'btnStarCount
         '
-        Me.ReabastecerToolStripMenuItem.Name = "ReabastecerToolStripMenuItem"
-        Me.ReabastecerToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
-        Me.ReabastecerToolStripMenuItem.Text = "Reabastecer"
+        Me.btnStarCount.Location = New System.Drawing.Point(359, 32)
+        Me.btnStarCount.Name = "btnStarCount"
+        Me.btnStarCount.Size = New System.Drawing.Size(177, 23)
+        Me.btnStarCount.TabIndex = 23
+        Me.btnStarCount.Text = "STAR COUNT"
+        Me.btnStarCount.UseVisualStyleBackColor = True
         '
         'frm_productos
         '
@@ -170,6 +180,7 @@ Partial Class frm_productos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(716, 575)
+        Me.Controls.Add(Me.btnStarCount)
         Me.Controls.Add(Me.btnNuevoCombo)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.btn_nuevo)
@@ -196,4 +207,5 @@ Partial Class frm_productos
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btnNuevoCombo As Button
     Friend WithEvents ReabastecerToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents btnStarCount As Button
 End Class

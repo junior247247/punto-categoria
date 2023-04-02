@@ -105,6 +105,7 @@
     <Compile Include="CAPADATOS\ce_gastos.vb" />
     <Compile Include="CAPADATOS\ce_inventario.vb" />
     <Compile Include="CAPADATOS\ce_liquidos.vb" />
+    <Compile Include="CAPADATOS\ce_prod.vb" />
     <Compile Include="CAPADATOS\ce_producto.vb" />
     <Compile Include="CAPADATOS\ce_proveedor.vb" />
     <Compile Include="CAPADATOS\ce_reporte_gasto.vb" />
@@ -130,6 +131,7 @@
     <Compile Include="FUNCIONES\class_desde.vb" />
     <Compile Include="FUNCIONES\class_gastos.vb" />
     <Compile Include="FUNCIONES\class_inventario.vb" />
+    <Compile Include="FUNCIONES\class_inventario_prod.vb" />
     <Compile Include="FUNCIONES\class_permisos.vb" />
     <Compile Include="FUNCIONES\class_proveedor.vb" />
     <Compile Include="FUNCIONES\class_reporte.vb" />
@@ -159,6 +161,12 @@
       <DependentUpon>frmIngresoAlmacen.vb</DependentUpon>
     </Compile>
     <Compile Include="presentacion\frmIngresoAlmacen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="presentacion\frmIngresoCouunt.Designer.vb">
+      <DependentUpon>frmIngresoCouunt.vb</DependentUpon>
+    </Compile>
+    <Compile Include="presentacion\frmIngresoCouunt.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="presentacion\frmRegistroCombo.Designer.vb">
@@ -538,6 +546,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="presentacion\frmIngresoAlmacen.resx">
       <DependentUpon>frmIngresoAlmacen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="presentacion\frmIngresoCouunt.resx">
+      <DependentUpon>frmIngresoCouunt.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="presentacion\frmRegistroCombo.resx">
       <DependentUpon>frmRegistroCombo.vb</DependentUpon>

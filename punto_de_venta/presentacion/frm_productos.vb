@@ -66,7 +66,6 @@
 
 
 
-
             If datalistado_productos.Rows.Count > 0 Then
                 datalistado_productos.ContextMenuStrip = c_menu_productos
             Else
@@ -234,5 +233,18 @@
             MessageBox.Show("No hay Registro en almacen para este producto", "Reabastecer Producto", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
 
+    End Sub
+
+    Private Sub paintCells()
+        For i = 0 To datalistado_productos.Rows.Count - 1 Step 1
+            Dim row As DataGridViewRow = datalistado_productos.Rows(i)
+            Dim cell As DataGridViewCell = datalistado_productos.Rows(i).Cells(0)
+            row.DefaultCellStyle.BackColor = Color.Red
+        Next
+
+    End Sub
+
+    Private Sub btnStarCount_Click(sender As Object, e As EventArgs) Handles btnStarCount.Click
+        paintCells()
     End Sub
 End Class
