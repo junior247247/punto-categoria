@@ -448,6 +448,12 @@
     <Compile Include="REPORTES\frmReporteGastos.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="REPORTES\frmReportInventory.Designer.vb">
+      <DependentUpon>frmReportInventory.vb</DependentUpon>
+    </Compile>
+    <Compile Include="REPORTES\frmReportInventory.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="REPORTES\frm_reporte_cierre_de_caja.Designer.vb">
       <DependentUpon>frm_reporte_cierre_de_caja.vb</DependentUpon>
     </Compile>
@@ -494,6 +500,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rpt_gastos.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="REPORTES\rpt_inventory.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rpt_inventory.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="REPORTES\rpt_retiros.vb">
@@ -678,6 +690,9 @@
     <EmbeddedResource Include="REPORTES\frmReporteGastos.resx">
       <DependentUpon>frmReporteGastos.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="REPORTES\frmReportInventory.resx">
+      <DependentUpon>frmReportInventory.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="REPORTES\frm_reporte_cierre_de_caja.resx">
       <DependentUpon>frm_reporte_cierre_de_caja.vb</DependentUpon>
     </EmbeddedResource>
@@ -703,6 +718,10 @@
     <EmbeddedResource Include="REPORTES\rpt_gastos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>rpt_gastos.vb</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="REPORTES\rpt_inventory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rpt_inventory.vb</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="REPORTES\rpt_retiros.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

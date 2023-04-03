@@ -5,6 +5,27 @@ Public Class class_reporte
 
 
 
+    Public Function reporteInventory(id As Integer) As DataTable
+        Try
+            conectado()
+            cmd = New SqlCommand("reporteInventory")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            cmd.Parameters.AddWithValue("@id", id)
+            cmd.ExecuteNonQuery()
+            Dim dt As New DataTable
+            Dim da As New SqlDataAdapter(cmd)
+            da.Fill(dt)
+            Return dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+        Finally
+            desconectado()
+        End Try
+    End Function
+
+
     Function VERIFICAR_SI_EL_REPORTE_ES_ACREDITO(ByVal id_venta As Integer) As DataTable
         Try
             conectado()

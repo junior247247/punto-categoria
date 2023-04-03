@@ -298,21 +298,28 @@
             Dim d As New DialogResult
             d = MessageBox.Show("¿Realmente deceas finalizr el inventario?", "Finalizar inventario", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If d = DialogResult.Yes Then
+                Dim totalCapital
+                If invetarioProd.sumarCapital.Rows(0).Item("total").ToString <> "" Then
+                    totalCapital = invetarioProd.sumarCapital.Rows(0).Item("total").ToString
+                Else
+                    totalCapital = "0.00"
+                End If
 
-                Dim totalCapital = invetarioProd.sumarCapital.Rows(0).Item("total").ToString
                 Dim totalPerdida = invetarioProd.sumarPerdidas.Rows(0).Item("total").ToString
+                'MsgBox(totalCapital)
+                'Return
                 With ojbTotalInventory
                     .idInventory = Val(frmIngresoCouunt.lblIdInventory.Text)
                     .totalPerdida = Convert.ToDecimal(totalPerdida)
-                    .totalTienda = Convert.ToDecimal(totalCapital)
+                    .totalTienda = totalCapital
                     .totalPorHaber = Convert.ToDecimal(frm_inventario.lbl_dinero_en_producto.Text)
                 End With
 
 
+                invetarioProd.insertarTotal(ojbTotalInventory)
 
-
-
-
+                frmReportInventory.lblid.Text = frmIngresoCouunt.lblid.Text
+                frmReportInventory.ShowDialog()
 
 
 

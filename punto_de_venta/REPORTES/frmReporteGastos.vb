@@ -2,6 +2,11 @@
 Public Class frmReporteGastos
     Dim dt, dtSacarid As New DataTable
     Dim classGastos As New class_gastos
+
+    Private Sub CrystalReportViewer1_Load(sender As Object, e As EventArgs) Handles CrystalReportViewer1.Load
+
+    End Sub
+
     Private Sub frmReporteGastos_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dtSacarid = classGastos.sacarUltimoIDGastos
         Dim dataSet As New data_set_reportes
