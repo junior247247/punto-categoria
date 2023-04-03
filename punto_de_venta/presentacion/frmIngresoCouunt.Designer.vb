@@ -25,7 +25,7 @@ Partial Class frmIngresoCouunt
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmIngresoCouunt))
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btn_cerrar = New CTSkinet.CTSkinetButton()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblanem = New System.Windows.Forms.Label()
         Me.Existencia = New System.Windows.Forms.Label()
         Me.txtCount = New System.Windows.Forms.TextBox()
         Me.btnGuardar = New System.Windows.Forms.Button()
@@ -34,6 +34,7 @@ Partial Class frmIngresoCouunt
         Me.txtExits = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txtprecio = New System.Windows.Forms.TextBox()
+        Me.lblIdInventory = New System.Windows.Forms.Label()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -41,7 +42,7 @@ Partial Class frmIngresoCouunt
         '
         Me.Panel1.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.Panel1.Controls.Add(Me.btn_cerrar)
-        Me.Panel1.Controls.Add(Me.Label1)
+        Me.Panel1.Controls.Add(Me.lblanem)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
@@ -64,16 +65,16 @@ Partial Class frmIngresoCouunt
         Me.btn_cerrar.Text = "X"
         Me.btn_cerrar.UseVisualStyleBackColor = False
         '
-        'Label1
+        'lblanem
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.ForeColor = System.Drawing.Color.White
-        Me.Label1.Location = New System.Drawing.Point(131, 6)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(52, 20)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Count"
+        Me.lblanem.AutoSize = True
+        Me.lblanem.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblanem.ForeColor = System.Drawing.Color.White
+        Me.lblanem.Location = New System.Drawing.Point(3, 8)
+        Me.lblanem.Name = "lblanem"
+        Me.lblanem.Size = New System.Drawing.Size(49, 20)
+        Me.lblanem.TabIndex = 0
+        Me.lblanem.Text = "count"
         '
         'Existencia
         '
@@ -148,12 +149,22 @@ Partial Class frmIngresoCouunt
         Me.txtprecio.Size = New System.Drawing.Size(100, 20)
         Me.txtprecio.TabIndex = 3
         '
+        'lblIdInventory
+        '
+        Me.lblIdInventory.AutoSize = True
+        Me.lblIdInventory.Location = New System.Drawing.Point(202, 79)
+        Me.lblIdInventory.Name = "lblIdInventory"
+        Me.lblIdInventory.Size = New System.Drawing.Size(39, 13)
+        Me.lblIdInventory.TabIndex = 5
+        Me.lblIdInventory.Text = "Label1"
+        '
         'frmIngresoCouunt
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(353, 139)
+        Me.Controls.Add(Me.lblIdInventory)
         Me.Controls.Add(Me.btnGuardar)
         Me.Controls.Add(Me.txtExits)
         Me.Controls.Add(Me.txtprecio)
@@ -177,7 +188,7 @@ Partial Class frmIngresoCouunt
 
     Friend WithEvents Panel1 As Panel
     Friend WithEvents btn_cerrar As CTSkinet.CTSkinetButton
-    Friend WithEvents Label1 As Label
+    Friend WithEvents lblanem As Label
     Friend WithEvents Existencia As Label
     Friend WithEvents txtCount As TextBox
     Friend WithEvents btnGuardar As Button
@@ -186,4 +197,5 @@ Partial Class frmIngresoCouunt
     Friend WithEvents txtExits As TextBox
     Friend WithEvents Label3 As Label
     Friend WithEvents txtprecio As TextBox
+    Friend WithEvents lblIdInventory As Label
 End Class

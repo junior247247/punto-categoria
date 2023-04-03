@@ -6,6 +6,7 @@
     '@importe decimal(18,2)
     Public Property id As Integer
     Public Property idProducto As Integer
+    Public Property idInventory As Integer
     Public Property cantidad As Integer
     Public Property direfencia As String
     Public Property importe As Decimal

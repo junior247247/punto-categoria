@@ -109,6 +109,7 @@
     <Compile Include="CAPADATOS\ce_producto.vb" />
     <Compile Include="CAPADATOS\ce_proveedor.vb" />
     <Compile Include="CAPADATOS\ce_reporte_gasto.vb" />
+    <Compile Include="CAPADATOS\ce_total_inventory.vb" />
     <Compile Include="CAPADATOS\ce_usuario.vb" />
     <Compile Include="CAPADATOS\ce_venta.vb" />
     <Compile Include="CAPADATOS\ce_venta_final.vb" />

@@ -6,6 +6,8 @@
     Property obj_producto As New ce_producto
     Private classCombo As New classCombo
     Private flag = False
+    Private classGasto As New class_gastos
+    Private time As Integer
     Public Sub mostrar_productos_almacen()
         Try
             dt = class_producto.mostrar_productos
@@ -279,17 +281,50 @@
 
     Private Sub btnStarCount_Click(sender As Object, e As EventArgs) Handles btnStarCount.Click
 
-        flag = True
-        mostrar_productos()
+        If Not flag Then
+            Dim d As New DialogResult
+            d = MessageBox.Show("¿Realmente deceas iniciar el inventario?", "Iniciar inventario", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If d = DialogResult.Yes Then
+                flag = True
+                btnExell.Visible = True
+                mostrar_productos()
+                btnStarCount.BackColor = Color.Red
+                btnStarCount.Text = "STOP"
+                frmIngresoCouunt.lblIdInventory.Text = invetarioProd.selectIdInventory.Rows.Count + 1
+            End If
+        Else
+            Dim d As New DialogResult
+            d = MessageBox.Show("¿Realmente deceas finalizr el inventario?", "Finalizar inventario", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If d = DialogResult.Yes Then
+                flag = False
+                btnExell.Visible = False
+                mostrar_productos()
+                btnStarCount.BackColor = Color.Green
+                btnStarCount.Text = "START"
+                frmIngresoCouunt.lblIdInventory.Text = ""
+            End If
+        End If
+
     End Sub
 
     Private Sub datalistado_productos_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles datalistado_productos.CellDoubleClick
         If flag Then
             frmIngresoCouunt.lblid.Text = datalistado_productos.SelectedCells.Item(0).Value
             frmIngresoCouunt.txtExits.Text = datalistado_productos.SelectedCells.Item(8).Value
+            frmIngresoCouunt.lblanem.Text = datalistado_productos.SelectedCells.Item(1).Value
             frmIngresoCouunt.txtprecio.Text = datalistado_productos.SelectedCells.Item(4).Value
             frmIngresoCouunt.ShowDialog()
         End If
 
     End Sub
+
+    Private Sub btnExell_Click(sender As Object, e As EventArgs) Handles btnExell.Click
+        If datalistado_inventory.Rows.Count > 0 Then
+            classGasto.llenarExcel(datalistado_inventory)
+        Else
+            MessageBox.Show("No has contabilidazo inventario", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
+    End Sub
+
+
 End Class

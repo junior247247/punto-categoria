@@ -38,8 +38,11 @@ Partial Class frm_productos
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnNuevoCombo = New System.Windows.Forms.Button()
         Me.btnStarCount = New System.Windows.Forms.Button()
+        Me.btnExell = New System.Windows.Forms.Button()
+        Me.datalistado_inventory = New System.Windows.Forms.DataGridView()
         CType(Me.datalistado_productos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.c_menu_productos.SuspendLayout()
+        CType(Me.datalistado_inventory, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'datalistado_productos
@@ -167,12 +170,40 @@ Partial Class frm_productos
         '
         'btnStarCount
         '
-        Me.btnStarCount.Location = New System.Drawing.Point(359, 32)
+        Me.btnStarCount.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(122, Byte), Integer), CType(CType(204, Byte), Integer))
+        Me.btnStarCount.FlatAppearance.BorderSize = 0
+        Me.btnStarCount.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnStarCount.ForeColor = System.Drawing.Color.White
+        Me.btnStarCount.Location = New System.Drawing.Point(12, 32)
         Me.btnStarCount.Name = "btnStarCount"
-        Me.btnStarCount.Size = New System.Drawing.Size(177, 23)
+        Me.btnStarCount.Size = New System.Drawing.Size(103, 23)
         Me.btnStarCount.TabIndex = 23
-        Me.btnStarCount.Text = "STAR COUNT"
-        Me.btnStarCount.UseVisualStyleBackColor = True
+        Me.btnStarCount.Text = "START"
+        Me.btnStarCount.UseVisualStyleBackColor = False
+        '
+        'btnExell
+        '
+        Me.btnExell.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer), CType(CType(0, Byte), Integer))
+        Me.btnExell.FlatAppearance.BorderSize = 0
+        Me.btnExell.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnExell.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnExell.ForeColor = System.Drawing.Color.White
+        Me.btnExell.Location = New System.Drawing.Point(142, 32)
+        Me.btnExell.Name = "btnExell"
+        Me.btnExell.Size = New System.Drawing.Size(133, 23)
+        Me.btnExell.TabIndex = 24
+        Me.btnExell.Text = "Excell"
+        Me.btnExell.UseVisualStyleBackColor = False
+        Me.btnExell.Visible = False
+        '
+        'datalistado_inventory
+        '
+        Me.datalistado_inventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.datalistado_inventory.Location = New System.Drawing.Point(394, 13)
+        Me.datalistado_inventory.Name = "datalistado_inventory"
+        Me.datalistado_inventory.Size = New System.Drawing.Size(10, 20)
+        Me.datalistado_inventory.TabIndex = 25
+        Me.datalistado_inventory.Visible = False
         '
         'frm_productos
         '
@@ -180,6 +211,8 @@ Partial Class frm_productos
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(716, 575)
+        Me.Controls.Add(Me.datalistado_inventory)
+        Me.Controls.Add(Me.btnExell)
         Me.Controls.Add(Me.btnStarCount)
         Me.Controls.Add(Me.btnNuevoCombo)
         Me.Controls.Add(Me.Panel1)
@@ -192,6 +225,7 @@ Partial Class frm_productos
         Me.Name = "frm_productos"
         CType(Me.datalistado_productos, System.ComponentModel.ISupportInitialize).EndInit()
         Me.c_menu_productos.ResumeLayout(False)
+        CType(Me.datalistado_inventory, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -208,4 +242,6 @@ Partial Class frm_productos
     Friend WithEvents btnNuevoCombo As Button
     Friend WithEvents ReabastecerToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents btnStarCount As Button
+    Friend WithEvents btnExell As Button
+    Friend WithEvents datalistado_inventory As DataGridView
 End Class

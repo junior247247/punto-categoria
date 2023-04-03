@@ -178,78 +178,78 @@ Public Class class_gastos
 
 
 
-        'Try
-        '    Dim exApp As New Microsoft.Office.Interop.Excel.Application
+        Try
+            Dim exApp As New Microsoft.Office.Interop.Excel.Application
 
-        '    Dim exLibro As Microsoft.Office.Interop.Excel.Workbook
+            Dim exLibro As Microsoft.Office.Interop.Excel.Workbook
 
-        '    Dim exHoja As Microsoft.Office.Interop.Excel.Worksheet
+            Dim exHoja As Microsoft.Office.Interop.Excel.Worksheet
 
-        '    'Añadimos el Libro al programa, y la hoja al libro
+            'Añadimos el Libro al programa, y la hoja al libro
 
-        '    exLibro = exApp.Workbooks.Add
+            exLibro = exApp.Workbooks.Add
 
-        '    exHoja = exLibro.Worksheets.Add()
+            exHoja = exLibro.Worksheets.Add()
 
-        '    ' ¿Cuantas columnas y cuantas filas?
+            ' ¿Cuantas columnas y cuantas filas?
 
-        '    Dim NCol As Integer = ElGrid.ColumnCount
+            Dim NCol As Integer = ElGrid.ColumnCount
 
-        '    Dim NRow As Integer = ElGrid.RowCount
+            Dim NRow As Integer = ElGrid.RowCount
 
-        '    'Aqui recorremos todas las filas, y por cada fila todas las columnas
+            'Aqui recorremos todas las filas, y por cada fila todas las columnas
 
-        '    'y vamos escribiendo.
+            'y vamos escribiendo.
 
-        '    For i As Integer = 1 To NCol
+            For i As Integer = 1 To NCol
 
-        '        exHoja.Cells.Item(1, i) = ElGrid.Columns(i - 1).Name.ToString
-
-
+                exHoja.Cells.Item(1, i) = ElGrid.Columns(i - 1).Name.ToString
 
 
-        '    Next
-        '    'errorr linea
 
-        '    For Fila As Integer = 0 To NRow - 1
 
-        '        For Col As Integer = 0 To NCol - 1
+            Next
+            'errorr linea
 
-        '            exHoja.Cells.Item(Fila + 2, Col + 1) = ElGrid.Item(Col, Fila).Value
+            For Fila As Integer = 0 To NRow - 1
 
-        '        Next
+                For Col As Integer = 0 To NCol - 1
 
-        '    Next
+                    exHoja.Cells.Item(Fila + 2, Col + 1) = ElGrid.Item(Col, Fila).Value
 
-        '    'Titulo en negrita, Alineado al centro y que el tamaño de la columna
+                Next
 
-        '    'se ajuste al texto
+            Next
 
-        '    exHoja.Rows.Item(1).Font.Bold = 1
+            'Titulo en negrita, Alineado al centro y que el tamaño de la columna
 
-        '    exHoja.Rows.Item(1).HorizontalAlignment = 3
+            'se ajuste al texto
 
-        '    exHoja.Columns.AutoFit()
+            exHoja.Rows.Item(1).Font.Bold = 1
 
-        '    'Aplicación visible
+            exHoja.Rows.Item(1).HorizontalAlignment = 3
 
-        '    exApp.Application.Visible = True
+            exHoja.Columns.AutoFit()
 
-        '    exHoja = Nothing
+            'Aplicación visible
 
-        '    exLibro = Nothing
+            exApp.Application.Visible = True
 
-        '    exApp = Nothing
+            exHoja = Nothing
 
-        'Catch ex As Exception
+            exLibro = Nothing
 
-        '    MsgBox("Excel no instalado o version menor a 2016", MsgBoxStyle.Critical, "Error al exportar a Excel")
+            exApp = Nothing
 
-        '    Return False
+        Catch ex As Exception
 
-        'End Try
+            MsgBox("Excel no instalado o version menor a 2016", MsgBoxStyle.Critical, "Error al exportar a Excel")
 
-        'Return True
+            Return False
+
+        End Try
+
+        Return True
 
     End Function
 
