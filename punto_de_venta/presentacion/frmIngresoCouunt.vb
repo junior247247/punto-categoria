@@ -63,12 +63,12 @@
                     diferencia = counte - existencia
                     restante = pCompra * diferencia
                     total = existencia + diferencia * pCompra
-                    'MsgBox(total)
+                    'MsgBox(diferencia)
                 Else
-                    diferencia = existencia - counte
-                    restante = pCompra * -diferencia
+                    diferencia = counte - existencia
+                    restante = diferencia * pCompra
                     total = existencia * pCompra
-                    'MsgBox(total)
+                    'MsgBox(diferencia)
                 End If
 
 

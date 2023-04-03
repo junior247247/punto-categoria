@@ -152,11 +152,12 @@ Partial Class frmIngresoCouunt
         'lblIdInventory
         '
         Me.lblIdInventory.AutoSize = True
-        Me.lblIdInventory.Location = New System.Drawing.Point(202, 79)
+        Me.lblIdInventory.Location = New System.Drawing.Point(216, 50)
         Me.lblIdInventory.Name = "lblIdInventory"
-        Me.lblIdInventory.Size = New System.Drawing.Size(39, 13)
+        Me.lblIdInventory.Size = New System.Drawing.Size(13, 13)
         Me.lblIdInventory.TabIndex = 5
-        Me.lblIdInventory.Text = "Label1"
+        Me.lblIdInventory.Text = "0"
+        Me.lblIdInventory.Visible = False
         '
         'frmIngresoCouunt
         '

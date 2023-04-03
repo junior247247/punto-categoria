@@ -8,6 +8,8 @@
     Private flag = False
     Private classGasto As New class_gastos
     Private time As Integer
+    Private ojbTotalInventory As New ce_total_inventory
+
     Public Sub mostrar_productos_almacen()
         Try
             dt = class_producto.mostrar_productos
@@ -296,6 +298,25 @@
             Dim d As New DialogResult
             d = MessageBox.Show("¿Realmente deceas finalizr el inventario?", "Finalizar inventario", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If d = DialogResult.Yes Then
+
+                Dim totalCapital = invetarioProd.sumarCapital.Rows(0).Item("total").ToString
+                Dim totalPerdida = invetarioProd.sumarPerdidas.Rows(0).Item("total").ToString
+                With ojbTotalInventory
+                    .idInventory = Val(frmIngresoCouunt.lblIdInventory.Text)
+                    .totalPerdida = Convert.ToDecimal(totalPerdida)
+                    .totalTienda = Convert.ToDecimal(totalCapital)
+                    .totalPorHaber = Convert.ToDecimal(frm_inventario.lbl_dinero_en_producto.Text)
+                End With
+
+
+
+
+
+
+
+
+
+
                 flag = False
                 btnExell.Visible = False
                 mostrar_productos()

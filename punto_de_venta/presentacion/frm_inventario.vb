@@ -23,7 +23,7 @@
 
                     total = total + inversion
                 Next
-                lbl_dinero_en_producto.Text = Format(Convert.ToDecimal(total), "0.00")
+                lbl_dinero_en_producto.Text = ParseToDecimal.parse(total.ToString)
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -40,25 +40,25 @@
 
             dt = class_inventario.sumar_mantenimiento_por_30_dias
 
-            lbl_mantenimiento_por_30_dias.Text = dt.Rows(0).Item("ingresos_mantenimiento_por30_dias").ToString
+            lbl_mantenimiento_por_30_dias.Text = ParseToDecimal.parse(dt.Rows(0).Item("ingresos_mantenimiento_por30_dias").ToString)
             If lbl_mantenimiento_por_30_dias.Text = String.Empty Then
                 lbl_mantenimiento_por_semana.Text = "0.00"
             End If
 
             dt = class_inventario.sumar_mantenimiento_por_7_dias
-            lbl_mantenimiento_por_semana.Text = dt.Rows(0).Item("ingresos_mantenimiento_por7_dias").ToString
+            lbl_mantenimiento_por_semana.Text = ParseToDecimal.parse(dt.Rows(0).Item("ingresos_mantenimiento_por7_dias").ToString)
             If lbl_mantenimiento_por_semana.Text = String.Empty Then
                 lbl_mantenimiento_por_semana.Text = "0.00"
             End If
 
             dt = class_inventario.sumar_liquidos_por_30_dias
-            lbl_detalle_por_mes.Text = dt.Rows(0).Item("ingresos_liquidos_por_30_dias").ToString
+            lbl_detalle_por_mes.Text = ParseToDecimal.parse(dt.Rows(0).Item("ingresos_liquidos_por_30_dias").ToString)
             If lbl_detalle_por_mes.Text = String.Empty Then
                 lbl_detalle_por_mes.Text = "0.00"
             End If
 
             dt = class_inventario.sumar_liquidos_por_semana
-            lbl_por_semanas_liquidos.Text = dt.Rows(0).Item("ingresos_liquidos_por_semanas").ToString
+            lbl_por_semanas_liquidos.Text = ParseToDecimal.parse(dt.Rows(0).Item("ingresos_liquidos_por_semanas").ToString)
             If lbl_por_semanas_liquidos.Text = String.Empty Then
                 lbl_por_semanas_liquidos.Text = "0.00"
             End If
@@ -66,44 +66,44 @@
 
 
             dt = class_inventario.compras_de_la_semana
-            lbl_compras_de_la_semana.Text = dt.Rows(0).Item("total_compras").ToString
+            lbl_compras_de_la_semana.Text = ParseToDecimal.parse(dt.Rows(0).Item("total_compras").ToString)
             If lbl_compras_de_la_semana.Text = String.Empty Then
                 lbl_compras_de_la_semana.Text = "0.00"
             End If
 
             dt = class_inventario.compras_del_mes
-            lbl_compras_del_mes.Text = dt.Rows(0).Item("total_compras_del_mes").ToString
+            lbl_compras_del_mes.Text = ParseToDecimal.parse(dt.Rows(0).Item("total_compras_del_mes").ToString)
             If lbl_compras_del_mes.Text = String.Empty Then
                 lbl_compras_del_mes.Text = "0.00"
             End If
 
             dt = class_inventario.ganancias_de_la_semana
-            lbl_ganancias_de_la_semana.Text = dt.Rows(0).Item("total_ganancias_de_la_Semana").ToString
+            lbl_ganancias_de_la_semana.Text = ParseToDecimal.parse(dt.Rows(0).Item("total_ganancias_de_la_Semana").ToString)
             If lbl_ganancias_de_la_semana.Text = String.Empty Then
                 lbl_ganancias_de_la_semana.Text = "0.00"
             End If
 
             dt = class_inventario.ganancias_del_mes
-            lbl_ganancias_del_mes.Text = dt.Rows(0).Item("total_ganancias_del_mes").ToString
+            lbl_ganancias_del_mes.Text = ParseToDecimal.parse(dt.Rows(0).Item("total_ganancias_del_mes").ToString)
             If lbl_ganancias_del_mes.Text = String.Empty Then
                 lbl_ganancias_del_mes.Text = "0.00"
             End If
 
             dt = class_inventario.ventas_de_la_semana
-            lbl_ventas_de_la_semana.Text = dt.Rows(0).Item("ventas_de_la_semana").ToString
+            lbl_ventas_de_la_semana.Text = ParseToDecimal.parse(dt.Rows(0).Item("ventas_de_la_semana").ToString)
             If lbl_ventas_de_la_semana.Text = String.Empty Then
                 lbl_ventas_de_la_semana.Text = "0.00"
             End If
 
             dt = class_inventario.ventas_del_mes
-            lbl_ventas_del_mes.Text = dt.Rows(0).Item("ventas_del_mes").ToString
+            lbl_ventas_del_mes.Text = ParseToDecimal.parse(dt.Rows(0).Item("ventas_del_mes").ToString)
             If lbl_ventas_del_mes.Text = String.Empty Then
                 lbl_ventas_del_mes.Text = "0.00"
             End If
 
             dt = class_inventario.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
             If dt.Rows.Count > 0 Then
-                lbl_dinero_en_caja.Text = dt.Rows(0).Item("dinero_en_caja").ToString
+                lbl_dinero_en_caja.Text = ParseToDecimal.parse(dt.Rows(0).Item("dinero_en_caja").ToString)
             Else
 
                 lbl_dinero_en_caja.Text = "0.00"

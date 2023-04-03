@@ -5,7 +5,59 @@ Public Class class_inventario_prod
 
     Protected cmd As New SqlCommand
 
+    Public Function InventoryClose() As DataTable
+        Try
+            conectado()
+            cmd = New SqlCommand("InventoryClose")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            Dim dt As New DataTable
+            Dim da As New SqlDataAdapter(cmd)
+            da.Fill(dt)
+            Return dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+        Finally
+            desconectado()
+        End Try
+    End Function
 
+    Public Function sumarCapital() As DataTable
+        Try
+            conectado()
+            cmd = New SqlCommand("sumarCapital")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            Dim dt As New DataTable
+            Dim da As New SqlDataAdapter(cmd)
+            da.Fill(dt)
+            Return dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+        Finally
+            desconectado()
+        End Try
+    End Function
+
+    Public Function sumarPerdidas() As DataTable
+        Try
+            conectado()
+            cmd = New SqlCommand("sumarPerdidas")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            Dim dt As New DataTable
+            Dim da As New SqlDataAdapter(cmd)
+            da.Fill(dt)
+            Return dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+        Finally
+            desconectado()
+        End Try
+    End Function
 
 
     Public Function insertarTotal(obj As ce_total_inventory) As Boolean

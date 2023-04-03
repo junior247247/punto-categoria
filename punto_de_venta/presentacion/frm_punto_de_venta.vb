@@ -83,7 +83,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
                     total = total + inversion
                 Next
-                frm_inventario.lbl_dinero_en_producto.Text = Format(Convert.ToDecimal(total), "0.00")
+                frm_inventario.lbl_dinero_en_producto.Text = ParseToDecimal.parse(total.ToString)
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -95,9 +95,9 @@ ByVal hTemplateFile As IntPtr) As IntPtr
     Public Sub mostrar_ingresos_del_dia()
         Try
             dt = class_invenntario.dinero_de_ventas_del_dia(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.lbl_dinero_encaja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
-            frm_caja.lbl_dinero_en_caja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
-            frm_caja.lbl_total_ventas_card_y_efeec.Text = dt.Rows(0).Item("ventas_del_dia").ToString
+            frm_caja.lbl_dinero_encaja.Text = ParseToDecimal.parse(dt.Rows(0).Item("ventas_del_dia").ToString)
+            frm_caja.lbl_dinero_en_caja.Text = ParseToDecimal.parse(dt.Rows(0).Item("ventas_del_dia").ToString)
+            frm_caja.lbl_total_ventas_card_y_efeec.Text = ParseToDecimal.parse(dt.Rows(0).Item("ventas_del_dia").ToString)
 
             If frm_caja.lbl_dinero_encaja.Text = String.Empty Then
                 frm_caja.lbl_dinero_encaja.Text = "0.00"
@@ -107,12 +107,12 @@ ByVal hTemplateFile As IntPtr) As IntPtr
             End If
 
             dt = class_invenntario.ganancias_del_dia(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.lbl_ganancia_en_ventas.Text = dt.Rows(0).Item("ganancias_del_dia").ToString
+            frm_caja.lbl_ganancia_en_ventas.Text = ParseToDecimal.parse(dt.Rows(0).Item("ganancias_del_dia").ToString)
             If frm_caja.lbl_ganancia_en_ventas.Text = String.Empty Then
                 frm_caja.lbl_ganancia_en_ventas.Text = "0.00"
             End If
             dt = class_invenntario.devoluciones(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.lbl_devolucioneS_efectivos.Text = dt.Rows(0).Item("devoluciones_del_dia").ToString
+            frm_caja.lbl_devolucioneS_efectivos.Text = ParseToDecimal.parse(dt.Rows(0).Item("devoluciones_del_dia").ToString)
             If frm_caja.lbl_devolucioneS_efectivos.Text = String.Empty Then
                 frm_caja.lbl_devolucioneS_efectivos.Text = "0"
             End If
@@ -150,12 +150,12 @@ ByVal hTemplateFile As IntPtr) As IntPtr
             'End If
 
             dt = class_invenntario.ganancias_del_dia(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.lbl_ganancia_en_ventas.Text = dt.Rows(0).Item("ganancias_del_dia").ToString
+            frm_caja.lbl_ganancia_en_ventas.Text = ParseToDecimal.parse(dt.Rows(0).Item("ganancias_del_dia").ToString)
             If frm_caja.lbl_ganancia_en_ventas.Text = String.Empty Then
                 frm_caja.lbl_ganancia_en_ventas.Text = "0.00"
             End If
             dt = class_invenntario.devoluciones(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.lbl_devolucioneS_efectivos.Text = dt.Rows(0).Item("devoluciones_del_dia").ToString
+            frm_caja.lbl_devolucioneS_efectivos.Text = ParseToDecimal.parse(dt.Rows(0).Item("devoluciones_del_dia").ToString)
             If frm_caja.lbl_devolucioneS_efectivos.Text = String.Empty Then
                 frm_caja.lbl_devolucioneS_efectivos.Text = "0"
             End If
@@ -185,8 +185,8 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             Dim total As Decimal = totalGomera + totalBar
 
-            frm_caja.lbl_dinero_encaja.Text = total.ToString
-            frm_caja.lbl_total_ventas_card_y_efeec.Text = total.ToString
+            frm_caja.lbl_dinero_encaja.Text = ParseToDecimal.parse(total.ToString)
+            frm_caja.lbl_total_ventas_card_y_efeec.Text = ParseToDecimal.parse(total.ToString)
             mostrar_dinero_en_producto()
         Catch ex As Exception
             MsgBox(ex.Message)
@@ -203,7 +203,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
         Try
             dt = class_invenntario.compras_de_la_semana
             If dt.Rows.Count > 0 Then
-                frm_inventario.lbl_compras_de_la_semana.Text = dt.Rows(0).Item("total_compras").ToString
+                frm_inventario.lbl_compras_de_la_semana.Text = ParseToDecimal.parse(dt.Rows(0).Item("total_compras").ToString)
                 If frm_inventario.lbl_compras_de_la_semana.Text = String.Empty Then
                     frm_inventario.lbl_compras_de_la_semana.Text = "0.00"
                 End If
@@ -215,7 +215,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             dt = class_invenntario.compras_del_mes
             If dt.Rows.Count > 0 Then
-                frm_inventario.lbl_compras_del_mes.Text = dt.Rows(0).Item("total_compras_del_mes").ToString
+                frm_inventario.lbl_compras_del_mes.Text = ParseToDecimal.parse(dt.Rows(0).Item("total_compras_del_mes").ToString)
                 If frm_inventario.lbl_compras_del_mes.Text = String.Empty Then
                     frm_inventario.lbl_compras_del_mes.Text = "0.00"
                 End If
@@ -227,7 +227,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             dt = class_invenntario.ganancias_de_la_semana
             If dt.Rows.Count > 0 Then
-                frm_inventario.lbl_ganancias_de_la_semana.Text = dt.Rows(0).Item("total_ganancias_de_la_Semana").ToString
+                frm_inventario.lbl_ganancias_de_la_semana.Text = ParseToDecimal.parse(dt.Rows(0).Item("total_ganancias_de_la_Semana").ToString)
                 If frm_inventario.lbl_ganancias_de_la_semana.Text = String.Empty Then
                     frm_inventario.lbl_ganancias_de_la_semana.Text = "0.00"
                 End If
@@ -238,7 +238,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             dt = class_invenntario.ganancias_del_mes
             If dt.Rows.Count > 0 Then
-                frm_inventario.lbl_ganancias_del_mes.Text = dt.Rows(0).Item("total_ganancias_del_mes").ToString
+                frm_inventario.lbl_ganancias_del_mes.Text = ParseToDecimal.parse(dt.Rows(0).Item("total_ganancias_del_mes").ToString)
                 If frm_inventario.lbl_ganancias_del_mes.Text = String.Empty Then
                     frm_inventario.lbl_ganancias_del_mes.Text = "0.00"
                 End If
@@ -248,7 +248,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             dt = class_invenntario.ventas_de_la_semana
             If dt.Rows.Count > 0 Then
-                frm_inventario.lbl_ventas_de_la_semana.Text = dt.Rows(0).Item("ventas_de_la_semana").ToString
+                frm_inventario.lbl_ventas_de_la_semana.Text = ParseToDecimal.parse(dt.Rows(0).Item("ventas_de_la_semana").ToString)
                 If frm_inventario.lbl_ventas_de_la_semana.Text = String.Empty Then
                     frm_inventario.lbl_ventas_de_la_semana.Text = "0.00"
                 End If
@@ -258,7 +258,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             dt = class_invenntario.ventas_del_mes
             If dt.Rows.Count > 0 Then
-                frm_inventario.lbl_ventas_del_mes.Text = dt.Rows(0).Item("ventas_del_mes").ToString
+                frm_inventario.lbl_ventas_del_mes.Text = ParseToDecimal.parse(dt.Rows(0).Item("ventas_del_mes").ToString)
                 If frm_inventario.lbl_ventas_del_mes.Text = String.Empty Then
                     frm_inventario.lbl_ventas_del_mes.Text = "0.00"
                 End If
@@ -269,7 +269,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             dt = class_invenntario.mostrar_dinero_en_caja(Form1.lbl_id_usuario.Text)
             If dt.Rows.Count > 0 Then
-                frm_inventario.lbl_dinero_en_caja.Text = dt.Rows(0).Item("dinero_en_caja").ToString
+                frm_inventario.lbl_dinero_en_caja.Text = ParseToDecimal.parse(dt.Rows(0).Item("dinero_en_caja").ToString)
                 If frm_inventario.lbl_dinero_en_caja.Text = String.Empty Then
                     frm_inventario.lbl_dinero_en_caja.Text = "0.00"
                 End If
@@ -356,7 +356,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
         Try
 
             dt = class_invenntario.sumar_mantenimiento_por_30_dias
-            frm_inventario.lbl_mantenimiento_por_30_dias.Text = dt.Rows(0).Item("ingresos_mantenimiento_por30_dias").ToString
+            frm_inventario.lbl_mantenimiento_por_30_dias.Text = ParseToDecimal.parse(dt.Rows(0).Item("ingresos_mantenimiento_por30_dias").ToString)
             If frm_inventario.lbl_mantenimiento_por_30_dias.Text = String.Empty Then
                 frm_inventario.lbl_mantenimiento_por_semana.Text = "0.00"
             End If
@@ -366,7 +366,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
 
             dt = class_invenntario.sumar_mantenimiento_por_7_dias
-            frm_inventario.lbl_mantenimiento_por_semana.Text = dt.Rows(0).Item("ingresos_mantenimiento_por7_dias").ToString
+            frm_inventario.lbl_mantenimiento_por_semana.Text = ParseToDecimal.parse(dt.Rows(0).Item("ingresos_mantenimiento_por7_dias").ToString)
             If frm_inventario.lbl_mantenimiento_por_semana.Text = String.Empty Then
                 frm_inventario.lbl_mantenimiento_por_semana.Text = "0.00"
             End If
@@ -374,13 +374,13 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
 
             dt = class_invenntario.sumar_liquidos_por_semana
-            frm_inventario.lbl_por_semanas_liquidos.Text = dt.Rows(0).Item("ingresos_liquidos_por_semanas").ToString
+            frm_inventario.lbl_por_semanas_liquidos.Text = ParseToDecimal.parse(dt.Rows(0).Item("ingresos_liquidos_por_semanas").ToString)
             If frm_inventario.lbl_por_semanas_liquidos.Text = String.Empty Then
                 frm_inventario.lbl_por_semanas_liquidos.Text = "0.00"
             End If
 
             dt = class_invenntario.sumar_liquidos_por_30_dias
-            frm_inventario.lbl_detalle_por_mes.Text = dt.Rows(0).Item("ingresos_liquidos_por_30_dias").ToString
+            frm_inventario.lbl_detalle_por_mes.Text = ParseToDecimal.parse(dt.Rows(0).Item("ingresos_liquidos_por_30_dias").ToString)
             If frm_inventario.lbl_detalle_por_mes.Text = String.Empty Then
                 frm_inventario.lbl_detalle_por_mes.Text = "0.00"
             End If
@@ -388,7 +388,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             dt = class_invenntario.sumar_ventas_del_mes
             If dt.Rows.Count > 0 Then
-                frm_home.lbl_compras_del_mes.Text = "RD$ " + dt.Rows(0).Item("compras_del_mes").ToString
+                frm_home.lbl_compras_del_mes.Text = "RD$ " + ParseToDecimal.parse(dt.Rows(0).Item("compras_del_mes").ToString)
 
 
             End If
@@ -416,13 +416,13 @@ ByVal hTemplateFile As IntPtr) As IntPtr
             End If
             dt = class_invenntario.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
             If dt.Rows.Count > 0 Then
-                frm_home.lbl_dinero_en_caja.Text = "RD$ " + dt.Rows(0).Item("dinero_en_caja").ToString
+                frm_home.lbl_dinero_en_caja.Text = "RD$ " + ParseToDecimal.parse(dt.Rows(0).Item("dinero_en_caja").ToString)
             Else
                 frm_home.lbl_dinero_en_caja.Text = "RD$ 0.00"
             End If
             dt = class_invenntario.dinero_de_ventas_del_dia(Val(Form1.lbl_id_usuario.Text))
             If dt.Rows.Count > 0 Then
-                frm_home.lbl_ventas_del_dia.Text = "RD$ " + dt.Rows(0).Item("ventas_del_dia").ToString
+                frm_home.lbl_ventas_del_dia.Text = "RD$ " + ParseToDecimal.parse(dt.Rows(0).Item("ventas_del_dia").ToString)
             Else
                 frm_home.lbl_ventas_del_dia.Text = "RD$ 0.00"
             End If

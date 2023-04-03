@@ -140,6 +140,7 @@
     <Compile Include="FUNCIONES\class_usuarios.vb" />
     <Compile Include="FUNCIONES\class_venta.vb" />
     <Compile Include="FUNCIONES\Parse.vb" />
+    <Compile Include="FUNCIONES\ParseToDecimal.vb" />
     <Compile Include="presentacion\frmBuscarParaCombos.Designer.vb">
       <DependentUpon>frmBuscarParaCombos.vb</DependentUpon>
     </Compile>
