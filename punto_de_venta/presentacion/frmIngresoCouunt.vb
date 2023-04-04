@@ -58,12 +58,14 @@
                 Dim existencia, pCompra, importe, total, restante As Decimal
                 existencia = Convert.ToDecimal(dtProd.Rows(0).Item("Cantidad").ToString)
                 pCompra = Convert.ToDecimal(dtProd.Rows(0).Item("Precio_de_Compra").ToString)
-
+                'MsgBox(existencia)
+                'Return
                 If counte >= existencia Then
                     diferencia = counte - existencia
                     restante = pCompra * diferencia
                     total = existencia + diferencia * pCompra
-                    'MsgBox(diferencia)
+                    'MsgBox(total)
+                    'Return
                 Else
                     diferencia = counte - existencia
                     restante = diferencia * pCompra
