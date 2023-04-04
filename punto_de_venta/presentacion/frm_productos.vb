@@ -292,6 +292,7 @@
                 mostrar_productos()
                 'btnStarCount.BackColor = Color.Red
                 btnStarCount.Text = "FINALIZAR"
+                lblid.Text = invetarioProd.selectIdInventory.Rows.Count + 1
                 frmIngresoCouunt.lblIdInventory.Text = invetarioProd.selectIdInventory.Rows.Count + 1
             End If
         Else
@@ -318,7 +319,7 @@
 
                 invetarioProd.insertarTotal(ojbTotalInventory)
 
-                frmReportInventory.lblid.Text = invetarioProd.selectIdInventory.Rows.Count - 1
+                frmReportInventory.lblid.Text = lblid.Text
                 frmReportInventory.ShowDialog()
 
                 invetarioProd.InventoryClose()
@@ -330,6 +331,7 @@
                 btnStarCount.BackColor = Color.Green
                 btnStarCount.Text = "INICIAR INVENTARIO"
                 frmIngresoCouunt.lblIdInventory.Text = ""
+                lblid.Text = ""
             End If
         End If
 

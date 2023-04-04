@@ -40,6 +40,7 @@ Partial Class frm_productos
         Me.btnStarCount = New System.Windows.Forms.Button()
         Me.btnExell = New System.Windows.Forms.Button()
         Me.datalistado_inventory = New System.Windows.Forms.DataGridView()
+        Me.lblid = New System.Windows.Forms.Label()
         CType(Me.datalistado_productos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.c_menu_productos.SuspendLayout()
         CType(Me.datalistado_inventory, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -205,12 +206,23 @@ Partial Class frm_productos
         Me.datalistado_inventory.TabIndex = 25
         Me.datalistado_inventory.Visible = False
         '
+        'lblid
+        '
+        Me.lblid.AutoSize = True
+        Me.lblid.Location = New System.Drawing.Point(514, 32)
+        Me.lblid.Name = "lblid"
+        Me.lblid.Size = New System.Drawing.Size(39, 13)
+        Me.lblid.TabIndex = 26
+        Me.lblid.Text = "Label2"
+        Me.lblid.Visible = False
+        '
         'frm_productos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(716, 575)
+        Me.Controls.Add(Me.lblid)
         Me.Controls.Add(Me.datalistado_inventory)
         Me.Controls.Add(Me.btnExell)
         Me.Controls.Add(Me.btnStarCount)
@@ -244,4 +256,5 @@ Partial Class frm_productos
     Friend WithEvents btnStarCount As Button
     Friend WithEvents btnExell As Button
     Friend WithEvents datalistado_inventory As DataGridView
+    Friend WithEvents lblid As Label
 End Class
