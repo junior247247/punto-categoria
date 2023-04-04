@@ -72,6 +72,11 @@ Represents the strongly named DataTable class.
 Represents the strongly named DataTable class.
 </summary>
 </member>
+<member name="T:punto_de_venta.data_set_reportes.reporteInventoryDataTable">
+<summary>
+Represents the strongly named DataTable class.
+</summary>
+</member>
 <member name="T:punto_de_venta.data_set_reportes.mostrar_reporte_retirosRow">
 <summary>
 Represents strongly named DataRow class.
@@ -93,6 +98,11 @@ Represents strongly named DataRow class.
 </summary>
 </member>
 <member name="T:punto_de_venta.data_set_reportes.reporte_cierre_de_cajaRow">
+<summary>
+Represents strongly named DataRow class.
+</summary>
+</member>
+<member name="T:punto_de_venta.data_set_reportes.reporteInventoryRow">
 <summary>
 Represents strongly named DataRow class.
 </summary>
@@ -122,6 +132,11 @@ Row event argument class
 Row event argument class
 </summary>
 </member>
+<member name="T:punto_de_venta.data_set_reportes.reporteInventoryRowChangeEvent">
+<summary>
+Row event argument class
+</summary>
+</member>
 <member name="T:punto_de_venta.data_set_reportesTableAdapters.mostrar_reporte_retirosTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
@@ -143,6 +158,11 @@ Represents the connection and commands used to retrieve and save data.
 </summary>
 </member>
 <member name="T:punto_de_venta.data_set_reportesTableAdapters.reporte_cierre_de_cajaTableAdapter">
+<summary>
+Represents the connection and commands used to retrieve and save data.
+</summary>
+</member>
+<member name="T:punto_de_venta.data_set_reportesTableAdapters.reporteInventoryTableAdapter">
 <summary>
 Represents the connection and commands used to retrieve and save data.
 </summary>

@@ -124,7 +124,7 @@ Partial Class Form1
         Me.btn_usuarios.Name = "btn_usuarios"
         Me.btn_usuarios.Size = New System.Drawing.Size(267, 35)
         Me.btn_usuarios.TabIndex = 8
-        Me.btn_usuarios.Text = "            Usuarios"
+        Me.btn_usuarios.Text = "           Usuarios"
         Me.btn_usuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_usuarios.UseVisualStyleBackColor = False
         '
@@ -232,7 +232,7 @@ Partial Class Form1
         Me.btn_inventario.Name = "btn_inventario"
         Me.btn_inventario.Size = New System.Drawing.Size(267, 35)
         Me.btn_inventario.TabIndex = 2
-        Me.btn_inventario.Text = "           Inventario"
+        Me.btn_inventario.Text = "          Inventario"
         Me.btn_inventario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_inventario.UseVisualStyleBackColor = False
         '
@@ -356,7 +356,7 @@ Partial Class Form1
         Me.btn_productos.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
         Me.btn_productos.FlatAppearance.BorderSize = 0
         Me.btn_productos.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_productos.Font = New System.Drawing.Font("Calibri", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_productos.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_productos.ForeColor = System.Drawing.SystemColors.Window
         Me.btn_productos.Image = CType(resources.GetObject("btn_productos.Image"), System.Drawing.Image)
         Me.btn_productos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -365,7 +365,7 @@ Partial Class Form1
         Me.btn_productos.Name = "btn_productos"
         Me.btn_productos.Size = New System.Drawing.Size(271, 35)
         Me.btn_productos.TabIndex = 2
-        Me.btn_productos.Text = "              Productos"
+        Me.btn_productos.Text = "          Productos"
         Me.btn_productos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.btn_productos.UseVisualStyleBackColor = False
         '

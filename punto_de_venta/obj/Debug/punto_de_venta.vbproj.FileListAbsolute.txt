@@ -331,3 +331,4 @@ C:\Users\MC RAZO\Desktop\Todo\cateogria\punto-categoria\punto_de_venta\obj\Debug
 C:\Users\MC RAZO\Desktop\Todo\cateogria\punto-categoria\punto_de_venta\obj\Debug\punto_de_venta.xml
 C:\Users\MC RAZO\Desktop\Todo\cateogria\punto-categoria\punto_de_venta\obj\Debug\punto_de_venta.pdb
 C:\Users\MC RAZO\Desktop\Todo\cateogria\punto-categoria\punto_de_venta\obj\Debug\punto_de_venta.frmIngresoCouunt.resources
+C:\Users\MC RAZO\Desktop\Todo\cateogria\punto-categoria\punto_de_venta\obj\Debug\punto_de_venta.frmReportInventory.resources

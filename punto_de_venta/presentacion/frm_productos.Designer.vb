@@ -176,9 +176,9 @@ Partial Class frm_productos
         Me.btnStarCount.ForeColor = System.Drawing.Color.White
         Me.btnStarCount.Location = New System.Drawing.Point(12, 32)
         Me.btnStarCount.Name = "btnStarCount"
-        Me.btnStarCount.Size = New System.Drawing.Size(103, 23)
+        Me.btnStarCount.Size = New System.Drawing.Size(153, 23)
         Me.btnStarCount.TabIndex = 23
-        Me.btnStarCount.Text = "START"
+        Me.btnStarCount.Text = "INICIAR INVENTARIO"
         Me.btnStarCount.UseVisualStyleBackColor = False
         '
         'btnExell
@@ -188,7 +188,7 @@ Partial Class frm_productos
         Me.btnExell.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnExell.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnExell.ForeColor = System.Drawing.Color.White
-        Me.btnExell.Location = New System.Drawing.Point(142, 32)
+        Me.btnExell.Location = New System.Drawing.Point(189, 32)
         Me.btnExell.Name = "btnExell"
         Me.btnExell.Size = New System.Drawing.Size(133, 23)
         Me.btnExell.TabIndex = 24
