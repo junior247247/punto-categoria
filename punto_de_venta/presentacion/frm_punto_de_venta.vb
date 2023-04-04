@@ -525,6 +525,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
             datalistado_articulos.Columns(6).Visible = False
             datalistado_articulos.Columns(7).Visible = False
             datalistado_articulos.Columns(8).Visible = False
+            datalistado_articulos.Columns(9).Visible = False
             If datalistado_articulos.Rows.Count > 0 Then
                 datalistado_articulos.ContextMenuStrip = c_menu_articulos
             Else
@@ -1353,21 +1354,22 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                 Next
                 result = precio - itbis
                 lbl_total_de_articulos.Text = cantidad.ToString
-                lbl_sub_total.Text = Format(Convert.ToDecimal(result.ToString), "0.00")
-                lbl_total.Text = Format(Convert.ToDecimal(precio.ToString), "0.00")
-                lbl_descuento.Text = Format(Convert.ToDecimal(total_descuento), "0.00")
-                txt_descuento.Text = Format(Convert.ToDecimal(total_descuento), "0.00")
+                lbl_sub_total.Text = ParseToDecimal.parse(result.ToString)
+                lbl_total.Text = ParseToDecimal.parse(precio.ToString)
+                lbl_descuento.Text = ParseToDecimal.parse(total_descuento.ToString)
+                txt_descuento.Text = ParseToDecimal.parse(total_descuento.ToString)
 
 
                 Dim f As Decimal
                 result = precio - itbis
                 lbl_total_de_articulos.Text = cantidad.ToString
                 f = result - total_descuento
-                lbl_sub_total.Text = Format(Convert.ToDecimal(f.ToString), "0.00")
+                lbl_sub_total.Text = ParseToDecimal.parse(Convert.ToDecimal(f.ToString))
+                lblSubTotalHide.Text = Format(Convert.ToDecimal(f.ToString), "0.00")
                 f = precio - total_descuento
-                lbl_total.Text = Format(Convert.ToDecimal(f.ToString), "0.00")
-
-                lbl_descuento.Text = Format(Convert.ToDecimal(total_descuento.ToString), "0.00")
+                lbl_total.Text = ParseToDecimal.parse(f.ToString)
+                lblTotalOculto.Text = Format(Convert.ToDecimal(f.ToString), "0.00")
+                lbl_descuento.Text = ParseToDecimal.parse(total_descuento.ToString)
 
 
             Else
@@ -1717,7 +1719,8 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
     End Sub
 
-    Private Sub btn_cobrar_Click(sender As Object, e As EventArgs) Handles btn_cobrar.Click
+
+    Private Sub cobrar()
         Dim ganancias As Decimal
         If txt_descuento.Text = "" Then
             txt_descuento.Text = "0"
@@ -1727,7 +1730,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
             If cbo_tipo.Text = "CONTADO" Then
                 If RB_NO.Checked Then
                     If datalistado_articulos.Rows.Count > 0 Then
-                        If Convert.ToDecimal(txt_recibido.Text) >= Convert.ToDecimal(lbl_total.Text) Then
+                        If Convert.ToDecimal(txt_recibido.Text) >= Convert.ToDecimal(lblTotalOculto.Text) Then
                             If IsNumeric(txt_recibido.Text) Then
                                 If IsNumeric(txt_descuento.Text) Then
                                     Dim nombre As String
@@ -1737,7 +1740,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                         nombre = "EMPLEADO: " + lbl_clientes.Text.ToString
                                     End If
                                     Dim recibido, total, cambio As Decimal
-                                    total = Convert.ToDecimal(lbl_total.Text)
+                                    total = Convert.ToDecimal(lblTotalOculto.Text)
                                     recibido = Convert.ToDecimal(txt_recibido.Text)
                                     cambio = recibido - total
                                     'obtiene el total de ganancias
@@ -1750,20 +1753,20 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                     With obj_final
                                         .condicion = cbo_tipo.Text.ToUpper
                                         .articulos = Val(lbl_total_de_articulos.Text)
-                                        .importe = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                        .importe = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                         .cliente = lbl_clientes.Text.ToUpper
                                         .descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
                                         .documento = "TICKET"
                                         .fecha = Today.Date
                                         .id_venta = Val(lbl_id_venta.Text)
                                         .pendiente = 0
-                                        .pagado = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                        .pagado = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                     End With
                                     class_venta.insertar_venta_final(obj_final)
                                     With obj_cobro
                                         .id_venta = Val(lbl_id_venta.Text)
-                                        .sub_total = Convert.ToDecimal(lbl_sub_total.Text)
-                                        .total = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                        .sub_total = Convert.ToDecimal(lblSubTotalHide.Text)
+                                        .total = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                         .total_de_articulos = Val(lbl_total_de_articulos.Text)
                                         .le_atendio = Form1.lbl_nombre_de_usuario.Text.ToUpper
                                         .recibido = Convert.ToDecimal(txt_recibido.Text)
@@ -1778,7 +1781,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                         .rnc_cliente = ""
                                         .ncf = ""
                                         .pendiente = 0
-                                        .pagado = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                        .pagado = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                         .tipo = cbo_tipo.Text
                                     End With
                                     class_cobro.insertar_total(obj_cobro)
@@ -1788,7 +1791,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                         .estado = "VALIDO"
                                         .cierre = "SIN CIERRE"
                                         .ganancia = ganancias
-                                        .importe = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                        .importe = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                         .medio_de_pago = cbo_forma_de_pago.Text
                                         .hora = TimeOfDay.ToString("HH:MM")
                                         .terminal = Net.Dns.GetHostName
@@ -1806,7 +1809,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                         With obj_cobro
                                             .id_usuario = Val(Form1.lbl_id_usuario.Text)
                                             .id_dinero_en_caja = Val(id_dinero)
-                                            .dinero_en_cja = Convert.ToDecimal(lbl_total.Text)
+                                            .dinero_en_cja = Convert.ToDecimal(lblTotalOculto.Text)
                                         End With
                                         class_cobro.actualizar_dinero_en_caja(obj_cobro)
                                     Else
@@ -1887,7 +1890,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                 ncf = "B02" + numero_de_comprobane
                             End If
                             If datalistado_articulos.Rows.Count > 0 Then
-                                If Convert.ToDecimal(txt_recibido.Text) >= Convert.ToDecimal(lbl_total.Text) Then
+                                If Convert.ToDecimal(txt_recibido.Text) >= Convert.ToDecimal(lblTotalOculto.Text) Then
                                     If IsNumeric(txt_recibido.Text) Then
                                         If IsNumeric(txt_descuento.Text) Then
                                             Dim nombre As String
@@ -1897,7 +1900,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                                 nombre = "EMPLEADO: " + lbl_clientes.Text.ToString
                                             End If
                                             Dim recibido, total, cambio As Decimal
-                                            total = Convert.ToDecimal(lbl_total.Text)
+                                            total = Convert.ToDecimal(lblTotalOculto.Text)
                                             recibido = Convert.ToDecimal(txt_recibido.Text)
                                             cambio = recibido - total
                                             'obtiene el total de ganancias
@@ -1910,20 +1913,20 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                             With obj_final
                                                 .condicion = cbo_tipo.Text.ToUpper
                                                 .articulos = Val(lbl_total_de_articulos.Text)
-                                                .importe = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                                .importe = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                                 .cliente = lbl_clientes.Text.ToUpper
                                                 .descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
                                                 .documento = "TICKET"
                                                 .fecha = Today.Date
                                                 .id_venta = Val(lbl_id_venta.Text)
                                                 .pendiente = 0
-                                                .pagado = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                                .pagado = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                             End With
                                             class_venta.insertar_venta_final(obj_final)
                                             With obj_cobro
                                                 .id_venta = Val(lbl_id_venta.Text)
-                                                .sub_total = Format(Convert.ToDecimal(lbl_sub_total.Text), "0.00")
-                                                .total = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                                .sub_total = Format(Convert.ToDecimal(lblSubTotalHide.Text), "0.00")
+                                                .total = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                                 .total_de_articulos = Val(lbl_total_de_articulos.Text)
                                                 .le_atendio = Form1.lbl_nombre_de_usuario.Text.ToUpper
                                                 .recibido = Format(Convert.ToDecimal(txt_recibido.Text), "0.00")
@@ -1938,7 +1941,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                                 .rnc_cliente = "RNC/CEDULA:" + txt_rnc_cliente.Text
                                                 .nombre_o_empresa = "NOMBRE O EMPRESA:" + txt_nombre_de_empresa.Text.ToUpper
                                                 .pendiente = 0
-                                                .pagado = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                                .pagado = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                                 .tipo = cbo_tipo.Text
                                             End With
                                             class_cobro.insertar_total(obj_cobro)
@@ -1949,7 +1952,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                                 .estado = "VALIDO"
                                                 .cierre = "SIN CIERRE"
                                                 .ganancia = ganancias
-                                                .importe = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                                .importe = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                                 .medio_de_pago = cbo_forma_de_pago.Text
                                                 .hora = TimeOfDay.ToString("HH:MM")
                                                 .terminal = Net.Dns.GetHostName
@@ -1967,12 +1970,12 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                                 With obj_cobro
                                                     .id_usuario = Val(Form1.lbl_id_usuario.Text)
                                                     .id_dinero_en_caja = Val(id_dinero)
-                                                    .dinero_en_cja = Convert.ToDecimal(lbl_total.Text)
+                                                    .dinero_en_cja = Convert.ToDecimal(lblTotalOculto.Text)
                                                 End With
                                                 class_cobro.actualizar_dinero_en_caja(obj_cobro)
                                             Else
 
-                                                obj_cobro.dinero_en_cja = Convert.ToDecimal(lbl_total.Text)
+                                                obj_cobro.dinero_en_cja = Convert.ToDecimal(lblTotalOculto.Text)
                                                 obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
                                                 class_cobro.insertar_dinero_en_caja(obj_cobro)
                                             End If
@@ -2056,7 +2059,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                     nombre = "EMPLEADO: " + lbl_clientes.Text.ToString
                                 End If
                                 Dim recibido, total, cambio, pendiente As Decimal
-                                total = Convert.ToDecimal(lbl_total.Text)
+                                total = Convert.ToDecimal(lblTotalOculto.Text)
                                 recibido = Convert.ToDecimal(txt_recibido.Text)
                                 cambio = recibido - total
                                 pendiente = total - recibido
@@ -2068,7 +2071,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                 If CH_DESCUENTO.Checked = True Then
                                     ganancias = ganancias - Convert.ToDecimal(txt_descuento.Text)
                                 End If
-                                result = ganancias / Convert.ToDecimal(lbl_total.Text)
+                                result = ganancias / Convert.ToDecimal(lblTotalOculto.Text)
                                 result = result * Convert.ToDecimal(txt_recibido.Text)
                                 With obb_caja_diaria
                                     .id_venta = Val(lbl_id_venta.Text)
@@ -2102,8 +2105,8 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                 class_venta.insertar_venta_final(obj_final)
                                 With obj_cobro
                                     .id_venta = Val(lbl_id_venta.Text)
-                                    .sub_total = Val(lbl_sub_total.Text)
-                                    .total = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                    .sub_total = Val(lblSubTotalHide.Text)
+                                    .total = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                     .total_de_articulos = Val(lbl_total_de_articulos.Text)
                                     .le_atendio = Form1.lbl_nombre_de_usuario.Text.ToUpper
                                     .recibido = Val(txt_recibido.Text)
@@ -2211,7 +2214,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                 ncf = "B02" + numero_de_comprobane
                             End If
                             If datalistado_articulos.Rows.Count > 0 Then
-                                If Convert.ToDecimal(txt_recibido.Text) <= Convert.ToDecimal(lbl_total.Text) Then
+                                If Convert.ToDecimal(txt_recibido.Text) <= Convert.ToDecimal(lblTotalOculto.Text) Then
                                     If IsNumeric(txt_recibido.Text) Then
                                         If IsNumeric(txt_descuento.Text) Then
                                             Dim nombre As String
@@ -2222,7 +2225,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
                                             End If
                                             Dim recibido, total, cambio, pendiente As Decimal
-                                            total = Convert.ToDecimal(lbl_total.Text)
+                                            total = Convert.ToDecimal(lblTotalOculto.Text)
                                             recibido = Convert.ToDecimal(txt_recibido.Text)
                                             cambio = recibido - total
                                             pendiente = total - recibido
@@ -2234,7 +2237,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                                 ganancias = ganancias - Convert.ToDecimal(txt_descuento.Text)
                                             End If
                                             Dim result As Decimal
-                                            result = ganancias / Convert.ToDecimal(lbl_total.Text)
+                                            result = ganancias / Convert.ToDecimal(lblTotalOculto.Text)
                                             result = result * Convert.ToDecimal(txt_recibido.Text)
                                             With obb_caja_diaria
                                                 .id_venta = Val(lbl_id_venta.Text)
@@ -2256,7 +2259,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                             With obj_final
                                                 .condicion = cbo_tipo.Text.ToUpper
                                                 .articulos = Val(lbl_total_de_articulos.Text)
-                                                .importe = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                                .importe = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                                 .cliente = lbl_clientes.Text.ToUpper
                                                 .descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
                                                 .documento = "TICKET"
@@ -2268,8 +2271,8 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                             class_venta.insertar_venta_final(obj_final)
                                             With obj_cobro
                                                 .id_venta = Val(lbl_id_venta.Text)
-                                                .sub_total = Format(Convert.ToDecimal(lbl_sub_total.Text), "0.00")
-                                                .total = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
+                                                .sub_total = Format(Convert.ToDecimal(lblSubTotalHide.Text), "0.00")
+                                                .total = Format(Convert.ToDecimal(lblTotalOculto.Text), "0.00")
                                                 .total_de_articulos = Val(lbl_total_de_articulos.Text)
                                                 .le_atendio = Form1.lbl_nombre_de_usuario.Text.ToUpper
                                                 .recibido = Format(Convert.ToDecimal(txt_recibido.Text), "0.00")
@@ -2381,6 +2384,10 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             txt_recibido.Select()
         End If
+    End Sub
+
+    Private Sub btn_cobrar_Click(sender As Object, e As EventArgs) Handles btn_cobrar.Click
+        cobrar()
     End Sub
 
     Private Sub txt_cantitdad_flag_TextChanged(sender As Object, e As EventArgs)
@@ -2521,849 +2528,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
     Private Sub txt_recibido_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txt_recibido.KeyPress
         If e.KeyChar = Chr(Keys.Enter) Then
 
-            Dim ganancias As Decimal
-            If txt_descuento.Text = "" Then
-                txt_descuento.Text = "0"
-            End If
-            Me.Cursor = Cursors.WaitCursor
-            If txt_recibido.Text.Trim <> String.Empty Then
-
-
-
-                If cbo_tipo.Text = "CONTADO" Then
-
-
-                    If RB_NO.Checked Then
-                        If datalistado_articulos.Rows.Count > 0 Then
-                            If Convert.ToDecimal(txt_recibido.Text) >= Convert.ToDecimal(lbl_total.Text) Then
-                                If IsNumeric(txt_recibido.Text) Then
-                                    If IsNumeric(txt_descuento.Text) Then
-
-                                        Dim nombre As String
-                                        If lbl_clientes.Text = "" Then
-                                            nombre = ""
-                                        Else
-                                            nombre = "CLIENTE: " + lbl_clientes.Text.ToString
-
-                                        End If
-
-                                        Dim recibido, total, cambio As Decimal
-                                        total = Convert.ToDecimal(lbl_total.Text)
-                                        recibido = Convert.ToDecimal(txt_recibido.Text)
-                                        cambio = recibido - total
-
-                                        'obtiene el total de ganancias
-                                        For i = 0 To datalistado_articulos.Rows.Count - 1 Step 1
-                                            ganancias += datalistado_articulos.Rows(i).Cells("ganancia").Value
-
-
-                                        Next
-                                        If CH_DESCUENTO.Checked = True Then
-                                            ganancias = ganancias - Convert.ToDecimal(txt_descuento.Text)
-                                        End If
-
-                                        With obj_final
-                                            .condicion = cbo_tipo.Text.ToUpper
-                                            .articulos = Val(lbl_total_de_articulos.Text)
-                                            .importe = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-                                            .cliente = lbl_clientes.Text.ToUpper
-                                            .descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                            .documento = "TICKET"
-                                            .fecha = Today.Date
-                                            .id_venta = Val(lbl_id_venta.Text)
-                                            .pendiente = 0
-                                            .pagado = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-                                        End With
-                                        class_venta.insertar_venta_final(obj_final)
-
-
-
-                                        With obj_cobro
-                                            .id_venta = Val(lbl_id_venta.Text)
-                                            .sub_total = Convert.ToDecimal(lbl_sub_total.Text)
-                                            .total = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-
-                                            .total_de_articulos = Val(lbl_total_de_articulos.Text)
-                                            .le_atendio = Form1.lbl_nombre_de_usuario.Text.ToUpper
-                                            .recibido = Convert.ToDecimal(txt_recibido.Text)
-                                            .cambio = Format(Convert.ToDecimal(cambio), "0.00")
-                                            .cliente = nombre
-                                            .descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                            .porciento_descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                            .hora = TimeOfDay.ToString("hh:mm")
-                                            .fecha = Today.Date
-                                            .turno = Form1.lbl_turno.Text.ToUpper
-                                            .nombre_o_empresa = ""
-                                            .rnc_cliente = ""
-                                            .ncf = ""
-                                            .pendiente = 0
-                                            .pagado = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-                                            .tipo = cbo_tipo.Text
-                                        End With
-                                        class_cobro.insertar_total(obj_cobro)
-
-
-                                        With obb_caja_diaria
-                                            .id_venta = Val(lbl_id_venta.Text)
-                                            .id_cajero = Val(Form1.lbl_id_usuario.Text)
-                                            .estado = "VALIDO"
-                                            .cierre = "SIN CIERRE"
-                                            .ganancia = ganancias
-                                            .importe = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-                                            .medio_de_pago = cbo_forma_de_pago.Text
-                                            .hora = TimeOfDay.ToString("HH:MM")
-                                            .terminal = Net.Dns.GetHostName
-                                            .tipo_operacion = "VENTA"
-                                            .valor_de_cambio = cambio
-                                            .tipo_de_movimiento = "INGRESO"
-                                            .fecha = Today.Date
-                                            .tipo_de_moneda = "RD"
-                                        End With
-
-                                        class_caja_diaria.insertar_caja_diaria(obb_caja_diaria)
-
-                                        dt = class_cobro.verificar_si_hay_registro(Val(Form1.lbl_id_usuario.Text))
-                                        If dt.Rows.Count > 0 Then
-                                            Dim id_dinero As Integer
-                                            id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
-                                            With obj_cobro
-                                                .id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                                .id_dinero_en_caja = Val(id_dinero)
-                                                .dinero_en_cja = Convert.ToDecimal(lbl_total.Text)
-                                            End With
-                                            class_cobro.actualizar_dinero_en_caja(obj_cobro)
-                                        Else
-                                            obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                            obj_cobro.dinero_en_cja = Convert.ToDecimal(lbl_total.Text)
-
-                                            class_cobro.insertar_dinero_en_caja(obj_cobro)
-
-                                        End If
-
-
-
-
-
-                                        obj_venta.id_venta = Val(lbl_id_venta.Text)
-                                        class_venta.actualizar_estado_articulos(obj_venta)
-
-
-                                        MessageBox.Show("venta realizada con exito", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-                                        mostrar()
-                                        home()
-                                        RB_NO.Checked = False
-                                        RB_SI.Checked = False
-                                        mostrar_nventario()
-                                        mostrar_ingresos_del_dia()
-                                        frm_reporte_venta.lbl_id_venta.Text = lbl_id_venta.Text
-                                        frm_reporte_venta.ShowDialog()
-                                        lbl_id_venta.Text = "0"
-                                        mostrar_articulos()
-                                        sumas_total()
-                                        txt_buscar_producto.Clear()
-                                        txt_recibido.Clear()
-                                        txt_existencia.Clear()
-                                        txt_precio.Clear()
-                                        txt_descuento.Enabled = False
-                                        CH_DESCUENTO.Checked = False
-                                        lbl_clientes.Text = ""
-                                        lbl_precio_por_cantidad.Text = ""
-                                        txt_descuento.Text = "0"
-                                        abrircajon("COM1")
-                                        txt_rnc_cliente.Clear()
-                                        Me.Cursor = Cursors.Default
-                                        txt_nombre_de_empresa.Clear()
-                                        Me.Close()
-                                    Else
-                                        Me.Cursor = Cursors.Default
-                                        MessageBox.Show("Valor numerico para descuento incorrecto", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-                                    End If
-                                Else
-                                    Me.Cursor = Cursors.Default
-                                    MessageBox.Show("Valor numero incorrecto para cobrar", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                End If
-
-
-
-
-                            Else
-                                Me.Cursor = Cursors.Default
-                                MessageBox.Show("El monto a pagar es menor que el total", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            End If
-                        Else
-                            Me.Cursor = Cursors.Default
-                            MessageBox.Show("No hay ningun producto agregado", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        End If
-                    ElseIf RB_SI.Checked Then
-
-                        If txt_rnc_cliente.Text.Trim <> String.Empty And txt_nombre_de_empresa.Text.Trim <> String.Empty Then
-
-
-                            Dim numero_de_comprobane As String = ""
-                            Dim ncf As String = ""
-                            dt = class_venta.numeros_de_comprobantes
-                            If dt.Rows.Count > 0 Then
-
-
-                                For i = 0 To dt.Rows.Count - 1 Step 1
-                                    numero_de_comprobane = dt.Rows(i).Item("comprobantes")
-                                Next
-
-                                Dim fecha_de_vencimiento As String = ""
-                                fecha_de_vencimiento = "31-" + "-12-" + Today.Year.ToString
-
-                                If numero_de_comprobane.Length = 1 Then
-                                    ncf = "B020000000" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 2 Then
-                                    ncf = "B02000000" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 3 Then
-                                    ncf = "B0200000" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 4 Then
-                                    ncf = "B020000" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 5 Then
-                                    ncf = "B02000" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 6 Then
-                                    ncf = "B0200" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 7 Then
-                                    ncf = "B020" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 8 Then
-                                    ncf = "B02" + numero_de_comprobane
-
-                                End If
-
-
-
-
-
-                                If datalistado_articulos.Rows.Count > 0 Then
-                                    If Convert.ToDecimal(txt_recibido.Text) >= Convert.ToDecimal(lbl_total.Text) Then
-
-                                        If IsNumeric(txt_recibido.Text) Then
-                                            If IsNumeric(txt_descuento.Text) Then
-
-                                                Dim nombre As String
-                                                If lbl_clientes.Text = "" Then
-                                                    nombre = ""
-                                                Else
-                                                    nombre = "CLIENTE: " + lbl_clientes.Text.ToString
-
-                                                End If
-
-                                                Dim recibido, total, cambio As Decimal
-                                                total = Convert.ToDecimal(lbl_total.Text)
-                                                recibido = Convert.ToDecimal(txt_recibido.Text)
-                                                cambio = recibido - total
-
-                                                'obtiene el total de ganancias
-                                                For i = 0 To datalistado_articulos.Rows.Count - 1 Step 1
-                                                    ganancias += datalistado_articulos.Rows(i).Cells("ganancia").Value
-
-
-                                                Next
-                                                If CH_DESCUENTO.Checked = True Then
-                                                    ganancias = ganancias - Convert.ToDecimal(txt_descuento.Text)
-                                                End If
-
-
-                                                With obj_final
-                                                    .condicion = cbo_tipo.Text.ToUpper
-                                                    .articulos = Val(lbl_total_de_articulos.Text)
-                                                    .importe = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-                                                    .cliente = lbl_clientes.Text.ToUpper
-                                                    .descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                                    .documento = "TICKET"
-                                                    .fecha = Today.Date
-                                                    .id_venta = Val(lbl_id_venta.Text)
-                                                    .pendiente = 0
-                                                    .pagado = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-                                                End With
-                                                class_venta.insertar_venta_final(obj_final)
-
-
-
-                                                With obj_cobro
-                                                    .id_venta = Val(lbl_id_venta.Text)
-                                                    .sub_total = Format(Convert.ToDecimal(lbl_sub_total.Text), "0.00")
-                                                    .total = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-                                                    .total_de_articulos = Val(lbl_total_de_articulos.Text)
-                                                    .le_atendio = Form1.lbl_nombre_de_usuario.Text.ToUpper
-                                                    .recibido = Format(Convert.ToDecimal(txt_recibido.Text), "0.00")
-                                                    .cambio = Format(Convert.ToDecimal(cambio), "0.00")
-                                                    .cliente = nombre
-                                                    .descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                                    .porciento_descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                                    .hora = TimeOfDay.ToString("hh:mm")
-                                                    .fecha = Today.Date
-                                                    .turno = Form1.lbl_turno.Text.ToUpper
-                                                    .ncf = "NCF:" + ncf
-                                                    .rnc_cliente = "RNC/CEDULA:" + txt_rnc_cliente.Text
-                                                    .nombre_o_empresa = "NOMBRE O EMPRESA:" + txt_nombre_de_empresa.Text.ToUpper
-                                                    .pendiente = 0
-                                                    .pagado = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-                                                    .tipo = cbo_tipo.Text
-                                                End With
-                                                class_cobro.insertar_total(obj_cobro)
-                                                class_cobro.eliminar_comprobante_usado(numero_de_comprobane)
-
-                                                With obb_caja_diaria
-                                                    .id_venta = Val(lbl_id_venta.Text)
-                                                    .id_cajero = Val(Form1.lbl_id_usuario.Text)
-                                                    .estado = "VALIDO"
-                                                    .cierre = "SIN CIERRE"
-                                                    .ganancia = ganancias
-                                                    .importe = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-                                                    .medio_de_pago = cbo_forma_de_pago.Text
-                                                    .hora = TimeOfDay.ToString("HH:MM")
-                                                    .terminal = Net.Dns.GetHostName
-                                                    .tipo_operacion = "VENTA"
-                                                    .valor_de_cambio = Format(Convert.ToDecimal(cambio), "0.00")
-                                                    .tipo_de_movimiento = "INGRESO"
-                                                    .fecha = Today.Date
-                                                    .tipo_de_moneda = "RD"
-                                                End With
-
-                                                class_caja_diaria.insertar_caja_diaria(obb_caja_diaria)
-
-                                                dt = class_cobro.verificar_si_hay_registro(Val(Form1.lbl_id_usuario.Text))
-                                                If dt.Rows.Count > 0 Then
-                                                    Dim id_dinero As Integer
-                                                    id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
-                                                    With obj_cobro
-                                                        .id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                                        .id_dinero_en_caja = Val(id_dinero)
-                                                        .dinero_en_cja = Convert.ToDecimal(lbl_total.Text)
-                                                    End With
-                                                    class_cobro.actualizar_dinero_en_caja(obj_cobro)
-                                                Else
-
-                                                    obj_cobro.dinero_en_cja = Convert.ToDecimal(lbl_total.Text)
-                                                    obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                                    class_cobro.insertar_dinero_en_caja(obj_cobro)
-
-                                                End If
-
-
-
-
-
-                                                obj_venta.id_venta = Val(lbl_id_venta.Text)
-                                                class_venta.actualizar_estado_articulos(obj_venta)
-
-
-
-
-                                                'que hace este codigo???
-                                                MessageBox.Show("venta realizada con exito", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                                                'realiza el cobro de la venta 
-
-                                                mostrar()
-                                                home()
-                                                RB_NO.Checked = False
-                                                RB_SI.Checked = False
-                                                mostrar_nventario()
-                                                mostrar_ingresos_del_dia()
-                                                frm_reporte_con_rnc.lbl_id_venta.Text = lbl_id_venta.Text
-                                                frm_reporte_con_rnc.ShowDialog()
-                                                lbl_id_venta.Text = "0"
-                                                mostrar_articulos()
-                                                sumas_total()
-                                                txt_buscar_producto.Clear()
-                                                txt_recibido.Clear()
-                                                txt_existencia.Clear()
-                                                txt_precio.Clear()
-                                                txt_descuento.Enabled = False
-                                                CH_DESCUENTO.Checked = False
-                                                lbl_clientes.Text = ""
-                                                lbl_precio_por_cantidad.Text = ""
-                                                txt_descuento.Text = "0"
-                                                abrircajon("COM1")
-                                                Me.Cursor = Cursors.Default
-                                                txt_rnc_cliente.Clear()
-                                                txt_nombre_de_empresa.Clear()
-                                                Me.Close()
-                                            Else
-                                                Me.Cursor = Cursors.Default
-                                                MessageBox.Show("Valor numerico para descuento incorrecto", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-                                            End If
-                                        Else
-                                            Me.Cursor = Cursors.Default
-                                            MessageBox.Show("Valor numero incorrecto para cobrar", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                        End If
-
-
-
-
-                                    Else
-                                        Me.Cursor = Cursors.Default
-                                        MessageBox.Show("El monto a pagar es menor que el total", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                    End If
-                                Else
-                                    Me.Cursor = Cursors.Default
-                                    MessageBox.Show("No hay ningun producto agregado", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                End If
-
-
-
-
-
-
-
-
-                            Else
-                                Me.Cursor = Cursors.Default
-                                MessageBox.Show("No hay numeros de comprobantes disponibles", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-
-                            End If
-                        Else
-                            Me.Cursor = Cursors.Default
-                            MessageBox.Show("Ingrese el numero de comprobante y nombre de empresa", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-                        End If
-
-
-                    Else
-                        Me.Cursor = Cursors.Default
-                        MessageBox.Show("Seleccione factura con comprobante si o no", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-                    End If
-
-
-                Else
-
-                    'A CREDITOS
-
-
-
-                    If RB_NO.Checked Then
-                        If datalistado_articulos.Rows.Count > 0 Then
-
-
-                            If IsNumeric(txt_recibido.Text) Then
-                                If IsNumeric(txt_descuento.Text) Then
-
-                                    Dim nombre As String
-                                    If lbl_clientes.Text = "" Then
-                                        nombre = ""
-                                    Else
-                                        nombre = "CLIENTE: " + lbl_clientes.Text.ToString
-
-                                    End If
-
-                                    Dim recibido, total, cambio, pendiente As Decimal
-                                    total = Convert.ToDecimal(lbl_total.Text)
-                                    recibido = Convert.ToDecimal(txt_recibido.Text)
-                                    cambio = recibido - total
-                                    pendiente = total - recibido
-                                    'obtiene el total de ganancias
-
-
-                                    For i = 0 To datalistado_articulos.Rows.Count - 1 Step 1
-                                        ganancias += datalistado_articulos.Rows(i).Cells("ganancia").Value
-
-
-                                    Next
-                                    Dim result As Decimal
-                                    If CH_DESCUENTO.Checked = True Then
-                                        ganancias = ganancias - Convert.ToDecimal(txt_descuento.Text)
-                                    End If
-
-                                    result = ganancias / Convert.ToDecimal(lbl_total.Text)
-                                    result = result * Convert.ToDecimal(txt_recibido.Text)
-
-                                    With obb_caja_diaria
-                                        .id_venta = Val(lbl_id_venta.Text)
-                                        .id_cajero = Val(Form1.lbl_id_usuario.Text)
-                                        .estado = "VALIDO"
-                                        .cierre = "SIN CIERRE"
-                                        .ganancia = result
-                                        .importe = Format(Convert.ToDecimal(txt_recibido.Text), "0.00")
-                                        .medio_de_pago = cbo_forma_de_pago.Text
-                                        .hora = TimeOfDay.ToString("HH:MM")
-                                        .terminal = Net.Dns.GetHostName
-                                        .tipo_operacion = "VENTA"
-                                        .valor_de_cambio = 0
-                                        .tipo_de_movimiento = "INGRESO"
-                                        .fecha = Today.Date
-                                        .tipo_de_moneda = "RD"
-                                    End With
-                                    class_caja_diaria.insertar_caja_diaria(obb_caja_diaria)
-
-
-                                    With obj_final
-                                        .condicion = cbo_tipo.Text.ToUpper
-                                        .articulos = Val(lbl_total_de_articulos.Text)
-                                        .importe = Format(Convert.ToDecimal(recibido), "0.00")
-                                        .cliente = lbl_clientes.Text.ToUpper
-                                        .descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                        .documento = "TICKET"
-                                        .fecha = Today.Date
-                                        .id_venta = Val(lbl_id_venta.Text)
-                                        .pendiente = pendiente
-                                        .pagado = recibido
-                                    End With
-                                    class_venta.insertar_venta_final(obj_final)
-
-
-
-                                    With obj_cobro
-                                        .id_venta = Val(lbl_id_venta.Text)
-                                        .sub_total = Val(lbl_sub_total.Text)
-                                        .total = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-
-                                        .total_de_articulos = Val(lbl_total_de_articulos.Text)
-                                        .le_atendio = Form1.lbl_nombre_de_usuario.Text.ToUpper
-                                        .recibido = Val(txt_recibido.Text)
-                                        .cambio = Format(Convert.ToDecimal(cambio), "0.00")
-                                        .cliente = nombre
-                                        .descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                        .porciento_descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                        .hora = TimeOfDay.ToString("hh:mm")
-                                        .fecha = Today.Date
-                                        .turno = Form1.lbl_turno.Text.ToUpper
-                                        .nombre_o_empresa = ""
-                                        .rnc_cliente = ""
-                                        .ncf = ""
-                                        .pendiente = pendiente
-                                        .pagado = Format(Convert.ToDecimal(recibido), "0.00")
-                                        .tipo = cbo_tipo.Text
-                                    End With
-                                    class_cobro.insertar_total(obj_cobro)
-
-
-                                    dt = class_cobro.verificar_si_hay_registro(Val(Form1.lbl_id_usuario.Text))
-                                    If dt.Rows.Count > 0 Then
-                                        Dim id_dinero As Integer
-                                        id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
-                                        With obj_cobro
-                                            .id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                            .id_dinero_en_caja = Val(id_dinero)
-                                            .dinero_en_cja = Convert.ToDecimal(recibido)
-                                        End With
-                                        class_cobro.actualizar_dinero_en_caja(obj_cobro)
-                                    Else
-
-                                        obj_cobro.dinero_en_cja = Convert.ToDecimal(recibido)
-                                        obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                        class_cobro.insertar_dinero_en_caja(obj_cobro)
-
-                                    End If
-
-
-                                    obj_venta.id_venta = Val(lbl_id_venta.Text)
-                                    class_venta.actualizar_estado_articulos(obj_venta)
-
-
-
-
-                                    'que hace este codigo???
-                                    MessageBox.Show("venta realizada con exito", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                                    'realiza el cobro de la venta 
-                                    class_venta.QUITAR_DE_CREDITO()
-                                    mostrar()
-                                    home()
-                                    RB_NO.Checked = False
-                                    RB_SI.Checked = False
-                                    mostrar_nventario()
-                                    mostrar_ingresos_del_dia()
-                                    frm_reporte_venta_a_creditos.lbl_id_venta.Text = lbl_id_venta.Text
-                                    frm_reporte_venta_a_creditos.ShowDialog()
-                                    lbl_id_venta.Text = "0"
-                                    mostrar_articulos()
-                                    sumas_total()
-                                    txt_buscar_producto.Clear()
-                                    txt_recibido.Clear()
-                                    txt_existencia.Clear()
-                                    txt_precio.Clear()
-                                    lbl_clientes.Text = ""
-                                    lbl_precio_por_cantidad.Text = ""
-                                    txt_descuento.Text = "0"
-                                    abrircajon("COM1")
-                                    txt_rnc_cliente.Clear()
-                                    Me.Cursor = Cursors.Default
-                                    txt_nombre_de_empresa.Clear()
-                                    Me.Close()
-                                Else
-                                    Me.Cursor = Cursors.Default
-                                    MessageBox.Show("Valor numerico para descuento incorrecto", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-                                End If
-                            Else
-                                Me.Cursor = Cursors.Default
-                                MessageBox.Show("Valor numero incorrecto para cobrar", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                            End If
-
-
-
-
-
-                        Else
-                            Me.Cursor = Cursors.Default
-                            MessageBox.Show("No hay ningun producto agregado", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                        End If
-                    ElseIf RB_SI.Checked Then
-
-                        If txt_rnc_cliente.Text.Trim <> String.Empty And txt_nombre_de_empresa.Text.Trim <> String.Empty Then
-
-
-
-
-
-
-                            Dim numero_de_comprobane As String = ""
-                            Dim ncf As String = ""
-                            dt = class_venta.numeros_de_comprobantes
-                            If dt.Rows.Count > 0 Then
-
-
-                                For i = 0 To dt.Rows.Count - 1 Step 1
-                                    numero_de_comprobane = dt.Rows(i).Item("comprobantes")
-                                Next
-
-                                Dim fecha_de_vencimiento As String = ""
-                                fecha_de_vencimiento = "31-" + "-12-" + Today.Year.ToString
-
-                                If numero_de_comprobane.Length = 1 Then
-                                    ncf = "B020000000" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 2 Then
-                                    ncf = "B02000000" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 3 Then
-                                    ncf = "B0200000" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 4 Then
-                                    ncf = "B020000" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 5 Then
-                                    ncf = "B02000" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 6 Then
-                                    ncf = "B0200" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 7 Then
-                                    ncf = "B020" + numero_de_comprobane
-                                ElseIf numero_de_comprobane.Length = 8 Then
-                                    ncf = "B02" + numero_de_comprobane
-
-                                End If
-
-
-
-
-
-                                If datalistado_articulos.Rows.Count > 0 Then
-
-                                    If Convert.ToDecimal(txt_recibido.Text) <= Convert.ToDecimal(lbl_total.Text) Then
-
-
-
-                                        If IsNumeric(txt_recibido.Text) Then
-                                            If IsNumeric(txt_descuento.Text) Then
-
-                                                Dim nombre As String
-                                                If lbl_clientes.Text = "" Then
-                                                    nombre = ""
-                                                Else
-                                                    nombre = "CLIENTE: " + lbl_clientes.Text.ToString
-
-                                                End If
-
-                                                Dim recibido, total, cambio, pendiente As Decimal
-                                                total = Convert.ToDecimal(lbl_total.Text)
-                                                recibido = Convert.ToDecimal(txt_recibido.Text)
-                                                cambio = recibido - total
-                                                pendiente = total - recibido
-
-                                                'obtiene el total de ganancias
-
-
-
-                                                For i = 0 To datalistado_articulos.Rows.Count - 1 Step 1
-                                                    ganancias += datalistado_articulos.Rows(i).Cells("ganancia").Value
-
-
-                                                Next
-                                                If CH_DESCUENTO.Checked = True Then
-                                                    ganancias = ganancias - Convert.ToDecimal(txt_descuento.Text)
-                                                End If
-                                                Dim result As Decimal
-
-                                                result = ganancias / Convert.ToDecimal(lbl_total.Text)
-                                                result = result * Convert.ToDecimal(txt_recibido.Text)
-
-
-
-                                                With obb_caja_diaria
-                                                    .id_venta = Val(lbl_id_venta.Text)
-                                                    .id_cajero = Val(Form1.lbl_id_usuario.Text)
-                                                    .estado = "VALIDO"
-                                                    .cierre = "SIN CIERRE"
-                                                    .ganancia = result
-                                                    .importe = Format(Convert.ToDecimal(txt_recibido.Text), "0.00")
-                                                    .medio_de_pago = cbo_forma_de_pago.Text
-                                                    .hora = TimeOfDay.ToString("HH:MM")
-                                                    .terminal = Net.Dns.GetHostName
-                                                    .tipo_operacion = "VENTA"
-                                                    .valor_de_cambio = 0
-                                                    .tipo_de_movimiento = "INGRESO"
-                                                    .fecha = Today.Date
-                                                    .tipo_de_moneda = "RD"
-                                                End With
-                                                class_caja_diaria.insertar_caja_diaria(obb_caja_diaria)
-
-
-                                                With obj_final
-                                                    .condicion = cbo_tipo.Text.ToUpper
-                                                    .articulos = Val(lbl_total_de_articulos.Text)
-                                                    .importe = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-                                                    .cliente = lbl_clientes.Text.ToUpper
-                                                    .descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                                    .documento = "TICKET"
-                                                    .fecha = Today.Date
-                                                    .id_venta = Val(lbl_id_venta.Text)
-                                                    .pendiente = pendiente
-                                                    .pagado = recibido
-                                                End With
-                                                class_venta.insertar_venta_final(obj_final)
-
-
-
-                                                With obj_cobro
-                                                    .id_venta = Val(lbl_id_venta.Text)
-                                                    .sub_total = Format(Convert.ToDecimal(lbl_sub_total.Text), "0.00")
-                                                    .total = Format(Convert.ToDecimal(lbl_total.Text), "0.00")
-                                                    .total_de_articulos = Val(lbl_total_de_articulos.Text)
-                                                    .le_atendio = Form1.lbl_nombre_de_usuario.Text.ToUpper
-                                                    .recibido = Format(Convert.ToDecimal(txt_recibido.Text), "0.00")
-                                                    .cambio = Format(Convert.ToDecimal(cambio), "0.00")
-                                                    .cliente = nombre
-                                                    .descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                                    .porciento_descuento = Format(Convert.ToDecimal(txt_descuento.Text), "0.00")
-                                                    .hora = TimeOfDay.ToString("hh:mm")
-                                                    .fecha = Today.Date
-                                                    .turno = Form1.lbl_turno.Text.ToUpper
-                                                    .ncf = "NCF:" + ncf
-                                                    .rnc_cliente = "RNC/CEDULA:" + txt_rnc_cliente.Text
-                                                    .nombre_o_empresa = "NOMBRE O EMPRESA:" + txt_nombre_de_empresa.Text.ToUpper
-                                                    .pendiente = pendiente
-                                                    .pagado = Format(Convert.ToDecimal(recibido), "0.00")
-                                                    .tipo = cbo_tipo.Text
-                                                End With
-                                                class_cobro.insertar_total(obj_cobro)
-                                                class_cobro.eliminar_comprobante_usado(numero_de_comprobane)
-
-
-
-                                                dt = class_cobro.verificar_si_hay_registro(Val(Form1.lbl_id_usuario.Text))
-                                                If dt.Rows.Count > 0 Then
-                                                    Dim id_dinero As Integer
-                                                    id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
-                                                    With obj_cobro
-                                                        .id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                                        .id_dinero_en_caja = Val(id_dinero)
-                                                        .dinero_en_cja = Convert.ToDecimal(recibido)
-                                                    End With
-                                                    class_cobro.actualizar_dinero_en_caja(obj_cobro)
-                                                Else
-
-                                                    obj_cobro.dinero_en_cja = Convert.ToDecimal(recibido)
-                                                    obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                                    class_cobro.insertar_dinero_en_caja(obj_cobro)
-
-                                                End If
-
-
-                                                obj_venta.id_venta = Val(lbl_id_venta.Text)
-                                                class_venta.actualizar_estado_articulos(obj_venta)
-
-
-
-
-                                                'que hace este codigo???
-                                                MessageBox.Show("venta realizada con exito", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Information)
-                                                'realiza el cobro de la venta 
-                                                frm_reporte_venta_a_creditos.lbl_id_venta.Text = lbl_id_venta.Text
-                                                frm_reporte_venta_a_creditos.ShowDialog()
-                                                class_venta.QUITAR_DE_CREDITO()
-                                                mostrar()
-                                                home()
-                                                mostrar_nventario()
-                                                mostrar_ingresos_del_dia()
-
-
-                                                RB_NO.Checked = False
-                                                RB_SI.Checked = False
-                                                txt_descuento.Enabled = False
-                                                CH_DESCUENTO.Checked = False
-                                                lbl_id_venta.Text = "0"
-
-                                                mostrar_articulos()
-                                                sumas_total()
-                                                txt_buscar_producto.Clear()
-                                                txt_recibido.Clear()
-                                                txt_existencia.Clear()
-                                                txt_precio.Clear()
-                                                lbl_clientes.Text = ""
-                                                lbl_precio_por_cantidad.Text = ""
-                                                txt_descuento.Text = "0"
-                                                abrircajon("COM1")
-                                                txt_rnc_cliente.Clear()
-                                                Me.Cursor = Cursors.Default
-                                                txt_nombre_de_empresa.Clear()
-                                                Me.Close()
-                                            Else
-                                                Me.Cursor = Cursors.Default
-                                                MessageBox.Show("Valor numerico para descuento incorrecto", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-                                            End If
-                                        Else
-                                            Me.Cursor = Cursors.Default
-                                            MessageBox.Show("Valor numero incorrecto para cobrar", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                            txt_recibido.Clear()
-                                        End If
-                                    Else
-                                        Me.Cursor = Cursors.Default
-                                        MessageBox.Show("El monto a pagar supera el total de la factura a credito", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                        txt_recibido.Clear()
-                                    End If
-
-
-
-                                Else
-                                    Me.Cursor = Cursors.Default
-                                    MessageBox.Show("No hay ningun producto agregado", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                                End If
-
-
-
-
-                            Else
-                                Me.Cursor = Cursors.Default
-                                MessageBox.Show("No hay numeros de comprobantes disponibles", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-
-                            End If
-                        Else
-                            Me.Cursor = Cursors.Default
-                            MessageBox.Show("Ingrese el numero de comprobante y nombre de empresa", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-                        End If
-
-
-                    Else
-                        Me.Cursor = Cursors.Default
-                        MessageBox.Show("Seleccione factura con comprobante si o no", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-                    End If
-
-
-
-
-                End If
-            Else
-                Me.Cursor = Cursors.Default
-                MessageBox.Show("Debeb de ingresar el monto recibido", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                txt_recibido.Select()
-
-            End If
+            cobrar()
 
 
 

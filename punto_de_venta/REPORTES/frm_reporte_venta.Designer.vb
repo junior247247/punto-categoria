@@ -36,6 +36,7 @@ Partial Class frm_reporte_venta
         Me.lbl_id_venta.Size = New System.Drawing.Size(39, 13)
         Me.lbl_id_venta.TabIndex = 1
         Me.lbl_id_venta.Text = "Label1"
+        Me.lbl_id_venta.Visible = False
         '
         'CrystalReportViewer1
         '

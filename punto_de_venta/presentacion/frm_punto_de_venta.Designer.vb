@@ -93,6 +93,8 @@ Partial Class frm_punto_de_venta
         Me.cbo_tipo = New System.Windows.Forms.ComboBox()
         Me.Label15 = New System.Windows.Forms.Label()
         Me.lblCategoria = New System.Windows.Forms.Label()
+        Me.lblTotalOculto = New System.Windows.Forms.Label()
+        Me.lblSubTotalHide = New System.Windows.Forms.Label()
         CType(Me.datalistado_articulos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -350,7 +352,7 @@ Partial Class frm_punto_de_venta
         '
         Me.lbl_total.AutoSize = True
         Me.lbl_total.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_total.Location = New System.Drawing.Point(129, 464)
+        Me.lbl_total.Location = New System.Drawing.Point(129, 463)
         Me.lbl_total.Name = "lbl_total"
         Me.lbl_total.Size = New System.Drawing.Size(18, 20)
         Me.lbl_total.TabIndex = 0
@@ -792,7 +794,7 @@ Partial Class frm_punto_de_venta
         'lbl_activo_descuento
         '
         Me.lbl_activo_descuento.AutoSize = True
-        Me.lbl_activo_descuento.Location = New System.Drawing.Point(257, 446)
+        Me.lbl_activo_descuento.Location = New System.Drawing.Point(526, 441)
         Me.lbl_activo_descuento.Name = "lbl_activo_descuento"
         Me.lbl_activo_descuento.Size = New System.Drawing.Size(45, 13)
         Me.lbl_activo_descuento.TabIndex = 48
@@ -843,6 +845,28 @@ Partial Class frm_punto_de_venta
         Me.lblCategoria.Text = "Label16"
         Me.lblCategoria.Visible = False
         '
+        'lblTotalOculto
+        '
+        Me.lblTotalOculto.AutoSize = True
+        Me.lblTotalOculto.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalOculto.Location = New System.Drawing.Point(273, 426)
+        Me.lblTotalOculto.Name = "lblTotalOculto"
+        Me.lblTotalOculto.Size = New System.Drawing.Size(18, 20)
+        Me.lblTotalOculto.TabIndex = 0
+        Me.lblTotalOculto.Text = "0"
+        Me.lblTotalOculto.Visible = False
+        '
+        'lblSubTotalHide
+        '
+        Me.lblSubTotalHide.AutoSize = True
+        Me.lblSubTotalHide.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblSubTotalHide.Location = New System.Drawing.Point(307, 431)
+        Me.lblSubTotalHide.Name = "lblSubTotalHide"
+        Me.lblSubTotalHide.Size = New System.Drawing.Size(18, 20)
+        Me.lblSubTotalHide.TabIndex = 0
+        Me.lblSubTotalHide.Text = "0"
+        Me.lblSubTotalHide.Visible = False
+        '
         'frm_punto_de_venta
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -879,6 +903,8 @@ Partial Class frm_punto_de_venta
         Me.Controls.Add(Me.lbl_id_producto)
         Me.Controls.Add(Me.link_buscar_clientes)
         Me.Controls.Add(Me.lbl_descuento)
+        Me.Controls.Add(Me.lblSubTotalHide)
+        Me.Controls.Add(Me.lblTotalOculto)
         Me.Controls.Add(Me.lbl_total)
         Me.Controls.Add(Me.link_buscar_producto)
         Me.Controls.Add(Me.lbl_sub_total)
@@ -978,4 +1004,6 @@ Partial Class frm_punto_de_venta
     Friend WithEvents txt_cantitdad_flag1 As TextBox
     Friend WithEvents CH_DESCUENTO As CheckBox
     Friend WithEvents lblCategoria As Label
+    Friend WithEvents lblTotalOculto As Label
+    Friend WithEvents lblSubTotalHide As Label
 End Class
