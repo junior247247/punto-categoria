@@ -33,7 +33,7 @@ Public Class frm_registro_producto
             'message.To.Add("reimy_64@hotmail.com")
             ''message.To.Add("whaterrodriguez@gmail.com")
             'message.To.Add("edelmirogalva@yahoo.com")
-            message.To.Add("Vapeodelnorte@outlook.com")
+            message.To.Add("whaterbautista@icloud.com")
             dt = class_producto.verificar_producto(Val(lbl_id_producto.Text))
             If dt.Rows.Count > 0 Then
                 existenciaActual = Convert.ToInt32(dt.Rows(0).Item("Cantidad"))

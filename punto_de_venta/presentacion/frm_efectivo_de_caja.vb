@@ -31,133 +31,133 @@ ByVal hTemplateFile As IntPtr) As IntPtr
         Dim dt_cierre As New DataTable
         dt_cierre = Class_inventaro.dinero_de_ventas_del_dia(Val(Form1.lbl_id_usuario.Text))
         Me.Cursor = Cursors.WaitCursor
-        'If txt_valor_en_la_caja.Text.Trim <> String.Empty Then
+        If txt_valor_en_la_caja.Text.Trim <> String.Empty Then
 
 
 
-        'If IsNumeric(txt_valor_en_la_caja.Text) Then
+            If IsNumeric(txt_valor_en_la_caja.Text) Then
 
 
 
-        'Dim dinero_contado As Decimal = Convert.ToDecimal(txt_valor_en_la_caja.Text)
+                Dim dinero_contado As Decimal = Convert.ToDecimal(txt_valor_en_la_caja.Text)
 
 
-        If d = DialogResult.Yes Then
-            Dim ventas_del_dia As String
-            If dt_cierre.Rows.Count > 0 Then
-                ventas_del_dia = dt_cierre.Rows(0).Item("ventas_del_dia").ToString
+                If d = DialogResult.Yes Then
+                    Dim ventas_del_dia As String
+                    If dt_cierre.Rows.Count > 0 Then
+                        ventas_del_dia = dt_cierre.Rows(0).Item("ventas_del_dia").ToString
+                    Else
+                        ventas_del_dia = "0"
+                    End If
+                    If ventas_del_dia = "" Then
+                        ventas_del_dia = "0"
+                    End If
+
+
+                    'MsgBox(txt_valor_en_la_caja.Text)
+
+                    Dim dinero_queda_en_caja, total_retiros As String
+                    dt = Class_inventaro.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
+                    If dt.Rows.Count > 0 Then
+                        dinero_queda_en_caja = dt.Rows(0).Item("dinero_en_caja")
+                    Else
+                        dinero_queda_en_caja = "0"
+                    End If
+
+                    If dinero_queda_en_caja = "" Then
+                        dinero_queda_en_caja = "0"
+                    End If
+
+
+                    dt = class_cierre_de_caja.SUMAR_RETIROS_DEL_DIA
+                    If dt.Rows.Count > 0 Then
+                        total_retiros = dt.Rows(0).Item("retiros_del_dia").ToString
+
+                    End If
+
+
+
+                    If total_retiros = "" Then
+                        total_retiros = "0"
+                    End If
+
+                    dinero_queda_en_caja = dinero_queda_en_caja + Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text)
+                    Dim valor_restante As String
+                    If Convert.ToDecimal(ventas_del_dia) >= dinero_contado Then
+                        valor_restante = "SOBRANTE:+" + ventas_del_dia.ToString
+                    Else
+                        valor_restante = "RESTANTE:-" + ventas_del_dia.ToString
+                    End If
+
+                    With obj_cierre_de_caja
+                        .dinero_en_caja = Val(dinero_queda_en_caja)
+                        .devoluciones = Val(frm_caja.lbl_devolucioneS_efectivos.Text)
+                        .fecha = Today.Date
+                        .usuario = Form1.lbl_nombre_de_usuario.Text
+                        .hora = TimeOfDay.ToString("hh:mm")
+                        .turno = Form1.lbl_turno.Text
+                        .id_usuario = Form1.lbl_id_usuario.Text
+                        .total_retirador = total_retiros
+                        .retirado = Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text)
+                        .total_en_ventas_del_dia = Val(ventas_del_dia)
+                        .dinero_efectivo_en_caja = Val(txt_valor_en_la_caja.Text)
+                        .restante = ""
+                        .totalBar = 0
+                        .totalGomera = 0
+                    End With
+                    class_cierre_de_caja.insertar_cierre_de_caja(obj_cierre_de_caja)
+                    enviar_correoNormal()
+                    class_cierre_de_caja.poner_en_cierre_retirados()
+                    Dim id_uusario As Integer
+                    id_uusario = Val(Form1.lbl_id_usuario.Text)
+                    class_cierre_de_caja.cerrar_turno_caja_diaria(id_uusario)
+
+
+                    dt = Class_inventaro.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
+                    If dt.Rows.Count > 0 Then
+                        dinero_queda_en_caja = dt.Rows(0).Item("dinero_en_caja")
+                    Else
+                        dinero_queda_en_caja = "0"
+                    End If
+
+                    If dinero_queda_en_caja = "" Then
+                        dinero_queda_en_caja = "0"
+                    End If
+
+                    dt = Class_inventaro.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
+                    Dim id_dinero As Integer
+                    class_cierre_de_caja.actualizar_al_cerrar_hora(Val(Form1.lbl_id_usuario.Text))
+
+                    class_cierre_de_caja.sacar_los_fondos(Val(Form1.lbl_id_usuario.Text), Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text))
+
+                    If dt.Rows.Count > 0 Then
+                        id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
+                        With obj_cobro
+                            .id_usuario = Val(Form1.lbl_id_usuario.Text)
+                            .id_dinero_en_caja = id_dinero
+                            .retiro = Convert.ToDecimal(dinero_queda_en_caja)
+                        End With
+                        Class_inventaro.retirar_dinero(obj_cobro)
+
+
+                    End If
+                    'abrircajon("COM1")
+                    Me.Cursor = Cursors.Default
+                    frm_reporte_cierre_de_caja.ShowDialog()
+                    End
+                Else
+                    Me.Cursor = Cursors.Default
+                    Me.Close()
+                End If
+
             Else
-                ventas_del_dia = "0"
+                Me.Cursor = Cursors.Default
+                MessageBox.Show("Valor numerico incorrecto", "Cierre de turno", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
-            If ventas_del_dia = "" Then
-                ventas_del_dia = "0"
-            End If
-
-
-            'MsgBox(txt_valor_en_la_caja.Text)
-
-            Dim dinero_queda_en_caja, total_retiros As String
-            dt = Class_inventaro.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
-            If dt.Rows.Count > 0 Then
-                dinero_queda_en_caja = dt.Rows(0).Item("dinero_en_caja")
-            Else
-                dinero_queda_en_caja = "0"
-            End If
-
-            If dinero_queda_en_caja = "" Then
-                dinero_queda_en_caja = "0"
-            End If
-
-
-            dt = class_cierre_de_caja.SUMAR_RETIROS_DEL_DIA
-            If dt.Rows.Count > 0 Then
-                total_retiros = dt.Rows(0).Item("retiros_del_dia").ToString
-
-            End If
-
-
-
-            If total_retiros = "" Then
-                total_retiros = "0"
-            End If
-
-            dinero_queda_en_caja = dinero_queda_en_caja + Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text)
-            'Dim valor_restante As String
-            'If Convert.ToDecimal(ventas_del_dia) >= dinero_contado Then
-            '    valor_restante = "SOBRANTE:+" + ventas_del_dia.ToString
-            'Else
-            '    valor_restante = "RESTANTE:-" + ventas_del_dia.ToString
-            'End If
-
-            With obj_cierre_de_caja
-                .dinero_en_caja = Val(dinero_queda_en_caja)
-                .devoluciones = Val(frm_caja.lbl_devolucioneS_efectivos.Text)
-                .fecha = Today.Date
-                .usuario = Form1.lbl_nombre_de_usuario.Text
-                .hora = TimeOfDay.ToString("hh:mm")
-                .turno = Form1.lbl_turno.Text
-                .id_usuario = Form1.lbl_id_usuario.Text
-                .total_retirador = total_retiros
-                .retirado = Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text)
-                .total_en_ventas_del_dia = Val(ventas_del_dia)
-                .dinero_efectivo_en_caja = Val(txt_valor_en_la_caja.Text)
-                .restante = ""
-                .totalBar = 0
-                .totalGomera = 0
-            End With
-            class_cierre_de_caja.insertar_cierre_de_caja(obj_cierre_de_caja)
-            enviar_correoNormal()
-            class_cierre_de_caja.poner_en_cierre_retirados()
-            Dim id_uusario As Integer
-            id_uusario = Val(Form1.lbl_id_usuario.Text)
-            class_cierre_de_caja.cerrar_turno_caja_diaria(id_uusario)
-
-
-            dt = Class_inventaro.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
-            If dt.Rows.Count > 0 Then
-                dinero_queda_en_caja = dt.Rows(0).Item("dinero_en_caja")
-            Else
-                dinero_queda_en_caja = "0"
-            End If
-
-            If dinero_queda_en_caja = "" Then
-                dinero_queda_en_caja = "0"
-            End If
-
-            dt = Class_inventaro.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
-            Dim id_dinero As Integer
-            class_cierre_de_caja.actualizar_al_cerrar_hora(Val(Form1.lbl_id_usuario.Text))
-
-            class_cierre_de_caja.sacar_los_fondos(Val(Form1.lbl_id_usuario.Text), Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text))
-
-            If dt.Rows.Count > 0 Then
-                id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
-                With obj_cobro
-                    .id_usuario = Val(Form1.lbl_id_usuario.Text)
-                    .id_dinero_en_caja = id_dinero
-                    .retiro = Convert.ToDecimal(dinero_queda_en_caja)
-                End With
-                Class_inventaro.retirar_dinero(obj_cobro)
-
-
-            End If
-            'abrircajon("COM1")
-            Me.Cursor = Cursors.Default
-            frm_reporte_cierre_de_caja.ShowDialog()
-            End
         Else
             Me.Cursor = Cursors.Default
-            Me.Close()
+            MessageBox.Show("Ingrese un monto de la caja", "Cierre de turno", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End If
-
-        'Else
-        '    Me.Cursor = Cursors.Default
-        '    MessageBox.Show("Valor numerico incorrecto", "Cierre de turno", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        'End If
-        '    Else
-        '    Me.Cursor = Cursors.Default
-        '    MessageBox.Show("Ingrese un monto de la caja", "Cierre de turno", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        'End If
     End Sub
 
 
@@ -237,7 +237,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
             'message.To.Add("corderoxg@gmail.com")
 
             message.To.Add("gtx247247@gmail.com")
-            message.To.Add("Vapeodelnorte@outlook.com")
+            'message.To.Add("Vapeodelnorte@outlook.com")
 
             message.Body = body
             message.Subject = "JRSOFT CIERRE DE CAJA DEL:" + Today.Date
@@ -362,7 +362,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
             message.From = New MailAddress("dead_25@outlook.es")
             'message.To.Add("reimy_64@hotmail.com")
 
-            message.To.Add("corderoxg@gmail.com")
+            'message.To.Add("corderoxg@gmail.com")
 
             message.To.Add("gtx247247@gmail.com")
 
@@ -456,7 +456,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             'message.To.Add("corderoxg@gmail.com")
 
-            message.To.Add("gtx247247@gmail.com")
+            message.To.Add("whaterbautista@icloud.com")
 
             message.Body = body
             message.Subject = "JRSOFT CIERRE DE CAJA DEL:" + Today.Date

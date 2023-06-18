@@ -1,6 +1,6 @@
 ﻿Public Class ParseToDecimal
     Public Shared Function parse(value As String) As String
-        If value = "" Then Return "0.00"
+        If value.Trim() = "" Then Return "0.00"
         Dim monto = Convert.ToDecimal(value)
 
 

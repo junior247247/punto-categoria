@@ -23,7 +23,7 @@
 
                     total = total + inversion
                 Next
-                lbl_dinero_en_producto.Text = ParseToDecimal.parse(total.ToString)
+                lbl_dinero_en_producto.Text = ParseToDecimal.parse(Convert.ToString(total))
             End If
         Catch ex As Exception
             MsgBox(ex.Message)
