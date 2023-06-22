@@ -1509,7 +1509,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                         lbl_sub_total.Text = Format(Convert.ToDecimal(f.ToString), "0.00")
                         f = precio - Convert.ToDecimal(txt_descuento.Text)
                         lbl_total.Text = Format(Convert.ToDecimal(f.ToString), "0.00")
-
+                        lblTotalOculto.Text = f.ToString
                         lbl_descuento.Text = Format(Convert.ToDecimal(descuento_por_ciento.ToString), "0.00")
 
 
