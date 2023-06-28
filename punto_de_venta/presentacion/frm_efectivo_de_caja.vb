@@ -221,7 +221,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
             hora_caja_cirrada = fecha_del_sistema + " " + hora_del_sistema
             dinero_queda_en_caja = dinero_queda_en_caja + fondo
             dinero_contado_de_caja = Convert.ToDecimal(txt_valor_en_la_caja.Text)
-            body = "SUCURSAL OSO HOOKAH: PRINCIPAL".ToString + "   USUARIO: ".ToString + Form1.lbl_nombre_de_usuario.Text.ToString + "   TURNO: " + Form1.lbl_turno.Text.ToString + "   CAJA ABIERTA: ".ToString + hora_abierta.ToString + vbCrLf + "   CAJA CERRADA:".ToString + hora_caja_cirrada.ToString + vbCrLf + "   FONDO DE LA CAJA: " + fondo.ToString + vbCrLf + " VENTAS DEL DIA: " + en_ventas_del_dia.ToString + vbCrLf + " DINERO EN CAJA: ".ToString + dinero_queda_en_caja.ToString + vbCrLf + "DINERO CONTADO EN CAJA: ".ToString + dinero_contado_de_caja.ToString + " DEVOLUCIONES: " + frm_caja.lbl_devolucioneS_efectivos.Text.ToString + " GANANCIAS: " + ganancias_del_dia.ToString
+            body = "SUCURSAL: PRINCIPAL".ToString + "   USUARIO: ".ToString + Form1.lbl_nombre_de_usuario.Text.ToString + "   TURNO: " + Form1.lbl_turno.Text.ToString + "   CAJA ABIERTA: ".ToString + hora_abierta.ToString + vbCrLf + "   CAJA CERRADA:".ToString + hora_caja_cirrada.ToString + vbCrLf + "   FONDO DE LA CAJA: " + fondo.ToString + vbCrLf + " VENTAS DEL DIA: " + en_ventas_del_dia.ToString + vbCrLf + " DINERO EN CAJA: ".ToString + dinero_queda_en_caja.ToString + vbCrLf + "DINERO CONTADO EN CAJA: ".ToString + dinero_contado_de_caja.ToString + " DEVOLUCIONES: " + frm_caja.lbl_devolucioneS_efectivos.Text.ToString + " GANANCIAS: " + ganancias_del_dia.ToString
 
             'End If
 
@@ -232,12 +232,13 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
 
             message.From = New MailAddress("dead_25@outlook.es")
-            message.To.Add("reimy_64@hotmail.com")
+            'message.To.Add("reimy_64@hotmail.com")
 
             'message.To.Add("corderoxg@gmail.com")
 
             'message.To.Add("gtx247247@gmail.com")
             'message.To.Add("Vapeodelnorte@outlook.com")
+            'message.To.Add("whaterbautista@icloud.com")
 
             message.Body = body
             message.Subject = "JRSOFT CIERRE DE CAJA DEL:" + Today.Date
@@ -364,7 +365,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             'message.To.Add("corderoxg@gmail.com")
 
-            message.To.Add("gtx247247@gmail.com")
+            'message.To.Add("whaterbautista@icloud.com")
 
             message.Body = body
             message.Subject = "JRSOFT CIERRE DE CAJA DEL:" + Today.Date
@@ -456,7 +457,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             'message.To.Add("corderoxg@gmail.com")
 
-            message.To.Add("whaterbautista@icloud.com")
+            'message.To.Add("whaterbautista@icloud.com")
 
             message.Body = body
             message.Subject = "JRSOFT CIERRE DE CAJA DEL:" + Today.Date
@@ -613,7 +614,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                 End With
                 class_cierre_de_caja.insertar_cierre_de_caja(obj_cierre_de_caja)
 
-                enviar_correoT3(restante, totalGomera.ToString(), totalBar.ToString(), total.ToString)
+                'enviar_correoT3(restante, totalGomera.ToString(), totalBar.ToString(), total.ToString)
                 class_cierre_de_caja.cerrarCajaDiaria()
                 class_cierre_de_caja.poner_en_cierre_retirados()
                 'class_cierre_de_caja.ponerEnCierreDetalles()

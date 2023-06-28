@@ -30,7 +30,7 @@ Public Class frm_registro_producto
 
 
             message.From = New MailAddress("dead_25@outlook.es")
-            message.To.Add("reimy_64@hotmail.com")
+            'message.To.Add("reimy_64@hotmail.com")
             ''message.To.Add("whaterrodriguez@gmail.com")
             'message.To.Add("edelmirogalva@yahoo.com")
             'message.To.Add("whaterbautista@icloud.com")

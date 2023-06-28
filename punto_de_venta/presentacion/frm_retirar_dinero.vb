@@ -79,14 +79,14 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
     Private Sub btn_retirar_Click(sender As Object, e As EventArgs) Handles btn_retirar.Click
         If txt_motivo_del_retiro.Text.Trim <> String.Empty Then
-
+            txt_dinero_en_caja.Text = txt_dinero_en_caja.Text.Replace(",", "")
             If IsNumeric(txt_monto_retiro.Text) Then
-                    If Val(txt_monto_retiro.Text) <= Val(txt_dinero_en_caja.Text) Then
+                If Val(txt_monto_retiro.Text) <= Convert.ToDecimal(txt_dinero_en_caja.Text) Then
                     dt = class_inventario.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
                     Me.Cursor = Cursors.WaitCursor
                     Dim id_dinero As Integer
-                        If dt.Rows.Count > 0 Then
-                            id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
+                    If dt.Rows.Count > 0 Then
+                        id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
                         With obj_coobro
                             obj_coobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
                             .id_dinero_en_caja = id_dinero
@@ -95,16 +95,16 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                         class_inventario.retirar_dinero(obj_coobro)
 
                         With obj_coobro
-                                .motivo = txt_motivo_del_retiro.Text.ToUpper
-                                .retiro = Val(txt_monto_retiro.Text)
-                                .fecha = Today.Date
-                            End With
-                            class_inventario.insertar_retiro(obj_coobro)
-                            txt_monto_retiro.Clear()
-                            txt_motivo_del_retiro.Clear()
-                            txt_dinero_en_caja.Clear()
-                            mostrar_nventario()
-                            MessageBox.Show("Retiro completado con exito", "Retiro de dinero", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                            .motivo = txt_motivo_del_retiro.Text.ToUpper
+                            .retiro = Val(txt_monto_retiro.Text)
+                            .fecha = Today.Date
+                        End With
+                        class_inventario.insertar_retiro(obj_coobro)
+                        txt_monto_retiro.Clear()
+                        txt_motivo_del_retiro.Clear()
+                        txt_dinero_en_caja.Clear()
+                        mostrar_nventario()
+                        MessageBox.Show("Retiro completado con exito", "Retiro de dinero", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         'abrircajon("LPT3")
                         Me.Close()
                         Me.Cursor = Cursors.Default
@@ -113,11 +113,11 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
                     End If
 
-                    Else
-                        MessageBox.Show("el monto a retirar no puede ser mayor que el dinero en caja", "Retiro de dinero", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                    End If
                 Else
-                    MessageBox.Show("valor numerico invalido", "Retiro de dinero", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    MessageBox.Show("el monto a retirar no puede ser mayor que el dinero en caja", "Retiro de dinero", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Else
+                MessageBox.Show("valor numerico invalido", "Retiro de dinero", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
 
             Else
