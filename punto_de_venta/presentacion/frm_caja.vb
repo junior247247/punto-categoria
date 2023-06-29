@@ -126,7 +126,4 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
     End Sub
 
-    Private Sub Label75_Click(sender As Object, e As EventArgs) Handles Label75.Click
-
-    End Sub
 End Class

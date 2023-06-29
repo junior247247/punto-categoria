@@ -596,7 +596,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
         grb_conenedor.Visible = False
         cbo_forma_de_pago.Text = "EEFCTIVO"
         cbo_forma_de_pago.DropDownStyle = 2
-
+        cbo_forma_de_pago.SelectedIndex = 0
         txt_buscar_producto.Select()
 
         verificar_si_no_se_vendieron_los_productos_ponerlos_en_data()
