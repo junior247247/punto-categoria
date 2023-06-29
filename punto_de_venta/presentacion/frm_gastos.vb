@@ -16,7 +16,7 @@
                 For i = 0 To dt.Rows.Count - 1
                     sumaDeGastos += Convert.ToDecimal(dt.Rows(i).Item("Total_con_itbis"))
                 Next
-                lblTotal.Text = Convert.ToString(sumaDeGastos)
+                lblTotal.Text = ParseToDecimal.parse(Convert.ToString(sumaDeGastos))
             Else
                 lblTotal.Text = "0"
             End If
@@ -47,7 +47,7 @@
                 For i = 0 To dt.Rows.Count - 1
                     sumaDeGastos += Convert.ToDecimal(dt.Rows(i).Item("Total_con_itbis"))
                 Next
-                lblTotal.Text = Convert.ToString(sumaDeGastos)
+                lblTotal.Text = ParseToDecimal.parse(Convert.ToString(sumaDeGastos))
             Else
                 lblTotal.Text = "0"
             End If
@@ -77,7 +77,7 @@
                 For i = 0 To dt.Rows.Count - 1
                     sumaDeGastos += Convert.ToDecimal(dt.Rows(i).Item("Total_con_itbis"))
                 Next
-                lblTotal.Text = Convert.ToString(sumaDeGastos)
+                lblTotal.Text = ParseToDecimal.parse(Convert.ToString(sumaDeGastos))
             Else
                 lblTotal.Text = "0"
             End If

