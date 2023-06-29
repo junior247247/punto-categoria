@@ -2,9 +2,9 @@
 Public Class frm_caja
     Private dt As New DataTable
     Private Class_inventaro As New class_inventario
-    Private obj_cierre_de_caja As New ce_cierre_de_caja
-    Private class_cierre_de_caja As New class_cierre_de_caja
-    Private obj_cobro As New ce_cobro
+    'Private obj_cierre_de_caja As New ce_cierre_de_caja
+    'Private class_cierre_de_caja As New class_cierre_de_caja
+    'Private obj_cobro As New ce_cobro
     Private class_cobro As New class_cobro
 
 
@@ -55,6 +55,16 @@ ByVal hTemplateFile As IntPtr) As IntPtr
             Else
                 lbl_fondo_en_caja.Text = "0"
             End If
+
+            dt = Class_inventaro.sumarTarjeta(Val(Form1.lbl_id_usuario.Text))
+
+            lblTotalTarjeta.Text = dt.Rows(0).Item("tarjeta").ToString
+
+            If lblTotalTarjeta.Text = String.Empty Then
+                lblTotalTarjeta.Text = "0.00"
+
+            End If
+
 
             dt = Class_inventaro.dinero_de_ventas_del_dia(Val(Form1.lbl_id_usuario.Text))
             lbl_dinero_encaja.Text = dt.Rows(0).Item("ventas_del_dia").ToString

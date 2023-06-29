@@ -6,6 +6,29 @@ Public Class class_inventario
 
 
 
+
+
+    Function sumarTarjeta(id As Integer) As DataTable
+        Try
+            conectado()
+            cmd = New SqlCommand("sumarTarjeta")
+            cmd.CommandType = CommandType.StoredProcedure
+            cmd.Connection = cnn
+            cmd.ExecuteNonQuery()
+            cmd.Parameters.AddWithValue("@cajeroId", id)
+            Dim dt As New DataTable
+                Dim da As New SqlDataAdapter(cmd)
+                da.Fill(dt)
+            Return dt
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            Return Nothing
+        Finally
+            desconectado()
+        End Try
+    End Function
+
+
     Function sumar_mantenimiento_por_30_dias() As DataTable
         Try
             conectado()

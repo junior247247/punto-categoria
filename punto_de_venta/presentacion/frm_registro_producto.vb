@@ -1141,7 +1141,8 @@ Public Class frm_registro_producto
                 cbo_categoria.Text = dt.Rows(dt.Rows.Count - 1).Item("Categoria").ToString
 
 
-                Else
+            Else
+                cbo_categoria.Items.Clear()
                 cbo_categoria.Text = "ABARROTE"
                 cbo_categoria.Items.Add("ABARROTE")
             End If

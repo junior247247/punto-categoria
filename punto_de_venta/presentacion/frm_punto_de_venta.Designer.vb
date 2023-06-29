@@ -457,7 +457,7 @@ Partial Class frm_punto_de_venta
         '
         Me.cbo_forma_de_pago.BackColor = System.Drawing.Color.White
         Me.cbo_forma_de_pago.FormattingEnabled = True
-        Me.cbo_forma_de_pago.Items.AddRange(New Object() {"EFECTIVO"})
+        Me.cbo_forma_de_pago.Items.AddRange(New Object() {"EFECTIVO", "TARJETA"})
         Me.cbo_forma_de_pago.Location = New System.Drawing.Point(126, 46)
         Me.cbo_forma_de_pago.Name = "cbo_forma_de_pago"
         Me.cbo_forma_de_pago.Size = New System.Drawing.Size(85, 21)

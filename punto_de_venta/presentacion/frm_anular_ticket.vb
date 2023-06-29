@@ -150,41 +150,44 @@
         End Try
     End Sub
     Public Sub mostrar_ingresos_del_dia()
-        Try
-            dt = class_invenntario.dinero_de_ventas_del_dia(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.lbl_dinero_encaja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
-            frm_caja.lbl_dinero_en_caja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
-            frm_caja.lbl_total_ventas_card_y_efeec.Text = dt.Rows(0).Item("ventas_del_dia").ToString
+        frm_caja.mostrar_ingresos_del_dia()
+        'Try
+        '    dt = class_invenntario.dinero_de_ventas_del_dia(Val(Form1.lbl_id_usuario.Text))
+        '    frm_caja.lbl_dinero_encaja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
+        '    frm_caja.lbl_dinero_en_caja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
+        '    frm_caja.lbl_total_ventas_card_y_efeec.Text = dt.Rows(0).Item("ventas_del_dia").ToString
 
-            If frm_caja.lbl_dinero_encaja.Text = String.Empty Then
-                frm_caja.lbl_dinero_encaja.Text = "0.00"
-                frm_caja.lbl_dinero_en_caja.Text = "0.00"
-                frm_caja.lbl_total_ventas_card_y_efeec.Text = "0.00"
-                frm_caja.lbl_contador_ventas.Text = "0"
-            End If
+        '    If frm_caja.lbl_dinero_encaja.Text = String.Empty Then
+        '        frm_caja.lbl_dinero_encaja.Text = "0.00"
+        '        frm_caja.lbl_dinero_en_caja.Text = "0.00"
+        '        frm_caja.lbl_total_ventas_card_y_efeec.Text = "0.00"
+        '        frm_caja.lbl_contador_ventas.Text = "0"
+        '    End If
 
-            dt = class_invenntario.ganancias_del_dia(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.lbl_ganancia_en_ventas.Text = dt.Rows(0).Item("ganancias_del_dia").ToString
-            If frm_caja.lbl_ganancia_en_ventas.Text = String.Empty Then
-                frm_caja.lbl_ganancia_en_ventas.Text = "0.00"
-            End If
-            dt = class_invenntario.devoluciones(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.lbl_devolucioneS_efectivos.Text = dt.Rows(0).Item("devoluciones_del_dia").ToString
-            If frm_caja.lbl_devolucioneS_efectivos.Text = String.Empty Then
-                frm_caja.lbl_devolucioneS_efectivos.Text = "0"
-            End If
+        '    dt = class_invenntario.ganancias_del_dia(Val(Form1.lbl_id_usuario.Text))
+        '    frm_caja.lbl_ganancia_en_ventas.Text = dt.Rows(0).Item("ganancias_del_dia").ToString
+        '    If frm_caja.lbl_ganancia_en_ventas.Text = String.Empty Then
+        '        frm_caja.lbl_ganancia_en_ventas.Text = "0.00"
+        '    End If
+        '    dt = class_invenntario.devoluciones(Val(Form1.lbl_id_usuario.Text))
+        '    frm_caja.lbl_devolucioneS_efectivos.Text = dt.Rows(0).Item("devoluciones_del_dia").ToString
+        '    If frm_caja.lbl_devolucioneS_efectivos.Text = String.Empty Then
+        '        frm_caja.lbl_devolucioneS_efectivos.Text = "0"
+        '    End If
 
-            dt = class_invenntario.mostrar_listado_ingreso_del_dia(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.datalistado_caja.DataSource = dt
-            frm_caja.lbl_contador_ventas.Text = frm_caja.datalistado_caja.Rows.Count
-            frm_caja.datalistado_caja.EnableHeadersVisualStyles = False
-            For i = 0 To frm_caja.datalistado_caja.Columns.Count - 1 Step 1
-                frm_caja.datalistado_caja.Columns(i).Width = 170
-            Next
+        '    dt = class_invenntario.mostrar_listado_ingreso_del_dia(Val(Form1.lbl_id_usuario.Text))
+        '    frm_caja.datalistado_caja.DataSource = dt
+        '    frm_caja.lbl_contador_ventas.Text = frm_caja.datalistado_caja.Rows.Count
+        '    frm_caja.datalistado_caja.EnableHeadersVisualStyles = False
+        '    For i = 0 To frm_caja.datalistado_caja.Columns.Count - 1 Step 1
+        '        frm_caja.datalistado_caja.Columns(i).Width = 170
+        '    Next
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+
+
     End Sub
 
 
@@ -244,6 +247,7 @@
         Catch ex As Exception
             MsgBox(ex.Message)
         End Try
+
     End Sub
 
 

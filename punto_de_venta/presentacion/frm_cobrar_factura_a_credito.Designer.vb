@@ -27,11 +27,11 @@ Partial Class frm_cobrar_factura_a_credito
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frm_cobrar_factura_a_credito))
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.datalistado_articulos = New System.Windows.Forms.DataGridView()
         Me.btn_cerrar = New CTSkinet.CTSkinetButton()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.datalistado_articulos = New System.Windows.Forms.DataGridView()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
         Me.lbl_cliente = New System.Windows.Forms.Label()
         Me.lbl_id_factura = New System.Windows.Forms.Label()
         Me.btn_cobrar = New CTSkinet.CTSkinetButton()
@@ -58,6 +58,33 @@ Partial Class frm_cobrar_factura_a_credito
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(800, 33)
         Me.Panel1.TabIndex = 0
+        '
+        'btn_cerrar
+        '
+        Me.btn_cerrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btn_cerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btn_cerrar.FlatAppearance.BorderSize = 0
+        Me.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btn_cerrar.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_cerrar.ForeColor = System.Drawing.Color.White
+        Me.btn_cerrar.Location = New System.Drawing.Point(767, 1)
+        Me.btn_cerrar.MainColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btn_cerrar.Name = "btn_cerrar"
+        Me.btn_cerrar.Size = New System.Drawing.Size(33, 30)
+        Me.btn_cerrar.TabIndex = 575
+        Me.btn_cerrar.Text = "X"
+        Me.btn_cerrar.UseVisualStyleBackColor = False
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label3.ForeColor = System.Drawing.Color.White
+        Me.Label3.Location = New System.Drawing.Point(326, 5)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(111, 20)
+        Me.Label3.TabIndex = 20
+        Me.Label3.Text = "Cobrar factura"
         '
         'datalistado_articulos
         '
@@ -100,22 +127,6 @@ Partial Class frm_cobrar_factura_a_credito
         Me.datalistado_articulos.Size = New System.Drawing.Size(792, 339)
         Me.datalistado_articulos.TabIndex = 19
         '
-        'btn_cerrar
-        '
-        Me.btn_cerrar.BackColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.btn_cerrar.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.btn_cerrar.FlatAppearance.BorderSize = 0
-        Me.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btn_cerrar.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btn_cerrar.ForeColor = System.Drawing.Color.White
-        Me.btn_cerrar.Location = New System.Drawing.Point(767, 1)
-        Me.btn_cerrar.MainColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
-        Me.btn_cerrar.Name = "btn_cerrar"
-        Me.btn_cerrar.Size = New System.Drawing.Size(33, 30)
-        Me.btn_cerrar.TabIndex = 575
-        Me.btn_cerrar.Text = "X"
-        Me.btn_cerrar.UseVisualStyleBackColor = False
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -137,17 +148,6 @@ Partial Class frm_cobrar_factura_a_credito
         Me.Label2.Size = New System.Drawing.Size(110, 20)
         Me.Label2.TabIndex = 20
         Me.Label2.Text = "ID FACTURA:"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.ForeColor = System.Drawing.Color.White
-        Me.Label3.Location = New System.Drawing.Point(326, 5)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(111, 20)
-        Me.Label3.TabIndex = 20
-        Me.Label3.Text = "Cobrar factura"
         '
         'lbl_cliente
         '
@@ -266,7 +266,7 @@ Partial Class frm_cobrar_factura_a_credito
         Me.cbo_forma_de_pago.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbo_forma_de_pago.ForeColor = System.Drawing.Color.White
         Me.cbo_forma_de_pago.FormattingEnabled = True
-        Me.cbo_forma_de_pago.Items.AddRange(New Object() {"EFECTIVO"})
+        Me.cbo_forma_de_pago.Items.AddRange(New Object() {"EFECTIVO", "TARJETA"})
         Me.cbo_forma_de_pago.Location = New System.Drawing.Point(697, 86)
         Me.cbo_forma_de_pago.Name = "cbo_forma_de_pago"
         Me.cbo_forma_de_pago.Size = New System.Drawing.Size(100, 21)

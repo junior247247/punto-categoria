@@ -49,19 +49,23 @@ Partial Class frm_caja
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.lbl_fondo_en_caja = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblTotalTarjeta = New System.Windows.Forms.Label()
         Me.GroupBox6.SuspendLayout()
         Me.GroupBox9.SuspendLayout()
         CType(Me.datalistado_caja, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel5.SuspendLayout()
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox6
         '
         Me.GroupBox6.Controls.Add(Me.Label89)
         Me.GroupBox6.Controls.Add(Me.lbl_dinero_encaja)
-        Me.GroupBox6.Location = New System.Drawing.Point(15, 83)
+        Me.GroupBox6.Location = New System.Drawing.Point(15, 38)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(278, 44)
         Me.GroupBox6.TabIndex = 598
@@ -128,7 +132,7 @@ Partial Class frm_caja
         Me.GroupBox9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox9.Controls.Add(Me.Label92)
         Me.GroupBox9.Controls.Add(Me.lbl_ganancia_en_ventas)
-        Me.GroupBox9.Location = New System.Drawing.Point(116, 23)
+        Me.GroupBox9.Location = New System.Drawing.Point(442, 22)
         Me.GroupBox9.Name = "GroupBox9"
         Me.GroupBox9.Size = New System.Drawing.Size(278, 44)
         Me.GroupBox9.TabIndex = 603
@@ -368,12 +372,46 @@ Partial Class frm_caja
         Me.Label1.TabIndex = 598
         Me.Label1.Text = "Fondo de la caja :"
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.Label2)
+        Me.GroupBox2.Controls.Add(Me.lblTotalTarjeta)
+        Me.GroupBox2.Location = New System.Drawing.Point(15, 94)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(278, 44)
+        Me.GroupBox2.TabIndex = 606
+        Me.GroupBox2.TabStop = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(5, 14)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(58, 21)
+        Me.Label2.TabIndex = 598
+        Me.Label2.Text = "Tarjeta:"
+        '
+        'lblTotalTarjeta
+        '
+        Me.lblTotalTarjeta.AutoSize = True
+        Me.lblTotalTarjeta.BackColor = System.Drawing.Color.White
+        Me.lblTotalTarjeta.Enabled = False
+        Me.lblTotalTarjeta.ForeColor = System.Drawing.Color.DimGray
+        Me.lblTotalTarjeta.Location = New System.Drawing.Point(71, 18)
+        Me.lblTotalTarjeta.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lblTotalTarjeta.Name = "lblTotalTarjeta"
+        Me.lblTotalTarjeta.Size = New System.Drawing.Size(25, 13)
+        Me.lblTotalTarjeta.TabIndex = 191
+        Me.lblTotalTarjeta.Text = "123"
+        '
         'frm_caja
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(732, 614)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.datalistado_caja)
         Me.Controls.Add(Me.GroupBox9)
@@ -395,6 +433,8 @@ Partial Class frm_caja
         CType(Me.PictureBox3, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
+        Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -422,4 +462,7 @@ Partial Class frm_caja
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents lbl_fondo_en_caja As Label
     Friend WithEvents Label1 As Label
+    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents lblTotalTarjeta As Label
 End Class
