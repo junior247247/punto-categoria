@@ -64,8 +64,9 @@ Partial Class frm_listas_desde
         Me.Panel1.Controls.Add(Me.btn_cerrar)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Top
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
+        Me.Panel1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(692, 29)
+        Me.Panel1.Size = New System.Drawing.Size(1050, 36)
         Me.Panel1.TabIndex = 0
         '
         'Label4
@@ -73,9 +74,10 @@ Partial Class frm_listas_desde
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label4.ForeColor = System.Drawing.Color.White
-        Me.Label4.Location = New System.Drawing.Point(291, 3)
+        Me.Label4.Location = New System.Drawing.Point(388, 4)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(65, 18)
+        Me.Label4.Size = New System.Drawing.Size(82, 24)
         Me.Label4.TabIndex = 575
         Me.Label4.Text = "Ingresos"
         '
@@ -87,16 +89,18 @@ Partial Class frm_listas_desde
         Me.btn_cerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_cerrar.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_cerrar.ForeColor = System.Drawing.Color.White
-        Me.btn_cerrar.Location = New System.Drawing.Point(656, -1)
+        Me.btn_cerrar.Location = New System.Drawing.Point(1006, 4)
         Me.btn_cerrar.MainColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btn_cerrar.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btn_cerrar.Name = "btn_cerrar"
-        Me.btn_cerrar.Size = New System.Drawing.Size(33, 30)
+        Me.btn_cerrar.Size = New System.Drawing.Size(44, 37)
         Me.btn_cerrar.TabIndex = 574
         Me.btn_cerrar.Text = "X"
         Me.btn_cerrar.UseVisualStyleBackColor = False
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.lblGastosMenosIngresos)
         Me.GroupBox1.Controls.Add(Me.lblGastos)
         Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.lbl_retirados)
@@ -106,10 +110,13 @@ Partial Class frm_listas_desde
         Me.GroupBox1.Controls.Add(Me.lbl_compras)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label3)
+        Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.lbl_ganancias)
-        Me.GroupBox1.Location = New System.Drawing.Point(8, 79)
+        Me.GroupBox1.Location = New System.Drawing.Point(11, 97)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(671, 93)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(1026, 114)
         Me.GroupBox1.TabIndex = 575
         Me.GroupBox1.TabStop = False
         '
@@ -117,9 +124,10 @@ Partial Class frm_listas_desde
         '
         Me.lblGastos.AutoSize = True
         Me.lblGastos.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblGastos.Location = New System.Drawing.Point(323, 61)
+        Me.lblGastos.Location = New System.Drawing.Point(476, 76)
+        Me.lblGastos.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblGastos.Name = "lblGastos"
-        Me.lblGastos.Size = New System.Drawing.Size(17, 18)
+        Me.lblGastos.Size = New System.Drawing.Size(21, 24)
         Me.lblGastos.TabIndex = 3
         Me.lblGastos.Text = "0"
         '
@@ -127,9 +135,10 @@ Partial Class frm_listas_desde
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(249, 61)
+        Me.Label9.Location = New System.Drawing.Point(377, 76)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(68, 18)
+        Me.Label9.Size = New System.Drawing.Size(79, 24)
         Me.Label9.TabIndex = 3
         Me.Label9.Text = "Gastos:"
         '
@@ -137,9 +146,10 @@ Partial Class frm_listas_desde
         '
         Me.lbl_retirados.AutoSize = True
         Me.lbl_retirados.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_retirados.Location = New System.Drawing.Point(111, 61)
+        Me.lbl_retirados.Location = New System.Drawing.Point(139, 75)
+        Me.lbl_retirados.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl_retirados.Name = "lbl_retirados"
-        Me.lbl_retirados.Size = New System.Drawing.Size(17, 18)
+        Me.lbl_retirados.Size = New System.Drawing.Size(21, 24)
         Me.lbl_retirados.TabIndex = 3
         Me.lbl_retirados.Text = "0"
         '
@@ -147,9 +157,10 @@ Partial Class frm_listas_desde
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(243, 20)
+        Me.Label1.Location = New System.Drawing.Point(369, 26)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(74, 16)
+        Me.Label1.Size = New System.Drawing.Size(90, 20)
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "Compras:"
         '
@@ -157,9 +168,10 @@ Partial Class frm_listas_desde
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(20, 61)
+        Me.Label6.Location = New System.Drawing.Point(27, 75)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(86, 18)
+        Me.Label6.Size = New System.Drawing.Size(104, 24)
         Me.Label6.TabIndex = 2
         Me.Label6.Text = "Retirados:"
         '
@@ -167,9 +179,10 @@ Partial Class frm_listas_desde
         '
         Me.lbl_ventas.AutoSize = True
         Me.lbl_ventas.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_ventas.Location = New System.Drawing.Point(93, 20)
+        Me.lbl_ventas.Location = New System.Drawing.Point(139, 28)
+        Me.lbl_ventas.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl_ventas.Name = "lbl_ventas"
-        Me.lbl_ventas.Size = New System.Drawing.Size(16, 16)
+        Me.lbl_ventas.Size = New System.Drawing.Size(19, 20)
         Me.lbl_ventas.TabIndex = 0
         Me.lbl_ventas.Text = "0"
         '
@@ -177,9 +190,10 @@ Partial Class frm_listas_desde
         '
         Me.lbl_compras.AutoSize = True
         Me.lbl_compras.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_compras.Location = New System.Drawing.Point(321, 21)
+        Me.lbl_compras.Location = New System.Drawing.Point(473, 27)
+        Me.lbl_compras.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl_compras.Name = "lbl_compras"
-        Me.lbl_compras.Size = New System.Drawing.Size(16, 16)
+        Me.lbl_compras.Size = New System.Drawing.Size(19, 20)
         Me.lbl_compras.TabIndex = 0
         Me.lbl_compras.Text = "0"
         '
@@ -187,9 +201,10 @@ Partial Class frm_listas_desde
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(28, 19)
+        Me.Label2.Location = New System.Drawing.Point(58, 26)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(60, 16)
+        Me.Label2.Size = New System.Drawing.Size(73, 20)
         Me.Label2.TabIndex = 0
         Me.Label2.Text = "Ventas:"
         '
@@ -197,9 +212,10 @@ Partial Class frm_listas_desde
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(454, 21)
+        Me.Label3.Location = New System.Drawing.Point(720, 28)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(86, 16)
+        Me.Label3.Size = New System.Drawing.Size(104, 20)
         Me.Label3.TabIndex = 0
         Me.Label3.Text = "Ganancias:"
         '
@@ -207,9 +223,10 @@ Partial Class frm_listas_desde
         '
         Me.lbl_ganancias.AutoSize = True
         Me.lbl_ganancias.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_ganancias.Location = New System.Drawing.Point(547, 21)
+        Me.lbl_ganancias.Location = New System.Drawing.Point(844, 28)
+        Me.lbl_ganancias.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl_ganancias.Name = "lbl_ganancias"
-        Me.lbl_ganancias.Size = New System.Drawing.Size(16, 16)
+        Me.lbl_ganancias.Size = New System.Drawing.Size(19, 20)
         Me.lbl_ganancias.TabIndex = 0
         Me.lbl_ganancias.Text = "0"
         '
@@ -217,9 +234,10 @@ Partial Class frm_listas_desde
         '
         Me.lbl_mantenimiento.AutoSize = True
         Me.lbl_mantenimiento.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_mantenimiento.Location = New System.Drawing.Point(486, 36)
+        Me.lbl_mantenimiento.Location = New System.Drawing.Point(648, 44)
+        Me.lbl_mantenimiento.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl_mantenimiento.Name = "lbl_mantenimiento"
-        Me.lbl_mantenimiento.Size = New System.Drawing.Size(17, 18)
+        Me.lbl_mantenimiento.Size = New System.Drawing.Size(21, 24)
         Me.lbl_mantenimiento.TabIndex = 1
         Me.lbl_mantenimiento.Text = "0"
         Me.lbl_mantenimiento.Visible = False
@@ -228,9 +246,10 @@ Partial Class frm_listas_desde
         '
         Me.lbl_recargas.AutoSize = True
         Me.lbl_recargas.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_recargas.Location = New System.Drawing.Point(104, 35)
+        Me.lbl_recargas.Location = New System.Drawing.Point(139, 43)
+        Me.lbl_recargas.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl_recargas.Name = "lbl_recargas"
-        Me.lbl_recargas.Size = New System.Drawing.Size(17, 18)
+        Me.lbl_recargas.Size = New System.Drawing.Size(21, 24)
         Me.lbl_recargas.TabIndex = 1
         Me.lbl_recargas.Text = "0"
         Me.lbl_recargas.Visible = False
@@ -239,9 +258,10 @@ Partial Class frm_listas_desde
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(364, 35)
+        Me.Label7.Location = New System.Drawing.Point(485, 43)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(123, 18)
+        Me.Label7.Size = New System.Drawing.Size(153, 24)
         Me.Label7.TabIndex = 1
         Me.Label7.Text = "Mantenimiento:"
         Me.Label7.Visible = False
@@ -250,9 +270,10 @@ Partial Class frm_listas_desde
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(12, 33)
+        Me.Label5.Location = New System.Drawing.Point(16, 41)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(85, 18)
+        Me.Label5.Size = New System.Drawing.Size(104, 24)
         Me.Label5.TabIndex = 1
         Me.Label5.Text = "Recargas:"
         Me.Label5.Visible = False
@@ -260,26 +281,29 @@ Partial Class frm_listas_desde
         'txt_fecha1
         '
         Me.txt_fecha1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.txt_fecha1.Location = New System.Drawing.Point(12, 59)
+        Me.txt_fecha1.Location = New System.Drawing.Point(16, 73)
+        Me.txt_fecha1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_fecha1.Name = "txt_fecha1"
-        Me.txt_fecha1.Size = New System.Drawing.Size(103, 20)
+        Me.txt_fecha1.Size = New System.Drawing.Size(136, 22)
         Me.txt_fecha1.TabIndex = 576
         '
         'txt_fecha2
         '
         Me.txt_fecha2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.txt_fecha2.Location = New System.Drawing.Point(587, 59)
+        Me.txt_fecha2.Location = New System.Drawing.Point(914, 67)
+        Me.txt_fecha2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.txt_fecha2.Name = "txt_fecha2"
-        Me.txt_fecha2.Size = New System.Drawing.Size(93, 20)
+        Me.txt_fecha2.Size = New System.Drawing.Size(123, 22)
         Me.txt_fecha2.TabIndex = 576
         '
         'Label8
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(457, 215)
+        Me.Label8.Location = New System.Drawing.Point(593, 220)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(109, 13)
+        Me.Label8.Size = New System.Drawing.Size(140, 17)
         Me.Label8.TabIndex = 4
         Me.Label8.Text = "Total de ingresos:"
         '
@@ -287,9 +311,10 @@ Partial Class frm_listas_desde
         '
         Me.lbl_total_de_ingresos.AutoSize = True
         Me.lbl_total_de_ingresos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lbl_total_de_ingresos.Location = New System.Drawing.Point(571, 216)
+        Me.lbl_total_de_ingresos.Location = New System.Drawing.Point(745, 221)
+        Me.lbl_total_de_ingresos.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl_total_de_ingresos.Name = "lbl_total_de_ingresos"
-        Me.lbl_total_de_ingresos.Size = New System.Drawing.Size(14, 13)
+        Me.lbl_total_de_ingresos.Size = New System.Drawing.Size(17, 17)
         Me.lbl_total_de_ingresos.TabIndex = 4
         Me.lbl_total_de_ingresos.Text = "0"
         '
@@ -297,9 +322,10 @@ Partial Class frm_listas_desde
         '
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(464, 184)
+        Me.Label11.Location = New System.Drawing.Point(697, 77)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(99, 13)
+        Me.Label11.Size = New System.Drawing.Size(127, 17)
         Me.Label11.TabIndex = 3
         Me.Label11.Text = "Ventas - gastos:"
         '
@@ -307,9 +333,10 @@ Partial Class frm_listas_desde
         '
         Me.lblGastosMenosIngresos.AutoSize = True
         Me.lblGastosMenosIngresos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblGastosMenosIngresos.Location = New System.Drawing.Point(570, 184)
+        Me.lblGastosMenosIngresos.Location = New System.Drawing.Point(845, 77)
+        Me.lblGastosMenosIngresos.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblGastosMenosIngresos.Name = "lblGastosMenosIngresos"
-        Me.lblGastosMenosIngresos.Size = New System.Drawing.Size(14, 13)
+        Me.lblGastosMenosIngresos.Size = New System.Drawing.Size(17, 17)
         Me.lblGastosMenosIngresos.TabIndex = 3
         Me.lblGastosMenosIngresos.Text = "0"
         '
@@ -317,9 +344,10 @@ Partial Class frm_listas_desde
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(74, 179)
+        Me.Label10.Location = New System.Drawing.Point(99, 220)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(133, 13)
+        Me.Label10.Size = New System.Drawing.Size(165, 17)
         Me.Label10.TabIndex = 3
         Me.Label10.Text = "GASTOS INVERSION:"
         '
@@ -327,9 +355,10 @@ Partial Class frm_listas_desde
         '
         Me.lblTotalInversion.AutoSize = True
         Me.lblTotalInversion.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalInversion.Location = New System.Drawing.Point(215, 179)
+        Me.lblTotalInversion.Location = New System.Drawing.Point(286, 220)
+        Me.lblTotalInversion.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalInversion.Name = "lblTotalInversion"
-        Me.lblTotalInversion.Size = New System.Drawing.Size(14, 13)
+        Me.lblTotalInversion.Size = New System.Drawing.Size(17, 17)
         Me.lblTotalInversion.TabIndex = 3
         Me.lblTotalInversion.Text = "0"
         '
@@ -337,9 +366,10 @@ Partial Class frm_listas_desde
         '
         Me.Label13.AutoSize = True
         Me.Label13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label13.Location = New System.Drawing.Point(101, 209)
+        Me.Label13.Location = New System.Drawing.Point(596, 292)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(108, 13)
+        Me.Label13.Size = New System.Drawing.Size(137, 17)
         Me.Label13.TabIndex = 3
         Me.Label13.Text = "OTROS GASTOS:"
         '
@@ -347,9 +377,10 @@ Partial Class frm_listas_desde
         '
         Me.lblOtrosGastos.AutoSize = True
         Me.lblOtrosGastos.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblOtrosGastos.Location = New System.Drawing.Point(215, 209)
+        Me.lblOtrosGastos.Location = New System.Drawing.Point(748, 292)
+        Me.lblOtrosGastos.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblOtrosGastos.Name = "lblOtrosGastos"
-        Me.lblOtrosGastos.Size = New System.Drawing.Size(14, 13)
+        Me.lblOtrosGastos.Size = New System.Drawing.Size(17, 17)
         Me.lblOtrosGastos.TabIndex = 3
         Me.lblOtrosGastos.Text = "0"
         '
@@ -357,9 +388,10 @@ Partial Class frm_listas_desde
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(12, 237)
+        Me.Label15.Location = New System.Drawing.Point(16, 292)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(191, 13)
+        Me.Label15.Size = New System.Drawing.Size(241, 17)
         Me.Label15.TabIndex = 3
         Me.Label15.Text = "GANANCIAS - OTROS GASTOS:"
         '
@@ -367,19 +399,19 @@ Partial Class frm_listas_desde
         '
         Me.lblTotalMENOSGASTOS.AutoSize = True
         Me.lblTotalMENOSGASTOS.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalMENOSGASTOS.Location = New System.Drawing.Point(215, 237)
+        Me.lblTotalMENOSGASTOS.Location = New System.Drawing.Point(286, 292)
+        Me.lblTotalMENOSGASTOS.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblTotalMENOSGASTOS.Name = "lblTotalMENOSGASTOS"
-        Me.lblTotalMENOSGASTOS.Size = New System.Drawing.Size(14, 13)
+        Me.lblTotalMENOSGASTOS.Size = New System.Drawing.Size(17, 17)
         Me.lblTotalMENOSGASTOS.TabIndex = 3
         Me.lblTotalMENOSGASTOS.Text = "0"
         '
         'frm_listas_desde
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(692, 277)
-        Me.Controls.Add(Me.lblGastosMenosIngresos)
+        Me.ClientSize = New System.Drawing.Size(1050, 366)
         Me.Controls.Add(Me.lblTotalMENOSGASTOS)
         Me.Controls.Add(Me.lblOtrosGastos)
         Me.Controls.Add(Me.Label15)
@@ -388,7 +420,6 @@ Partial Class frm_listas_desde
         Me.Controls.Add(Me.Label10)
         Me.Controls.Add(Me.lbl_total_de_ingresos)
         Me.Controls.Add(Me.txt_fecha2)
-        Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.lbl_mantenimiento)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.lbl_recargas)
@@ -399,6 +430,7 @@ Partial Class frm_listas_desde
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frm_listas_desde"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "frm_listas_desde"
