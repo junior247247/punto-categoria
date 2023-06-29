@@ -14,8 +14,8 @@ Public Class class_inventario
             cmd = New SqlCommand("sumarTarjeta")
             cmd.CommandType = CommandType.StoredProcedure
             cmd.Connection = cnn
-            cmd.ExecuteNonQuery()
             cmd.Parameters.AddWithValue("@cajeroId", id)
+            cmd.ExecuteNonQuery()
             Dim dt As New DataTable
                 Dim da As New SqlDataAdapter(cmd)
                 da.Fill(dt)

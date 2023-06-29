@@ -98,9 +98,10 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                         .turno = Form1.lbl_turno.Text
                         .id_usuario = Form1.lbl_id_usuario.Text
                         .total_retirador = total_retiros
-                        .retirado = Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text)
+                        .retirado = Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text.Replace(".", ","))
                         .total_en_ventas_del_dia = Val(ventas_del_dia)
                         .dinero_efectivo_en_caja = Val(txt_valor_en_la_caja.Text)
+                        .tarjeta = Convert.ToDecimal(frm_caja.lblTotalTarjeta.Text)
                         .restante = ""
                         .totalBar = 0
                         .totalGomera = 0
@@ -128,7 +129,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                     Dim id_dinero As Integer
                     class_cierre_de_caja.actualizar_al_cerrar_hora(Val(Form1.lbl_id_usuario.Text))
 
-                    class_cierre_de_caja.sacar_los_fondos(Val(Form1.lbl_id_usuario.Text), Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text))
+                    class_cierre_de_caja.sacar_los_fondos(Val(Form1.lbl_id_usuario.Text), Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text.Replace(".", "")))
 
                     If dt.Rows.Count > 0 Then
                         id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
@@ -605,12 +606,13 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                     .turno = Form1.lbl_turno.Text
                     .id_usuario = Form1.lbl_id_usuario.Text
                     .total_retirador = total_retiros
-                    .retirado = Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text)
+                    .retirado = Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text.Replace(".", ","))
                     .total_en_ventas_del_dia = Val(total)
                     .dinero_efectivo_en_caja = Val(txt_valor_en_la_caja.Text)
                     .restante = restante
                     .totalBar = totalBar
                     .totalGomera = totalGomera
+                    .tarjeta = Convert.ToDecimal(frm_caja.lblTotalTarjeta.Text.Replace(".", ","))
                 End With
                 class_cierre_de_caja.insertar_cierre_de_caja(obj_cierre_de_caja)
 
@@ -658,12 +660,13 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                     .turno = Form1.lbl_turno.Text
                     .id_usuario = Form1.lbl_id_usuario.Text
                     .total_retirador = total_retiros
-                    .retirado = Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text)
+                    .retirado = Convert.ToDecimal(frm_caja.lbl_fondo_en_caja.Text.Replace(".", ","))
                     .total_en_ventas_del_dia = Val(total)
                     .dinero_efectivo_en_caja = Val(txt_valor_en_la_caja.Text)
                     .restante = restante
                     .totalBar = totalBar
                     .totalGomera = totalGomera
+                    .tarjeta = Convert.ToDecimal(frm_caja.lblTotalTarjeta.Text.Replace(".", ","))
                 End With
                 class_cierre_de_caja.insertar_cierre_de_caja(obj_cierre_de_caja)
                 enviar_correo(restante, totalGomera.ToString(), totalBar.ToString())

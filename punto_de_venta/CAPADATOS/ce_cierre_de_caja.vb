@@ -17,4 +17,7 @@
     Public Property total_retirador As Decimal
     Public Property dinero_efectivo_en_caja As Decimal
 
+    Public Property tarjeta As Decimal
+
+
 End Class

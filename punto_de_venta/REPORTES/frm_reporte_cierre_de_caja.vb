@@ -37,6 +37,7 @@ Public Class frm_reporte_cierre_de_caja
             dtr_comprobante("total_retirados") = dt.Rows(0).Item("total_retirados")
             dtr_comprobante("valor_en_efectivo_de_caja") = dt.Rows(0).Item("valor_en_efectivo_de_caja")
             dtr_comprobante("restante") = dt.Rows(0).Item("restante")
+            dtr_comprobante("tarjeta") = dt.Rows(0).Item("tarjeta")
             data_se.Tables("reporte_cierre_de_caja").Rows.Add(dtr_comprobante)
 
 

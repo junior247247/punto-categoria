@@ -8,9 +8,9 @@ Public Class conexion
         Try
 
 
-            'cnn = New SqlConnection("data source=20.126.25.74 ;initial catalog=sispunto_de_ventas;user id=sa ;password=Junior221089")
+            cnn = New SqlConnection("data source=51.140.223.117 ;initial catalog=sispunto_de_ventas;user id=jr ;password=Junior221089")
 
-            cnn = New SqlConnection("data source=(local);initial catalog=sispunto_de_ventas;integrated security=true")
+            'cnn = New SqlConnection("data source=(local);initial catalog=sispunto_de_ventas;integrated security=true")
 
             cnn.Open()
 

@@ -65,9 +65,11 @@ Partial Class frm_caja
         '
         Me.GroupBox6.Controls.Add(Me.Label89)
         Me.GroupBox6.Controls.Add(Me.lbl_dinero_encaja)
-        Me.GroupBox6.Location = New System.Drawing.Point(15, 38)
+        Me.GroupBox6.Location = New System.Drawing.Point(20, 47)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(278, 44)
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox6.Size = New System.Drawing.Size(371, 54)
         Me.GroupBox6.TabIndex = 598
         Me.GroupBox6.TabStop = False
         '
@@ -75,9 +77,10 @@ Partial Class frm_caja
         '
         Me.Label89.AutoSize = True
         Me.Label89.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label89.Location = New System.Drawing.Point(5, 14)
+        Me.Label89.Location = New System.Drawing.Point(7, 17)
+        Me.Label89.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label89.Name = "Label89"
-        Me.Label89.Size = New System.Drawing.Size(133, 21)
+        Me.Label89.Size = New System.Drawing.Size(167, 28)
         Me.Label89.TabIndex = 598
         Me.Label89.Text = "En ventas del dia :"
         '
@@ -87,10 +90,10 @@ Partial Class frm_caja
         Me.lbl_dinero_encaja.BackColor = System.Drawing.Color.White
         Me.lbl_dinero_encaja.Enabled = False
         Me.lbl_dinero_encaja.ForeColor = System.Drawing.Color.DimGray
-        Me.lbl_dinero_encaja.Location = New System.Drawing.Point(146, 20)
-        Me.lbl_dinero_encaja.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbl_dinero_encaja.Location = New System.Drawing.Point(195, 25)
+        Me.lbl_dinero_encaja.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
         Me.lbl_dinero_encaja.Name = "lbl_dinero_encaja"
-        Me.lbl_dinero_encaja.Size = New System.Drawing.Size(25, 13)
+        Me.lbl_dinero_encaja.Size = New System.Drawing.Size(32, 17)
         Me.lbl_dinero_encaja.TabIndex = 191
         Me.lbl_dinero_encaja.Text = "123"
         '
@@ -103,10 +106,11 @@ Partial Class frm_caja
         Me.btn_cerrar_turno.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_cerrar_turno.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_cerrar_turno.ForeColor = System.Drawing.Color.White
-        Me.btn_cerrar_turno.Location = New System.Drawing.Point(488, 157)
+        Me.btn_cerrar_turno.Location = New System.Drawing.Point(651, 193)
         Me.btn_cerrar_turno.MainColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btn_cerrar_turno.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btn_cerrar_turno.Name = "btn_cerrar_turno"
-        Me.btn_cerrar_turno.Size = New System.Drawing.Size(232, 39)
+        Me.btn_cerrar_turno.Size = New System.Drawing.Size(309, 48)
         Me.btn_cerrar_turno.TabIndex = 601
         Me.btn_cerrar_turno.Text = "Cerrar Turno"
         Me.btn_cerrar_turno.UseVisualStyleBackColor = False
@@ -119,10 +123,11 @@ Partial Class frm_caja
         Me.btn_anular_ticket.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btn_anular_ticket.Font = New System.Drawing.Font("Segoe UI", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btn_anular_ticket.ForeColor = System.Drawing.Color.White
-        Me.btn_anular_ticket.Location = New System.Drawing.Point(15, 157)
+        Me.btn_anular_ticket.Location = New System.Drawing.Point(20, 193)
         Me.btn_anular_ticket.MainColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(51, Byte), Integer))
+        Me.btn_anular_ticket.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.btn_anular_ticket.Name = "btn_anular_ticket"
-        Me.btn_anular_ticket.Size = New System.Drawing.Size(232, 39)
+        Me.btn_anular_ticket.Size = New System.Drawing.Size(309, 48)
         Me.btn_anular_ticket.TabIndex = 601
         Me.btn_anular_ticket.Text = "Anular Ticket"
         Me.btn_anular_ticket.UseVisualStyleBackColor = False
@@ -132,9 +137,11 @@ Partial Class frm_caja
         Me.GroupBox9.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox9.Controls.Add(Me.Label92)
         Me.GroupBox9.Controls.Add(Me.lbl_ganancia_en_ventas)
-        Me.GroupBox9.Location = New System.Drawing.Point(442, 22)
+        Me.GroupBox9.Location = New System.Drawing.Point(589, 27)
+        Me.GroupBox9.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(278, 44)
+        Me.GroupBox9.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox9.Size = New System.Drawing.Size(371, 54)
         Me.GroupBox9.TabIndex = 603
         Me.GroupBox9.TabStop = False
         Me.GroupBox9.Visible = False
@@ -143,9 +150,10 @@ Partial Class frm_caja
         '
         Me.Label92.AutoSize = True
         Me.Label92.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label92.Location = New System.Drawing.Point(6, 14)
+        Me.Label92.Location = New System.Drawing.Point(8, 17)
+        Me.Label92.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label92.Name = "Label92"
-        Me.Label92.Size = New System.Drawing.Size(88, 21)
+        Me.Label92.Size = New System.Drawing.Size(109, 28)
         Me.Label92.TabIndex = 598
         Me.Label92.Text = "Ganancias :"
         '
@@ -155,9 +163,10 @@ Partial Class frm_caja
         Me.lbl_ganancia_en_ventas.BackColor = System.Drawing.Color.White
         Me.lbl_ganancia_en_ventas.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_ganancia_en_ventas.ForeColor = System.Drawing.Color.DimGray
-        Me.lbl_ganancia_en_ventas.Location = New System.Drawing.Point(100, 16)
+        Me.lbl_ganancia_en_ventas.Location = New System.Drawing.Point(133, 20)
+        Me.lbl_ganancia_en_ventas.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl_ganancia_en_ventas.Name = "lbl_ganancia_en_ventas"
-        Me.lbl_ganancia_en_ventas.Size = New System.Drawing.Size(21, 20)
+        Me.lbl_ganancia_en_ventas.Size = New System.Drawing.Size(27, 25)
         Me.lbl_ganancia_en_ventas.TabIndex = 576
         Me.lbl_ganancia_en_ventas.Text = " 0"
         '
@@ -183,7 +192,8 @@ Partial Class frm_caja
         Me.datalistado_caja.ColumnHeadersHeight = 25
         Me.datalistado_caja.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.datalistado_caja.GridColor = System.Drawing.SystemColors.Control
-        Me.datalistado_caja.Location = New System.Drawing.Point(15, 345)
+        Me.datalistado_caja.Location = New System.Drawing.Point(20, 425)
+        Me.datalistado_caja.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.datalistado_caja.Name = "datalistado_caja"
         Me.datalistado_caja.ReadOnly = True
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
@@ -195,10 +205,11 @@ Partial Class frm_caja
         DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
         Me.datalistado_caja.RowHeadersDefaultCellStyle = DataGridViewCellStyle2
         Me.datalistado_caja.RowHeadersVisible = False
+        Me.datalistado_caja.RowHeadersWidth = 51
         DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.DarkGray
         Me.datalistado_caja.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.datalistado_caja.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.datalistado_caja.Size = New System.Drawing.Size(705, 240)
+        Me.datalistado_caja.Size = New System.Drawing.Size(940, 295)
         Me.datalistado_caja.TabIndex = 604
         '
         'Panel5
@@ -218,18 +229,20 @@ Partial Class frm_caja
         Me.Panel5.Controls.Add(Me.lbl_dinero_en_caja)
         Me.Panel5.Controls.Add(Me.Label77)
         Me.Panel5.Controls.Add(Me.Label75)
-        Me.Panel5.Location = New System.Drawing.Point(15, 202)
+        Me.Panel5.Location = New System.Drawing.Point(20, 249)
+        Me.Panel5.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel5.Name = "Panel5"
-        Me.Panel5.Size = New System.Drawing.Size(714, 125)
+        Me.Panel5.Size = New System.Drawing.Size(952, 154)
         Me.Panel5.TabIndex = 595
         '
         'PictureBox3
         '
         Me.PictureBox3.BackColor = System.Drawing.Color.Transparent
         Me.PictureBox3.Image = CType(resources.GetObject("PictureBox3.Image"), System.Drawing.Image)
-        Me.PictureBox3.Location = New System.Drawing.Point(9, 5)
+        Me.PictureBox3.Location = New System.Drawing.Point(12, 6)
+        Me.PictureBox3.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.PictureBox3.Name = "PictureBox3"
-        Me.PictureBox3.Size = New System.Drawing.Size(53, 57)
+        Me.PictureBox3.Size = New System.Drawing.Size(71, 70)
         Me.PictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox3.TabIndex = 596
         Me.PictureBox3.TabStop = False
@@ -240,9 +253,10 @@ Partial Class frm_caja
         Me.lbl_total_ventas_card_y_efeec.BackColor = System.Drawing.Color.Yellow
         Me.lbl_total_ventas_card_y_efeec.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_total_ventas_card_y_efeec.ForeColor = System.Drawing.Color.DimGray
-        Me.lbl_total_ventas_card_y_efeec.Location = New System.Drawing.Point(238, 71)
+        Me.lbl_total_ventas_card_y_efeec.Location = New System.Drawing.Point(317, 87)
+        Me.lbl_total_ventas_card_y_efeec.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl_total_ventas_card_y_efeec.Name = "lbl_total_ventas_card_y_efeec"
-        Me.lbl_total_ventas_card_y_efeec.Size = New System.Drawing.Size(17, 20)
+        Me.lbl_total_ventas_card_y_efeec.Size = New System.Drawing.Size(22, 25)
         Me.lbl_total_ventas_card_y_efeec.TabIndex = 576
         Me.lbl_total_ventas_card_y_efeec.Text = "0"
         '
@@ -253,19 +267,20 @@ Partial Class frm_caja
         Me.lbl_devolucioneS_efectivos.Enabled = False
         Me.lbl_devolucioneS_efectivos.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_devolucioneS_efectivos.ForeColor = System.Drawing.Color.DimGray
-        Me.lbl_devolucioneS_efectivos.Location = New System.Drawing.Point(573, 14)
-        Me.lbl_devolucioneS_efectivos.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbl_devolucioneS_efectivos.Location = New System.Drawing.Point(764, 17)
+        Me.lbl_devolucioneS_efectivos.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
         Me.lbl_devolucioneS_efectivos.Name = "lbl_devolucioneS_efectivos"
-        Me.lbl_devolucioneS_efectivos.Size = New System.Drawing.Size(18, 20)
+        Me.lbl_devolucioneS_efectivos.Size = New System.Drawing.Size(23, 25)
         Me.lbl_devolucioneS_efectivos.TabIndex = 191
         Me.lbl_devolucioneS_efectivos.Text = "0"
         '
         'Panel6
         '
         Me.Panel6.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel6.Location = New System.Drawing.Point(274, 249)
+        Me.Panel6.Location = New System.Drawing.Point(365, 306)
+        Me.Panel6.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Panel6.Name = "Panel6"
-        Me.Panel6.Size = New System.Drawing.Size(119, 1)
+        Me.Panel6.Size = New System.Drawing.Size(159, 1)
         Me.Panel6.TabIndex = 193
         '
         'Label83
@@ -273,10 +288,10 @@ Partial Class frm_caja
         Me.Label83.AutoSize = True
         Me.Label83.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label83.ForeColor = System.Drawing.Color.Black
-        Me.Label83.Location = New System.Drawing.Point(423, 13)
-        Me.Label83.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label83.Location = New System.Drawing.Point(564, 16)
+        Me.Label83.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
         Me.Label83.Name = "Label83"
-        Me.Label83.Size = New System.Drawing.Size(133, 20)
+        Me.Label83.Size = New System.Drawing.Size(165, 25)
         Me.Label83.TabIndex = 192
         Me.Label83.Text = "Ventas anuladas:"
         '
@@ -285,10 +300,10 @@ Partial Class frm_caja
         Me.lbl_contador_ventas.AutoSize = True
         Me.lbl_contador_ventas.Enabled = False
         Me.lbl_contador_ventas.ForeColor = System.Drawing.Color.DimGray
-        Me.lbl_contador_ventas.Location = New System.Drawing.Point(236, 49)
-        Me.lbl_contador_ventas.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbl_contador_ventas.Location = New System.Drawing.Point(315, 60)
+        Me.lbl_contador_ventas.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
         Me.lbl_contador_ventas.Name = "lbl_contador_ventas"
-        Me.lbl_contador_ventas.Size = New System.Drawing.Size(19, 13)
+        Me.lbl_contador_ventas.Size = New System.Drawing.Size(24, 17)
         Me.lbl_contador_ventas.TabIndex = 191
         Me.lbl_contador_ventas.Text = "34"
         '
@@ -296,10 +311,10 @@ Partial Class frm_caja
         '
         Me.Label94.AutoSize = True
         Me.Label94.ForeColor = System.Drawing.Color.Black
-        Me.Label94.Location = New System.Drawing.Point(187, 76)
-        Me.Label94.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label94.Location = New System.Drawing.Point(239, 95)
+        Me.Label94.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
         Me.Label94.Name = "Label94"
-        Me.Label94.Size = New System.Drawing.Size(37, 13)
+        Me.Label94.Size = New System.Drawing.Size(48, 17)
         Me.Label94.TabIndex = 192
         Me.Label94.Text = "Total :"
         '
@@ -309,10 +324,10 @@ Partial Class frm_caja
         Me.lbl_dinero_en_caja.Enabled = False
         Me.lbl_dinero_en_caja.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
         Me.lbl_dinero_en_caja.ForeColor = System.Drawing.Color.Black
-        Me.lbl_dinero_en_caja.Location = New System.Drawing.Point(233, 14)
-        Me.lbl_dinero_en_caja.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lbl_dinero_en_caja.Location = New System.Drawing.Point(311, 17)
+        Me.lbl_dinero_en_caja.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
         Me.lbl_dinero_en_caja.Name = "lbl_dinero_en_caja"
-        Me.lbl_dinero_en_caja.Size = New System.Drawing.Size(29, 20)
+        Me.lbl_dinero_en_caja.Size = New System.Drawing.Size(36, 25)
         Me.lbl_dinero_en_caja.TabIndex = 191
         Me.lbl_dinero_en_caja.Text = "56"
         '
@@ -321,10 +336,10 @@ Partial Class frm_caja
         Me.Label77.AutoSize = True
         Me.Label77.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold)
         Me.Label77.ForeColor = System.Drawing.Color.Black
-        Me.Label77.Location = New System.Drawing.Point(83, 14)
-        Me.Label77.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label77.Location = New System.Drawing.Point(111, 17)
+        Me.Label77.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
         Me.Label77.Name = "Label77"
-        Me.Label77.Size = New System.Drawing.Size(142, 20)
+        Me.Label77.Size = New System.Drawing.Size(176, 25)
         Me.Label77.TabIndex = 192
         Me.Label77.Text = "Dinero en CAJA:"
         '
@@ -332,21 +347,23 @@ Partial Class frm_caja
         '
         Me.Label75.AutoSize = True
         Me.Label75.ForeColor = System.Drawing.Color.Black
-        Me.Label75.Location = New System.Drawing.Point(75, 49)
-        Me.Label75.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.Label75.Location = New System.Drawing.Point(230, 60)
+        Me.Label75.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
         Me.Label75.Name = "Label75"
-        Me.Label75.Size = New System.Drawing.Size(149, 13)
+        Me.Label75.Size = New System.Drawing.Size(57, 17)
         Me.Label75.TabIndex = 192
-        Me.Label75.Text = "Cobros de ventas en efectivo:"
+        Me.Label75.Text = "Tarjeta:"
         '
         'GroupBox1
         '
         Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.lbl_fondo_en_caja)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(442, 83)
+        Me.GroupBox1.Location = New System.Drawing.Point(589, 102)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(278, 44)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox1.Size = New System.Drawing.Size(371, 54)
         Me.GroupBox1.TabIndex = 605
         Me.GroupBox1.TabStop = False
         '
@@ -356,9 +373,10 @@ Partial Class frm_caja
         Me.lbl_fondo_en_caja.BackColor = System.Drawing.Color.White
         Me.lbl_fondo_en_caja.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lbl_fondo_en_caja.ForeColor = System.Drawing.Color.DimGray
-        Me.lbl_fondo_en_caja.Location = New System.Drawing.Point(142, 17)
+        Me.lbl_fondo_en_caja.Location = New System.Drawing.Point(189, 21)
+        Me.lbl_fondo_en_caja.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lbl_fondo_en_caja.Name = "lbl_fondo_en_caja"
-        Me.lbl_fondo_en_caja.Size = New System.Drawing.Size(21, 20)
+        Me.lbl_fondo_en_caja.Size = New System.Drawing.Size(27, 25)
         Me.lbl_fondo_en_caja.TabIndex = 576
         Me.lbl_fondo_en_caja.Text = " 0"
         '
@@ -366,9 +384,10 @@ Partial Class frm_caja
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(7, 14)
+        Me.Label1.Location = New System.Drawing.Point(9, 17)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(129, 21)
+        Me.Label1.Size = New System.Drawing.Size(164, 28)
         Me.Label1.TabIndex = 598
         Me.Label1.Text = "Fondo de la caja :"
         '
@@ -376,9 +395,11 @@ Partial Class frm_caja
         '
         Me.GroupBox2.Controls.Add(Me.Label2)
         Me.GroupBox2.Controls.Add(Me.lblTotalTarjeta)
-        Me.GroupBox2.Location = New System.Drawing.Point(15, 94)
+        Me.GroupBox2.Location = New System.Drawing.Point(20, 116)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(278, 44)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 4, 4, 4)
+        Me.GroupBox2.Size = New System.Drawing.Size(371, 54)
         Me.GroupBox2.TabIndex = 606
         Me.GroupBox2.TabStop = False
         '
@@ -386,9 +407,10 @@ Partial Class frm_caja
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(5, 14)
+        Me.Label2.Location = New System.Drawing.Point(7, 17)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(58, 21)
+        Me.Label2.Size = New System.Drawing.Size(73, 28)
         Me.Label2.TabIndex = 598
         Me.Label2.Text = "Tarjeta:"
         '
@@ -398,19 +420,19 @@ Partial Class frm_caja
         Me.lblTotalTarjeta.BackColor = System.Drawing.Color.White
         Me.lblTotalTarjeta.Enabled = False
         Me.lblTotalTarjeta.ForeColor = System.Drawing.Color.DimGray
-        Me.lblTotalTarjeta.Location = New System.Drawing.Point(71, 18)
-        Me.lblTotalTarjeta.Margin = New System.Windows.Forms.Padding(6, 0, 6, 0)
+        Me.lblTotalTarjeta.Location = New System.Drawing.Point(95, 22)
+        Me.lblTotalTarjeta.Margin = New System.Windows.Forms.Padding(8, 0, 8, 0)
         Me.lblTotalTarjeta.Name = "lblTotalTarjeta"
-        Me.lblTotalTarjeta.Size = New System.Drawing.Size(25, 13)
+        Me.lblTotalTarjeta.Size = New System.Drawing.Size(32, 17)
         Me.lblTotalTarjeta.TabIndex = 191
         Me.lblTotalTarjeta.Text = "123"
         '
         'frm_caja
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(732, 614)
+        Me.ClientSize = New System.Drawing.Size(976, 756)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.datalistado_caja)
@@ -421,6 +443,7 @@ Partial Class frm_caja
         Me.Controls.Add(Me.Panel5)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 4, 4, 4)
         Me.Name = "frm_caja"
         Me.Text = "Caja"
         Me.GroupBox6.ResumeLayout(False)

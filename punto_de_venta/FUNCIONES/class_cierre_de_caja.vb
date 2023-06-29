@@ -372,6 +372,7 @@ Public Class class_cierre_de_caja
             cmd.Parameters.AddWithValue("@restante", obj_cierre_de_caja.restante)
             cmd.Parameters.AddWithValue("@totalBar", obj_cierre_de_caja.totalBar)
             cmd.Parameters.AddWithValue("@totalGomera", obj_cierre_de_caja.totalGomera)
+            cmd.Parameters.AddWithValue("@tarjeta", obj_cierre_de_caja.tarjeta)
 
             If cmd.ExecuteNonQuery Then
                 Return True

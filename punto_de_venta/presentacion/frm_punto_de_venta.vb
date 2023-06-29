@@ -1812,20 +1812,23 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                     End With
                                     class_caja_diaria.insertar_caja_diaria(obb_caja_diaria)
                                     dt = class_cobro.verificar_si_hay_registro(Val(Form1.lbl_id_usuario.Text))
-                                    If dt.Rows.Count > 0 Then
-                                        Dim id_dinero As Integer
-                                        id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
-                                        With obj_cobro
-                                            .id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                            .id_dinero_en_caja = Val(id_dinero)
-                                            .dinero_en_cja = Convert.ToDecimal(lblTotalOculto.Text)
-                                        End With
-                                        class_cobro.actualizar_dinero_en_caja(obj_cobro)
-                                    Else
-                                        obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                        obj_cobro.dinero_en_cja = Convert.ToDecimal(lbl_total.Text)
-                                        class_cobro.insertar_dinero_en_caja(obj_cobro)
+                                    If cbo_forma_de_pago.Text = "EFECTIVO" Then
+                                        If dt.Rows.Count > 0 Then
+                                            Dim id_dinero As Integer
+                                            id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
+                                            With obj_cobro
+                                                .id_usuario = Val(Form1.lbl_id_usuario.Text)
+                                                .id_dinero_en_caja = Val(id_dinero)
+                                                .dinero_en_cja = Convert.ToDecimal(lblTotalOculto.Text)
+                                            End With
+                                            class_cobro.actualizar_dinero_en_caja(obj_cobro)
+                                        Else
+                                            obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
+                                            obj_cobro.dinero_en_cja = Convert.ToDecimal(lbl_total.Text)
+                                            class_cobro.insertar_dinero_en_caja(obj_cobro)
+                                        End If
                                     End If
+
                                     obj_venta.id_venta = Val(lbl_id_venta.Text)
                                     class_venta.actualizar_estado_articulos(obj_venta)
                                     MessageBox.Show("venta realizada con exito", "Registro de venta", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -1845,6 +1848,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                     txt_existencia.Clear()
                                     txt_precio.Clear()
                                     txt_descuento.Enabled = False
+
                                     CH_DESCUENTO.Checked = False
                                     lbl_clientes.Text = ""
                                     lbl_precio_por_cantidad.Text = ""
@@ -1973,21 +1977,30 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                             End With
                                             class_caja_diaria.insertar_caja_diaria(obb_caja_diaria)
                                             dt = class_cobro.verificar_si_hay_registro(Val(Form1.lbl_id_usuario.Text))
-                                            If dt.Rows.Count > 0 Then
-                                                Dim id_dinero As Integer
-                                                id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
-                                                With obj_cobro
-                                                    .id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                                    .id_dinero_en_caja = Val(id_dinero)
-                                                    .dinero_en_cja = Convert.ToDecimal(lblTotalOculto.Text)
-                                                End With
-                                                class_cobro.actualizar_dinero_en_caja(obj_cobro)
-                                            Else
 
-                                                obj_cobro.dinero_en_cja = Convert.ToDecimal(lblTotalOculto.Text)
-                                                obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                                class_cobro.insertar_dinero_en_caja(obj_cobro)
+                                            If cbo_forma_de_pago.Text = "EFECTIVO" Then
+
+                                                If dt.Rows.Count > 0 Then
+                                                    Dim id_dinero As Integer
+                                                    id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
+                                                    With obj_cobro
+                                                        .id_usuario = Val(Form1.lbl_id_usuario.Text)
+                                                        .id_dinero_en_caja = Val(id_dinero)
+                                                        .dinero_en_cja = Convert.ToDecimal(lblTotalOculto.Text)
+                                                    End With
+                                                    class_cobro.actualizar_dinero_en_caja(obj_cobro)
+                                                Else
+
+                                                    obj_cobro.dinero_en_cja = Convert.ToDecimal(lblTotalOculto.Text)
+                                                    obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
+                                                    class_cobro.insertar_dinero_en_caja(obj_cobro)
+                                                End If
+
                                             End If
+
+
+
+
                                             obj_venta.id_venta = Val(lbl_id_venta.Text)
                                             class_venta.actualizar_estado_articulos(obj_venta)
                                             'que hace este codigo???
@@ -2135,20 +2148,26 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                 End With
                                 class_cobro.insertar_total(obj_cobro)
                                 dt = class_cobro.verificar_si_hay_registro(Val(Form1.lbl_id_usuario.Text))
-                                If dt.Rows.Count > 0 Then
-                                    Dim id_dinero As Integer
-                                    id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
-                                    With obj_cobro
-                                        .id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                        .id_dinero_en_caja = Val(id_dinero)
-                                        .dinero_en_cja = Convert.ToDecimal(recibido)
-                                    End With
-                                    class_cobro.actualizar_dinero_en_caja(obj_cobro)
-                                Else
-                                    obj_cobro.dinero_en_cja = Convert.ToDecimal(recibido)
-                                    obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                    class_cobro.insertar_dinero_en_caja(obj_cobro)
+
+                                If cbo_forma_de_pago.Text = "EFECTIVO" Then
+                                    If dt.Rows.Count > 0 Then
+                                        Dim id_dinero As Integer
+                                        id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
+                                        With obj_cobro
+                                            .id_usuario = Val(Form1.lbl_id_usuario.Text)
+                                            .id_dinero_en_caja = Val(id_dinero)
+                                            .dinero_en_cja = Convert.ToDecimal(recibido)
+                                        End With
+                                        class_cobro.actualizar_dinero_en_caja(obj_cobro)
+                                    Else
+                                        obj_cobro.dinero_en_cja = Convert.ToDecimal(recibido)
+                                        obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
+                                        class_cobro.insertar_dinero_en_caja(obj_cobro)
+                                    End If
                                 End If
+
+
+
                                 obj_venta.id_venta = Val(lbl_id_venta.Text)
                                 class_venta.actualizar_estado_articulos(obj_venta)
                                 'que hace este codigo???
@@ -2172,6 +2191,9 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                 txt_precio.Clear()
                                 lbl_clientes.Text = ""
                                 lbl_precio_por_cantidad.Text = ""
+                                txt_descuento.Enabled = False
+
+                                CH_DESCUENTO.Checked = False
                                 txt_descuento.Text = "0"
                                 abrircajon("COM1")
                                 txt_rnc_cliente.Clear()
@@ -2302,20 +2324,29 @@ ByVal hTemplateFile As IntPtr) As IntPtr
                                             class_cobro.insertar_total(obj_cobro)
                                             class_cobro.eliminar_comprobante_usado(numero_de_comprobane)
                                             dt = class_cobro.verificar_si_hay_registro(Val(Form1.lbl_id_usuario.Text))
-                                            If dt.Rows.Count > 0 Then
-                                                Dim id_dinero As Integer
-                                                id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
-                                                With obj_cobro
-                                                    .id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                                    .id_dinero_en_caja = Val(id_dinero)
-                                                    .dinero_en_cja = Convert.ToDecimal(recibido)
-                                                End With
-                                                class_cobro.actualizar_dinero_en_caja(obj_cobro)
-                                            Else
-                                                obj_cobro.dinero_en_cja = Convert.ToDecimal(recibido)
-                                                obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
-                                                class_cobro.insertar_dinero_en_caja(obj_cobro)
+
+
+                                            If cbo_forma_de_pago.Text = "EFECTIVO" Then
+
+                                                If dt.Rows.Count > 0 Then
+                                                    Dim id_dinero As Integer
+                                                    id_dinero = dt.Rows(0).Item("id_dinero_en_caja")
+                                                    With obj_cobro
+                                                        .id_usuario = Val(Form1.lbl_id_usuario.Text)
+                                                        .id_dinero_en_caja = Val(id_dinero)
+                                                        .dinero_en_cja = Convert.ToDecimal(recibido)
+                                                    End With
+                                                    class_cobro.actualizar_dinero_en_caja(obj_cobro)
+                                                Else
+                                                    obj_cobro.dinero_en_cja = Convert.ToDecimal(recibido)
+                                                    obj_cobro.id_usuario = Val(Form1.lbl_id_usuario.Text)
+                                                    class_cobro.insertar_dinero_en_caja(obj_cobro)
+                                                End If
+
                                             End If
+
+
+
                                             obj_venta.id_venta = Val(lbl_id_venta.Text)
                                             class_venta.actualizar_estado_articulos(obj_venta)
                                             'que hace este codigo???

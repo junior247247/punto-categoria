@@ -51,31 +51,40 @@ ByVal hTemplateFile As IntPtr) As IntPtr
         Try
             dt = class_cobro.verificar_si_hay_fondo(Val(Form1.lbl_id_usuario.Text))
             If dt.Rows.Count > 0 Then
-                lbl_fondo_en_caja.Text = dt.Rows(0).Item("fondo").ToString
+                lbl_fondo_en_caja.Text = ParseToDecimal.parse(dt.Rows(0).Item("fondo").ToString)
             Else
-                lbl_fondo_en_caja.Text = "0"
+                lbl_fondo_en_caja.Text = "0.00"
             End If
 
             dt = Class_inventaro.sumarTarjeta(Val(Form1.lbl_id_usuario.Text))
 
-            lblTotalTarjeta.Text = dt.Rows(0).Item("tarjeta").ToString
+            lblTotalTarjeta.Text = ParseToDecimal.parse(dt.Rows(0).Item("tarjeta").ToString)
+            lbl_contador_ventas.Text = ParseToDecimal.parse(dt.Rows(0).Item("tarjeta").ToString)
+
 
             If lblTotalTarjeta.Text = String.Empty Then
                 lblTotalTarjeta.Text = "0.00"
-
+                lbl_contador_ventas.Text = "0.00"
             End If
 
 
             dt = Class_inventaro.dinero_de_ventas_del_dia(Val(Form1.lbl_id_usuario.Text))
-            lbl_dinero_encaja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
-            lbl_dinero_en_caja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
-            lbl_total_ventas_card_y_efeec.Text = dt.Rows(0).Item("ventas_del_dia").ToString
+            lbl_dinero_encaja.Text = ParseToDecimal.parse(dt.Rows(0).Item("ventas_del_dia").ToString)
+            lbl_dinero_en_caja.Text = ParseToDecimal.parse(dt.Rows(0).Item("ventas_del_dia").ToString)
+            lbl_total_ventas_card_y_efeec.Text = ParseToDecimal.parse(dt.Rows(0).Item("ventas_del_dia").ToString)
 
             If lbl_dinero_encaja.Text = String.Empty Then
                 lbl_dinero_encaja.Text = "0.00"
                 lbl_dinero_en_caja.Text = "0.00"
                 lbl_total_ventas_card_y_efeec.Text = "0.00"
                 lbl_contador_ventas.Text = "0"
+            End If
+
+            dt = Class_inventaro.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
+            If dt.Rows.Count > 0 Then
+                lbl_dinero_en_caja.Text = "RD$ " + ParseToDecimal.parse(dt.Rows(0).Item("dinero_en_caja").ToString)
+            Else
+                lbl_dinero_en_caja.Text = "RD$ 0.00"
             End If
 
             dt = Class_inventaro.ganancias_del_dia(Val(Form1.lbl_id_usuario.Text))
@@ -91,7 +100,7 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
             dt = Class_inventaro.mostrar_listado_ingreso_del_dia(Val(Form1.lbl_id_usuario.Text))
             datalistado_caja.DataSource = dt
-            lbl_contador_ventas.Text = datalistado_caja.Rows.Count
+
             datalistado_caja.EnableHeadersVisualStyles = False
             For i = 0 To datalistado_caja.Columns.Count - 1 Step 1
                 datalistado_caja.Columns(i).Width = 170
@@ -114,6 +123,10 @@ ByVal hTemplateFile As IntPtr) As IntPtr
         'If d = DialogResult.Yes Then
         frm_efectivo_de_caja.ShowDialog()
         'End If
+
+    End Sub
+
+    Private Sub Label75_Click(sender As Object, e As EventArgs) Handles Label75.Click
 
     End Sub
 End Class

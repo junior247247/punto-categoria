@@ -15,10 +15,10 @@ Public Class frm_venta_liquido
     Private class_cierre_de_caja As New class_cierre_de_caja
 
     Public Declare Auto Function CreateFile Lib "kernel32.dll" (
-ByVal lpFileName As String, ByVal dwDesiredAccess As Int32,
-ByVal dwShareMode As Int32, ByVal lpSecurityAttributes As IntPtr,
-ByVal dwCreationDisposition As Int32, ByVal dwFlagsAndAttributes As Int32,
-ByVal hTemplateFile As IntPtr) As IntPtr
+    ByVal lpFileName As String, ByVal dwDesiredAccess As Int32,
+    ByVal dwShareMode As Int32, ByVal lpSecurityAttributes As IntPtr,
+    ByVal dwCreationDisposition As Int32, ByVal dwFlagsAndAttributes As Int32,
+    ByVal hTemplateFile As IntPtr) As IntPtr
 
     Public Shared puerto As String
     Public Const GENERIC_READ As Int32 = &H80000000
@@ -52,40 +52,42 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
 
     Public Sub mostrar_ingresos_del_dia()
-        Try
-            dt = class_inventario.dinero_de_ventas_del_dia(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.lbl_dinero_encaja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
-            frm_caja.lbl_dinero_en_caja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
-            frm_caja.lbl_total_ventas_card_y_efeec.Text = dt.Rows(0).Item("ventas_del_dia").ToString
+        'Try
+        '    dt = class_inventario.dinero_de_ventas_del_dia(Val(Form1.lbl_id_usuario.Text))
+        '    frm_caja.lbl_dinero_encaja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
+        '    frm_caja.lbl_dinero_en_caja.Text = dt.Rows(0).Item("ventas_del_dia").ToString
+        '    frm_caja.lbl_total_ventas_card_y_efeec.Text = dt.Rows(0).Item("ventas_del_dia").ToString
 
-            If frm_caja.lbl_dinero_encaja.Text = String.Empty Then
-                frm_caja.lbl_dinero_encaja.Text = "0.00"
-                frm_caja.lbl_dinero_en_caja.Text = "0.00"
-                frm_caja.lbl_total_ventas_card_y_efeec.Text = "0.00"
-                frm_caja.lbl_contador_ventas.Text = "0"
-            End If
+        '    If frm_caja.lbl_dinero_encaja.Text = String.Empty Then
+        '        frm_caja.lbl_dinero_encaja.Text = "0.00"
+        '        frm_caja.lbl_dinero_en_caja.Text = "0.00"
+        '        frm_caja.lbl_total_ventas_card_y_efeec.Text = "0.00"
+        '        frm_caja.lbl_contador_ventas.Text = "0"
+        '    End If
 
-            dt = class_inventario.ganancias_del_dia(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.lbl_ganancia_en_ventas.Text = dt.Rows(0).Item("ganancias_del_dia").ToString
-            If frm_caja.lbl_ganancia_en_ventas.Text = String.Empty Then
-                frm_caja.lbl_ganancia_en_ventas.Text = "0.00"
-            End If
-            dt = class_inventario.devoluciones(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.lbl_devolucioneS_efectivos.Text = dt.Rows(0).Item("devoluciones_del_dia").ToString
-            If frm_caja.lbl_devolucioneS_efectivos.Text = String.Empty Then
-                frm_caja.lbl_devolucioneS_efectivos.Text = "0"
-            End If
+        '    dt = class_inventario.ganancias_del_dia(Val(Form1.lbl_id_usuario.Text))
+        '    frm_caja.lbl_ganancia_en_ventas.Text = dt.Rows(0).Item("ganancias_del_dia").ToString
+        '    If frm_caja.lbl_ganancia_en_ventas.Text = String.Empty Then
+        '        frm_caja.lbl_ganancia_en_ventas.Text = "0.00"
+        '    End If
+        '    dt = class_inventario.devoluciones(Val(Form1.lbl_id_usuario.Text))
+        '    frm_caja.lbl_devolucioneS_efectivos.Text = dt.Rows(0).Item("devoluciones_del_dia").ToString
+        '    If frm_caja.lbl_devolucioneS_efectivos.Text = String.Empty Then
+        '        frm_caja.lbl_devolucioneS_efectivos.Text = "0"
+        '    End If
 
-            dt = class_inventario.mostrar_listado_ingreso_del_dia(Val(Form1.lbl_id_usuario.Text))
-            frm_caja.datalistado_caja.DataSource = dt
-            frm_caja.lbl_contador_ventas.Text = frm_caja.datalistado_caja.Rows.Count
-            frm_caja.datalistado_caja.EnableHeadersVisualStyles = False
-            For i = 0 To frm_caja.datalistado_caja.Columns.Count - 1 Step 1
-                frm_caja.datalistado_caja.Columns(i).Width = 170
-            Next
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+        '    dt = class_inventario.mostrar_listado_ingreso_del_dia(Val(Form1.lbl_id_usuario.Text))
+        '    frm_caja.datalistado_caja.DataSource = dt
+        '    frm_caja.lbl_contador_ventas.Text = frm_caja.datalistado_caja.Rows.Count
+        '    frm_caja.datalistado_caja.EnableHeadersVisualStyles = False
+        '    For i = 0 To frm_caja.datalistado_caja.Columns.Count - 1 Step 1
+        '        frm_caja.datalistado_caja.Columns(i).Width = 170
+        '    Next
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+
+        frm_caja.mostrar_ingresos_del_dia()
     End Sub
 
 
@@ -93,78 +95,80 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
 
 
-        Try
-            dt = class_inventario.sumar_mantenimiento_por_30_dias
+        'Try
+        '    dt = class_inventario.sumar_mantenimiento_por_30_dias
 
-            frm_inventario.lbl_mantenimiento_por_30_dias.Text = dt.Rows(0).Item("ingresos_mantenimiento_por30_dias").ToString
-            If frm_inventario.lbl_mantenimiento_por_30_dias.Text = String.Empty Then
-                frm_inventario.lbl_mantenimiento_por_semana.Text = "0.00"
-            End If
-
-
-
-
-
-            dt = class_inventario.sumar_mantenimiento_por_7_dias
-            frm_inventario.lbl_mantenimiento_por_semana.Text = dt.Rows(0).Item("ingresos_mantenimiento_por7_dias").ToString
-            If frm_inventario.lbl_mantenimiento_por_semana.Text = String.Empty Then
-                frm_inventario.lbl_mantenimiento_por_semana.Text = "0.00"
-            End If
-
-
-
-
-            dt = class_inventario.sumar_liquidos_por_30_dias
-            frm_inventario.lbl_detalle_por_mes.Text = dt.Rows(0).Item("ingresos_liquidos_por_30_dias").ToString
-            If frm_inventario.lbl_detalle_por_mes.Text = String.Empty Then
-                frm_inventario.lbl_detalle_por_mes.Text = "0.00"
-            End If
-
-
-
-            dt = class_inventario.sumar_liquidos_por_semana
-            frm_inventario.lbl_por_semanas_liquidos.Text = dt.Rows(0).Item("ingresos_liquidos_por_semanas").ToString
-            If frm_inventario.lbl_por_semanas_liquidos.Text = String.Empty Then
-                frm_inventario.lbl_por_semanas_liquidos.Text = "0.00"
-            End If
-
-
-            dt = class_inventario.sumar_ventas_del_mes
-            If dt.Rows.Count > 0 Then
-                frm_home.lbl_compras_del_mes.Text = "RD$ " + dt.Rows(0).Item("compras_del_mes").ToString
-
-
-            End If
-
-            If frm_home.lbl_compras_del_mes.Text = "RD$ " Then
-                frm_home.lbl_compras_del_mes.Text = "RD$ 0.00"
-            End If
+        '    frm_inventario.lbl_mantenimiento_por_30_dias.Text = dt.Rows(0).Item("ingresos_mantenimiento_por30_dias").ToString
+        '    If frm_inventario.lbl_mantenimiento_por_30_dias.Text = String.Empty Then
+        '        frm_inventario.lbl_mantenimiento_por_semana.Text = "0.00"
+        '    End If
 
 
 
 
 
-            dt = class_inventario.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
-            If dt.Rows.Count > 0 Then
-                frm_home.lbl_dinero_en_caja.Text = "RD$ " + dt.Rows(0).Item("dinero_en_caja").ToString
-            Else
-                frm_home.lbl_dinero_en_caja.Text = "RD$ 0.00"
-            End If
-            dt = class_inventario.dinero_de_ventas_del_dia(Form1.lbl_id_usuario.Text)
-            If dt.Rows.Count > 0 Then
-                frm_home.lbl_ventas_del_dia.Text = "RD$ " + dt.Rows(0).Item("ventas_del_dia").ToString
-            Else
-                frm_home.lbl_ventas_del_dia.Text = "RD$ 0.00"
-            End If
-            If frm_home.lbl_ventas_del_dia.Text = "RD$ " Then
-
-                frm_home.lbl_ventas_del_dia.Text = "RD$ 0.00"
-            End If
+        '    dt = class_inventario.sumar_mantenimiento_por_7_dias
+        '    frm_inventario.lbl_mantenimiento_por_semana.Text = dt.Rows(0).Item("ingresos_mantenimiento_por7_dias").ToString
+        '    If frm_inventario.lbl_mantenimiento_por_semana.Text = String.Empty Then
+        '        frm_inventario.lbl_mantenimiento_por_semana.Text = "0.00"
+        '    End If
 
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+
+
+        '    dt = class_inventario.sumar_liquidos_por_30_dias
+        '    frm_inventario.lbl_detalle_por_mes.Text = dt.Rows(0).Item("ingresos_liquidos_por_30_dias").ToString
+        '    If frm_inventario.lbl_detalle_por_mes.Text = String.Empty Then
+        '        frm_inventario.lbl_detalle_por_mes.Text = "0.00"
+        '    End If
+
+
+
+        '    dt = class_inventario.sumar_liquidos_por_semana
+        '    frm_inventario.lbl_por_semanas_liquidos.Text = dt.Rows(0).Item("ingresos_liquidos_por_semanas").ToString
+        '    If frm_inventario.lbl_por_semanas_liquidos.Text = String.Empty Then
+        '        frm_inventario.lbl_por_semanas_liquidos.Text = "0.00"
+        '    End If
+
+
+        '    dt = class_inventario.sumar_ventas_del_mes
+        '    If dt.Rows.Count > 0 Then
+        '        frm_home.lbl_compras_del_mes.Text = "RD$ " + dt.Rows(0).Item("compras_del_mes").ToString
+
+
+        '    End If
+
+        '    If frm_home.lbl_compras_del_mes.Text = "RD$ " Then
+        '        frm_home.lbl_compras_del_mes.Text = "RD$ 0.00"
+        '    End If
+
+
+
+
+
+        '    dt = class_inventario.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
+        '    If dt.Rows.Count > 0 Then
+        '        frm_home.lbl_dinero_en_caja.Text = "RD$ " + dt.Rows(0).Item("dinero_en_caja").ToString
+        '    Else
+        '        frm_home.lbl_dinero_en_caja.Text = "RD$ 0.00"
+        '    End If
+        '    dt = class_inventario.dinero_de_ventas_del_dia(Form1.lbl_id_usuario.Text)
+        '    If dt.Rows.Count > 0 Then
+        '        frm_home.lbl_ventas_del_dia.Text = "RD$ " + dt.Rows(0).Item("ventas_del_dia").ToString
+        '    Else
+        '        frm_home.lbl_ventas_del_dia.Text = "RD$ 0.00"
+        '    End If
+        '    If frm_home.lbl_ventas_del_dia.Text = "RD$ " Then
+
+        '        frm_home.lbl_ventas_del_dia.Text = "RD$ 0.00"
+        '    End If
+
+
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+
+        frm_home.home()
     End Sub
 
 
@@ -173,55 +177,57 @@ ByVal hTemplateFile As IntPtr) As IntPtr
 
 
     Public Sub mostrar_nventario()
-        Try
+        'Try
 
 
-            dt = class_inventario.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
+        '    dt = class_inventario.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
 
-            If dt.Rows.Count > 0 Then
-                frm_inventario.lbl_dinero_en_caja.Text = dt.Rows(0).Item("dinero_en_caja").ToString
-            Else
-                frm_inventario.lbl_dinero_en_caja.Text = "0.00"
-            End If
+        '    If dt.Rows.Count > 0 Then
+        '        frm_inventario.lbl_dinero_en_caja.Text = dt.Rows(0).Item("dinero_en_caja").ToString
+        '    Else
+        '        frm_inventario.lbl_dinero_en_caja.Text = "0.00"
+        '    End If
 
-            dt = class_inventario.sumar_mantenimiento_por_30_dias
-            frm_inventario.lbl_mantenimiento_por_30_dias.Text = dt.Rows(0).Item("ingresos_mantenimiento_por30_dias").ToString
-            If frm_inventario.lbl_mantenimiento_por_30_dias.Text = String.Empty Then
-                frm_inventario.lbl_mantenimiento_por_semana.Text = "0.00"
-            End If
-            dt = class_inventario.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
+        '    dt = class_inventario.sumar_mantenimiento_por_30_dias
+        '    frm_inventario.lbl_mantenimiento_por_30_dias.Text = dt.Rows(0).Item("ingresos_mantenimiento_por30_dias").ToString
+        '    If frm_inventario.lbl_mantenimiento_por_30_dias.Text = String.Empty Then
+        '        frm_inventario.lbl_mantenimiento_por_semana.Text = "0.00"
+        '    End If
+        '    dt = class_inventario.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
 
-            If dt.Rows.Count > 0 Then
-                frm_home.lbl_dinero_en_caja.Text = "RD$ " + dt.Rows(0).Item("dinero_en_caja").ToString
-            Else
-                frm_home.lbl_dinero_en_caja.Text = "RD$ 0.00"
-            End If
-
-
-            Dim totalBar, totalGomera As Decimal
-            dt = class_cierre_de_caja.sumarVentasDeldiaBar
-            If dt.Rows(0).Item("total").ToString <> "" Then
-                totalBar = Convert.ToDecimal(dt.Rows(0).Item("total").ToString)
-            Else
-                totalBar = 0
-            End If
-
-            dt = class_cierre_de_caja.sumarVentasDeldiaGomera
-            If dt.Rows(0).Item("total").ToString <> "" Then
-                totalGomera = Convert.ToDecimal(dt.Rows(0).Item("total").ToString)
-            Else
-                totalGomera = 0
-            End If
-
-            Dim total As Decimal = totalGomera + totalBar
-
-            frm_caja.lbl_dinero_encaja.Text = total.ToString
-            frm_caja.lbl_total_ventas_card_y_efeec.Text = total.ToString
+        '    If dt.Rows.Count > 0 Then
+        '        frm_home.lbl_dinero_en_caja.Text = "RD$ " + dt.Rows(0).Item("dinero_en_caja").ToString
+        '    Else
+        '        frm_home.lbl_dinero_en_caja.Text = "RD$ 0.00"
+        '    End If
 
 
-        Catch ex As Exception
-            MsgBox(ex.Message)
-        End Try
+        '    Dim totalBar, totalGomera As Decimal
+        '    dt = class_cierre_de_caja.sumarVentasDeldiaBar
+        '    If dt.Rows(0).Item("total").ToString <> "" Then
+        '        totalBar = Convert.ToDecimal(dt.Rows(0).Item("total").ToString)
+        '    Else
+        '        totalBar = 0
+        '    End If
+
+        '    dt = class_cierre_de_caja.sumarVentasDeldiaGomera
+        '    If dt.Rows(0).Item("total").ToString <> "" Then
+        '        totalGomera = Convert.ToDecimal(dt.Rows(0).Item("total").ToString)
+        '    Else
+        '        totalGomera = 0
+        '    End If
+
+        '    Dim total As Decimal = totalGomera + totalBar
+
+        '    frm_caja.lbl_dinero_encaja.Text = total.ToString
+        '    frm_caja.lbl_total_ventas_card_y_efeec.Text = total.ToString
+
+
+        'Catch ex As Exception
+        '    MsgBox(ex.Message)
+        'End Try
+
+        frm_caja.mostrar_ingresos_del_dia()
     End Sub
 
 
