@@ -13,7 +13,7 @@
 
             dt = class_invenntario.sumar_ventas_del_mes
             If dt.Rows.Count > 0 Then
-                lbl_compras_del_mes.Text = "RD$ " + dt.Rows(0).Item("compras_del_mes").ToString
+                lbl_compras_del_mes.Text = "RD$ " + ParseToDecimal.parse(dt.Rows(0).Item("compras_del_mes").ToString)
 
 
             End If
@@ -41,13 +41,13 @@
             End If
             dt = class_invenntario.mostrar_dinero_en_caja(Val(Form1.lbl_id_usuario.Text))
             If dt.Rows.Count > 0 Then
-                lbl_dinero_en_caja.Text = "RD$ " + dt.Rows(0).Item("dinero_en_caja").ToString
+                lbl_dinero_en_caja.Text = "RD$ " + ParseToDecimal.parse(dt.Rows(0).Item("dinero_en_caja").ToString)
             Else
                 lbl_dinero_en_caja.Text = "RD$ 0.00"
             End If
             dt = class_invenntario.dinero_de_ventas_del_dia(Val(Form1.lbl_id_usuario.Text))
             If dt.Rows.Count > 0 Then
-                lbl_ventas_del_dia.Text = "RD$ " + dt.Rows(0).Item("ventas_del_dia").ToString
+                lbl_ventas_del_dia.Text = "RD$ " + ParseToDecimal.parse(dt.Rows(0).Item("ventas_del_dia").ToString)
             Else
                 lbl_ventas_del_dia.Text = "RD$ 0.00"
             End If
